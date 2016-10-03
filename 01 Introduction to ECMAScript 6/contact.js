@@ -32,6 +32,16 @@ try {
  */
 function validateEmail(email) {
 	console.log(email)
+	if(email.length < 5){
+			throw new RangeError('email should be at least 5 characters long')	
+	}
+	if(email.indexOf('@') <= 1){
+		throw new Error('a valid email needs to have @ sign, but it cannot be at the begining of the string')		
+	}
+	if(email.indexOf('.', email.indexOf('@')) === -1 && email.indexOf('.') === email.length + 1){
+		throw new Error('(.) needs to be after @ sign and should not be at the end of the email')
+	}
+	
 	return true
 }
 
