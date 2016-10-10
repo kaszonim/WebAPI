@@ -1,9 +1,10 @@
 'use strict'
 
-function Dog(name, breed, weight) {
+function Dog(name, breed, weight, trained = true) {
 	this.name = name
 	this.breed = breed
 	this.weight = weight
+	this.trained = trained
 }
 
 Dog.prototype.species = 'Canine'
@@ -27,11 +28,15 @@ Dog.prototype.wag = function() {
 }
 
 Dog.prototype.sit = function() {
-	if (this.sitting) {
-		console.log(`${this.name} is already sitting`)
+	if (this.trained === true){
+			if (this.sitting) {
+			console.log(`${this.name} is already sitting`)
+		} else {
+			this.sitting = true
+			console.log(`${this.name} is now sitting`)
+		}
 	} else {
-		this.sitting = true
-		console.log(`${this.name} is now sitting`)
+		console.log(`${this.name} is not trained for sitting`)
 	}
 }
 
