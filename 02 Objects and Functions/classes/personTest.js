@@ -7,9 +7,10 @@ try {
 	console.log(person.name)
 	person.lastName = 'Pandy'
 	console.log(JSON.stringify(person, null, 2))
-	var daten = Date.now()	
-	console.log(daten)
-
+	
+	var currentDate = new Date()
+	var currentYear	 = currentDate.getFullYear()
+	console.log(person.name +  ' is ' + (currentYear - person.dob) + ' years old')
 	//const badPerson = new Person('anon')
 } catch(err) {
 	console.log(`ERROR: ${err}`)
