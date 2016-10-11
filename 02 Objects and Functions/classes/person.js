@@ -13,9 +13,12 @@ module.exports = class Person {
 		if (firstname === undefined || lastname === undefined || dob === undefined) {
 			throw new Error('missing parameter')
 		}
+		if (typeof dob !== 'object'){
+			throw new Error('wrong data type for date')	
+		}
 		this.first = firstname
 		this.last = lastname
-		this.dob = new Date(dob)
+		this.dateOfBirth = dob
 	}
 
 	/**
@@ -39,7 +42,7 @@ module.exports = class Person {
 	 * @param {Date()} name - the person's last name
 	 */
 	set dob(dob){
-		this.dob = new Date(dob)
+		this.dateOfBirth = dob
 	}
 
 	/**
@@ -55,6 +58,7 @@ module.exports = class Person {
 	 * @return {Date()} the person's age (in years)
 	 */
 	get dob(){
-		return Date.now().getFullYear() - this.dob.getFullYear();
+		return this.dateOfBirth
+		//return dob
 	}
 }
