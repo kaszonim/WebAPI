@@ -10,7 +10,7 @@ const phrases = ['eve',
                'Not a palindrome']
 
 for (const phrase of phrases) {
-	console.log (phrase.capitalise())	
+	console.log ('Capitalised word is: ' + phrase.capitalise())	
 	if (phrase.palindrome()) {
 		console.log(`"${phrase}" is a palindrome`)
 	} else {
