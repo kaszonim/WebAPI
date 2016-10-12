@@ -10,7 +10,7 @@ try {
 	
 	var currentDate = new Date()
 	var currentYear	 = currentDate.getFullYear()
-	console.log(person.name +  ' is ' + (currentYear - person.dob) + ' years old')
+	console.log(person.name +  ' is ' + (currentYear - person.dob.getFullYear()) + ' years old')
 	//const badPerson = new Person('anon')
 } catch(err) {
 	console.log(`ERROR: ${err}`)

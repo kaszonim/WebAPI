@@ -4,13 +4,15 @@
 const Employee = require('./employee')
 
 try {
-	const worker = new Employee('John', 'Doe')
+	var dateOfBirth = new Date('February 3, 2000')
+	const worker = new Employee('John', 'Doe', dateOfBirth)
 	console.log(worker.name)
 
 	const salary = worker.calculateSalary()
 	console.log(salary)
 
-	const manager = new Employee('Peter', 'Piper', 4)
+	dateOfBirth = new Date('October 28, 1970')
+	const manager = new Employee('Peter', 'Piper', dateOfBirth,4)
 	console.log(manager.name)
 	console.log(manager.calculateSalary(6))
 	console.log(manager)

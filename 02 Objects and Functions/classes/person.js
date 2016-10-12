@@ -58,7 +58,7 @@ module.exports = class Person {
 	 * @return {Date()} the person's age (in years)
 	 */
 	get dob(){
-		return this.dateOfBirth.getFullYear()
+		return this.dateOfBirth
 		//return dob
 	}
 }
