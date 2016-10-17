@@ -6,16 +6,21 @@ try {
 	if (process.argv.length < 3) {
 		throw 'missing parameter'
 	}
-	const symbol = process.argv[2].toUpperCase()
-	const url = `http://api.fixer.io/latest?symbols=${symbol}`
+	const base = process.argv[2].toUpperCase()
+	const symbol = process.argv[3].toUpperCase()
+	const url = `http://api.fixer.io/latest?base=${base}&symbols=${symbol}`
 	console.log(url)
 	request.get( url, (err, res, body) => {
 		if (err) {
 			throw 'could not complete request'
 		}
-		const json = JSON.parse(body)
-		const output = JSON.stringify(json.rates, null, 2)
-		console.log(output)
+		var json = JSON.parse(body)
+		if(Object.keys(json.rates).length === 0){
+			throw 'symbol not valid'
+		}
+		console.log(`1 ${base} = ${json.rates[symbol].toFixed(2)} ${symbol}`)
+			//const output = JSON.stringify(json.rates[symbol].toFixed(2), null, 2)
+			//console.log(output)
 	})
 } catch(err) {
 	console.log(err)
