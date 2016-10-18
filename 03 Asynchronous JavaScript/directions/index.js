@@ -16,4 +16,23 @@ directions.getDistance(origin, destination, (err, distance) => {
 	}
 })
 
+directions.getDuration(origin, destination, (err, duration) => {
+	try {
+		if (err) throw err
+		console.log(duration)
+	} catch(err) {
+		console.log(`ERROR: ${err.message}`)
+	}
+})
+
+directions.getDirections(origin, destination, (err, direction) => {
+	try {
+		if (err) throw err
+		console.log('Directions: ')
+		console.log(direction)
+	} catch(err) {
+		console.log(`ERROR: ${err.message}`)
+	}
+})
+
 console.log('EOF')
