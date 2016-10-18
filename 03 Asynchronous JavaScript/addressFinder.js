@@ -17,7 +17,20 @@ try {
 			throw 'could not complete request'
 		}
 		const json = JSON.parse(body)
-		console.log(JSON.stringify(json, null, 2))
+		//if(Object.keys(json.results).length === 0){
+		if(!json.results[0]){
+			throw 'no results found'
+		}else{
+			var geoData = json.results[0].geometry
+			console.log()
+			console.log(`lat: ${geoData.location.lat}, lon: ${geoData.location.lng}`)
+			
+			var addressComp = json.results[0].address_components
+			for(let comp in addressComp){
+				console.log(addressComp[comp].long_name)
+			}
+		}
+		//console.log(JSON.stringify(json, null, 2))
 		try {
 			if (json.status === 'ZERO_RESULTS') {
 				throw 'no results found'
