@@ -3,7 +3,7 @@
 const request = require('request')
 
 try {
-	if (process.argv.length < 3) {
+	if (process.argv.length < 4) {
 		throw 'missing parameter'
 	}
 	const base = process.argv[2].toUpperCase()
