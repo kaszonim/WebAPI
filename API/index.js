@@ -1,6 +1,6 @@
 'use strict'
 
-const api = require('./Modules/data')
+const api = require('./modules/data')
   
 const host = `developers.zomato.com`  
 const apiKey = '53d2f755e44b12d31be6f3db16d397c9'
