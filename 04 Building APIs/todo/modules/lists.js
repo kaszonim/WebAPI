@@ -141,3 +141,39 @@ exports.addNew = function(auth, body) {
 		data: item
 	}
 }
+
+exports.deleteByID = function(auth, listID){
+	if (auth.basic === undefined) {
+		return {
+			status: globals.status.unauthorized,
+			format: globals.format.json,
+			message: 'missing basic auth'
+		}
+	}
+	if (auth.basic.username !== 'testuser' || auth.basic.password !== 'p455w0rd') {
+		return {
+			status: globals.status.unauthorized,
+			format: globals.format.json,
+			message: 'invalid credentials'
+		}
+	}
+	const foundList = lists.find( function(value) {
+		return value.id === listID
+	})
+	if (foundList) {
+		//console.log('NOT FOUND')
+		lists.pop(foundList)
+		return {
+			status: globals.status.ok,
+			format: globals.format.json,
+			message: 'list deleted'
+		}
+	}
+	else{
+		return {
+			status: globals.status.notFound,
+			format: globals.format.json,
+			message: 'list not found'
+		}		
+	}	
+}

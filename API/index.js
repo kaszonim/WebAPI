@@ -7,7 +7,7 @@ const apiKey = '53d2f755e44b12d31be6f3db16d397c9'
 var endpoint = ''
 var data = {}
 
-//getCategories()
+getCategories()
 getRestaurantsInArea('coventry')
 //getLocationDetails('coventry')
 
@@ -20,6 +20,7 @@ function getCategories(){
         var cat = res.categories[c].categories
         console.log(cat.id + '. ' + cat.name)
       }
+      console.log()
     } catch(err) {
       console.log(`ERROR: ${err.message}`)
     }
@@ -32,6 +33,7 @@ function getRestaurantsInArea(location){
   var entityId = ''
   var entityType = ''
   
+  //replace with function that returns entityId and entityType
   api.apiCall(host, endpoint, 'GET', apiKey, data, function (res){
     try {
       entityId = res.location_suggestions[0].entity_id
@@ -47,7 +49,7 @@ function getRestaurantsInArea(location){
         try {
           var rest = res.best_rated_restaurant
           //nsole.log(rest[0])
-          console.log('top 10 places in Coventry')
+          console.log('Top 10 places in Coventry')
           for(var r in rest){
             console.log(rest[r].restaurant.name)
           }

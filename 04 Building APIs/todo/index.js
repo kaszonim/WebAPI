@@ -108,10 +108,23 @@ server.put('/lists/:listID', function(req, res) {
 
 /* The DELETE method removes the resource at the specified URL. */
 server.del('/lists/:listID', function(req, res) {
+	const auth = req.authorization
+	const listID = req.params.listID
+	const data = lists.deleteByID(auth, listID)	
 	res.setHeader('content-type', 'application/json')
 	res.setHeader('Allow', 'GET, POST', 'PUT', 'DELETE')
-	res.send(status.noContent, {status: 'ok', message: 'this should delete the specified resource'})
+	
+	if (data.code === globals.status.created) {
+		res.setHeader('Location', `/lists/${data.data.id}`)
+		res.setHeader('Last-Modified', data.data.modified.toUTCString())
+	}
+	if (data.data === undefined) {
+		res.send(data.status, {message: data.message})
+	}
+	res.send(data.status, {message: data.message, data: data.data.data})
 	res.end()
+	//res.send(status.noContent, {status: 'ok', message: 'this should delete the specified resource'})
+	//res.end()
 })
 
 const port = process.env.PORT || defaultPort
