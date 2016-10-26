@@ -1,65 +1,55 @@
 'use strict'
 
-const api = require('./modules/data')
-  
-const host = `developers.zomato.com`  
-const apiKey = '53d2f755e44b12d31be6f3db16d397c9'
-var endpoint = ''
-var data = {}
+const api = require('./modules/data.js')
+const restify = require('restify')
+const server = restify.createServer()
 
-getCategories()
-getRestaurantsInArea('coventry')
-//getLocationDetails('coventry')
+/* import the required plugins to parse the body and auth header. */
+server.use(restify.fullResponse())
+server.use(restify.bodyParser())
+server.use(restify.authorizationParser())
 
-function getCategories(){  
-  endpoint = `/api/v2.1/categories` 
-  api.apiCall(host, endpoint, 'GET', apiKey, data, function (res){
-    try {
-      console.log('Restaurant categories')
-      for(var c in res.categories){
-        var cat = res.categories[c].categories
-        console.log(cat.id + '. ' + cat.name)
-      }
-      console.log()
-    } catch(err) {
-      console.log(`ERROR: ${err.message}`)
-    }
-  })
+const status = {
+	'ok': 200,
+	'created': 201,
+	'noContent': 204,
+	'notModified': 304,
+	'badRequest': 400,
+	'unauthorised': 401,
+	'notFound': 404
 }
 
-function getRestaurantsInArea(location){
-  endpoint = `/api/v2.1/locations` 
-  data = { 'query': location }
-  var entityId = ''
-  var entityType = ''
-  
-  //replace with function that returns entityId and entityType
-  api.apiCall(host, endpoint, 'GET', apiKey, data, function (res){
-    try {
-      entityId = res.location_suggestions[0].entity_id
-      entityType = res.location_suggestions[0].entity_type
-      
-      endpoint = `/api/v2.1/location_details`
-      data = { 
-        'entity_id': entityId,
-        'entity_type': entityType
-      }
-      
-      api.apiCall(host, endpoint, 'GET', apiKey, data, function (res){
-        try {
-          var rest = res.best_rated_restaurant
-          //nsole.log(rest[0])
-          console.log('Top 10 places in Coventry')
-          for(var r in rest){
-            console.log(rest[r].restaurant.name)
-          }
-        } catch(err) {
-        console.log(`ERROR: ${err.message}`)
-        }
-      })
-    } catch(err) {
-      console.log(`ERROR: ${err.message}`)
-    }
-  })
+const mime = {
+	'json': 'application/json',
+	'xml': 'application/xml'
 }
 
+const defaultPort = 8080
+
+server.get('/categories', function(req, res) {
+	const host = req.headers.host
+  const data = api.getCategories()
+  console.log(data)
+ /* for(var d in data){
+    var cat = data[d].categories
+    console.log(cat.id + '. ' + cat.name)
+  }*/
+  res.setHeader('content-type', data.format)
+	res.setHeader('Allow', 'GET, POST')
+	res.json(data.status, {message: data.message, data: data.data})
+  console.log(res)
+  console.log(req)
+})
+
+//api.getCategories()
+//api.getCuisinesInCity('coventry')
+//api.getRestaurantsInArea('coventry')
+
+const port = process.env.PORT || defaultPort
+server.listen(port, function(err) {
+	if (err) {
+		console.error(err)
+	} else {
+		console.log('App is ready at : ' + port)
+	}
+})
