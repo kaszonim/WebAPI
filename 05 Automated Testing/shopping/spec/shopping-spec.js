@@ -28,6 +28,11 @@ describe('Shopping List', function () {
 		expect(list.count()).toBe(2)
 	})
 
+	it('should decrement the qty if item exists', () => {
+		list.decrement('butter', 1)
+		expect(list.count()).toBe(1)
+	})
+	
   it('should return an array containing all items in order of entry', () => {
     const items = list.getAll()
     expect(items[0].title).toBe('bread')
@@ -39,10 +44,11 @@ describe('Shopping List', function () {
   /* by placing an 'x' in front of the function name we set its status to 'pending' which means the test won't run. In this way we can write lots of tests but focus on passing one test at a time. */
 	it('should be able to return a shopping item', () => {
 		expect(list.getItem('bread').title).toBe('bread')
+		//expect(list.getItem('jam').title).toBe('jam')
 		expect(list.getItem('bread').qty).toBe(2)
 	})
 
-	xit('should throw an error if item not in list', () => {
+	it('should throw an error if item not in list', () => {
 		try {
 			let jam = list.getItem('jam')
 			expect(true).toBe(false) // we want to fail test if this line is run.
@@ -51,23 +57,24 @@ describe('Shopping List', function () {
 		}
 	})
 
-	xit('should delete first item', () => {
+	it('should delete first item', () => {
 		list.removeItem('bread')
 		expect(list.count()).toBe(1)
 		const items = list.getAll()
 		expect(items[0].title).toBe('butter')
 	})
 
-	xit('should delete last item', () => {
+	it('should delete last item', () => {
 		list.removeItem('butter')
 		expect(list.count()).toBe(1)
 		const items = list.getAll()
 		expect(items[0].title).toBe('bread')
 	})
 
-	xit('should throw error if item not in list', () => {
+	it('should throw error if item not in list', () => {
 		try {
 			list.removeItem('jam')
+			//expect(list.count()).toBe(1)
 			expect(true).toBe(false)
 		} catch(err) {
 			expect(err.message).toBe('item not in list')
