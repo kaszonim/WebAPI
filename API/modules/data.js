@@ -7,6 +7,7 @@ const queryString = require('querystring')
   
 const host = `developers.zomato.com`  
 const apiKey = '53d2f755e44b12d31be6f3db16d397c9'
+var data = {}
 var endpoint = ''
 var query = {}
 
@@ -43,14 +44,14 @@ function apiCall (host, endpoint, method, apiKey, query, success) {
     
     res.on('end', function(){
 			var responseObj = JSON.parse(responseString)
-      success(responseObj)
+      return success(null, responseObj)
     })
   })
 	
   req.on('error', (err) => {
-		success(err)
+		return success(err)
 	})	
-  req.write(dataString)
+  //req.write(dataString)
   req.end()  
 }
 
@@ -74,9 +75,10 @@ function getLocationDetails(location){
 	})
 }
 
-exports.getCategories = function() {  
+exports.getCategories = function(callback) {  
   endpoint = `/api/v2.1/categories` 
-  apiCall(host, endpoint, 'GET', apiKey, query, function (res){
+	let results = {}
+  apiCall(host, endpoint, 'GET', apiKey, query, function (err, res){
 	 /*console.log('Restaurant categories')
 		for(var c in res.categories){
 			var cat = res.categories[c].categories
@@ -84,30 +86,34 @@ exports.getCategories = function() {
 		}
 		console.log()*/
 		//console.log(res.length)
+		
+		
 		if (res.length  === 0) {
 			console.log('No Results')
-			return {
+			/*return {
 				status: global.status.notFound,
 				format: global.format.json,
 				message: 'no lists found'
-			}
-		}
+			}*/
+			callback('error')
+		}		
 		if(res){
-			console.log('Results')
-			console.log(res.categories)
-			var test = {
-				status: global.status.ok,
-				format: global.format.json,
+			console.log('Results found')
+			results = {
+				status: globals.status.ok,
+				format: globals.format.json,
 				message: `${res.length} categories found`,
 				body: res.categories
 			}
-			console.log(global.status.ok)
-			return {
-				status: global.status.ok,
-				format: global.format.json,
+			callback(null, results)
+			//console.log(res.categories)
+			//console.log('Result code: ' + global.status.ok)
+			/*return {
+				status: globals.status.ok,
+				format: globals.format.json,
 				message: `${res.length} categories found`,
 				body: res.categories
-			}
+			}*/
 		}
   })
 }

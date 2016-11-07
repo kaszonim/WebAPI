@@ -29,7 +29,7 @@ const defaultPort = 8080
 server.get('/categories', function(req, res) {
 	const host = req.headers.host
   const data = api.getCategories()
-  console.log(data)
+	console.log('Data is ' + data)
  /* for(var d in data){
     var cat = data[d].categories
     console.log(cat.id + '. ' + cat.name)
@@ -37,8 +37,6 @@ server.get('/categories', function(req, res) {
   res.setHeader('content-type', data.format)
 	res.setHeader('Allow', 'GET, POST')
 	res.json(data.status, {message: data.message, data: data.data})
-  console.log(res)
-  console.log(req)
 })
 
 //api.getCategories()
