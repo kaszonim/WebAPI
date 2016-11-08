@@ -1,7 +1,7 @@
 
 'use strict'
 
-const data = require('./modules/data.js')
+const data = require('./data.js')
 const restify = require('restify')
 const server = restify.createServer()
 
@@ -43,6 +43,16 @@ server.get('/categories', function(req, rest) {
   })
 })
 
+/*
+test()
+
+function test(){
+  data.getCategories(function(err, res){
+    console.log('Result ' + res)
+  })  
+}
+*/
+
 const port = process.env.PORT || defaultPort
 server.listen(port, function(err) {
 	if (err) {
@@ -51,3 +61,4 @@ server.listen(port, function(err) {
 		console.log('App is ready at : ' + port)
 	}
 })
+
