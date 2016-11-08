@@ -2,7 +2,7 @@
 'use strict'
 
 const request = require('request')
-const globals = require('./modules/globals')
+const globals = require('./globals')
 
 exports.getCategories = function(callback) {  
   const options = {

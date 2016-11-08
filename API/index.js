@@ -33,10 +33,7 @@ server.get('/categories', function(req, rest) {
   data.getCategories(function(err, res) {
     console.log(`GET categories request`)
     console.log(`Response ${res.status}`)
-   /* for(var d in data){
-      var cat = data[d].categories
-      console.log(cat.id + '. ' + cat.name)
-    }*/
+	
     rest.setHeader('content-type', res.format)
     rest.setHeader('Allow', 'GET, POST')
     rest.json(res.status, {message: res.message, data: res.body})
