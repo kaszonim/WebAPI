@@ -23,11 +23,41 @@ exports.getCategories = function(callback) {
       return callback(null, {
 				status: globals.status.ok,
 				format: globals.format.json,
-				message: `${result.length} categories found`,
+				message: `${result.categories.length} categories found`,
 				body: result.categories
 			})
     }
   })
+}
+
+exports.getCityDetails = function(cityName, callback) {
+	const options = {
+		url: `https://developers.zomato.com/api/v2.1/cities?q=${cityName}`,
+		method: `GET`,
+		headers: {
+			'user-key': `53d2f755e44b12d31be6f3db16d397c9`   
+		}    
+	}
+	
+ request(options, function (error, response, body) {
+		if (error) {
+			//console.log(error)
+			return callback(error)
+		} else {
+			//console.log(response.statusCode, body)
+			var result = JSON.parse(body)
+			if (result.location_suggestions.length === 0){
+				return callback(`No location suggestions for this city`)
+			} else{
+				return callback(null, {
+					status: globals.status.ok,
+					format: globals.format.json,
+					message: `${result.location_suggestions.length} cities found`,
+					body: result.location_suggestions
+				})
+			}
+		}
+	})
 }
 
 /*
