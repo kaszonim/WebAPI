@@ -45,10 +45,15 @@ exports.getCityDetails = function(cityName, callback) {
 			return callback(error)
 		} else {
 			//console.log(response.statusCode, body)
-			var result = JSON.parse(body)
+			var result = JSON.parse(body)			
 			if (result.location_suggestions.length === 0){
-				return callback(`No location suggestions for this city`)
-			} else{
+				return callback(`No location suggestions for this city`, {
+					status: globals.status.ok,
+					format: globals.format.json,
+					message: `No location suggestions for this city`,
+					body: result.location_suggestions
+				})
+			} else {
 				return callback(null, {
 					status: globals.status.ok,
 					format: globals.format.json,

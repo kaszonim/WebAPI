@@ -37,7 +37,22 @@ server.get('/categories', function(req, rest) {
     rest.setHeader('content-type', res.format)
     rest.setHeader('Allow', 'GET, POST')
     rest.json(res.status, {message: res.message, data: res.body})
+		rest.end()
   })
+})
+
+server.get('/city/:cityName', function(req, rest) {
+	const host = req.headers.host
+
+	data.getCityDetails(req.params.cityName , function(err, res) {
+		console.log(`GET city request`)
+		console.log(`Response ${res.status}`)
+
+		rest.setHeader('content-type', res.format)
+		rest.setHeader('Allow', 'GET, POST')
+		rest.json(res.status, {message: res.message, data: res.body})
+		rest.end()
+	})
 })
 
 const port = process.env.PORT || defaultPort
