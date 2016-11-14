@@ -11,6 +11,16 @@ server.use(restify.fullResponse())
 server.use(restify.bodyParser())
 server.use(restify.authorizationParser())
 
+const status = {
+	'ok': 200,
+	'created': 201,
+	'noContent': 204,
+	'notModified': 304,
+	'badRequest': 400,
+	'unauthorised': 401,
+	'notFound': 404
+}
+
 const defaultPort = 8080
 
 server.get('/categories', function(req, rest) {
@@ -48,28 +58,20 @@ server.get('/city/:cityName', function(req, rest) {
 	})
 })
 
-server.get('/restaurants?q=', function(req, rest) {
-	try{
-		let reqParams = url.parse(req.url, true)
-		data.getLocationDetails(reqParams.query.q).then( (response) => {
-			console.log(response)
-			if (response){
-				console.log(response)
-				data.getRestaurants(response.body.id, response.body.type).then( (response) => {
-					console.log('GET city request')
-					console.log(`Response ${response.status}`)
-					rest.setHeader('content-type', response.format)
-					rest.setHeader('Allow', 'GET')
-					rest.json(response.status, {message: response.message, data: response.body})
-					rest.end()
-				})
-			} else {
-				console.log('no response')
-			}
-		}) 
-	} catch (err) {
-		console.log(err)
-	}
+server.get('/restaurants?q=', function(req, res) {
+	let reqParams = url.parse(req.url, true)
+	data.getLocationDetails(reqParams.query.q).then( (response) => {
+		data.getRestaurants(response.id, response.type).then( (response) => {
+			console.log('GET city request')
+			console.log(`Response ${response.status}`)
+			res.setHeader('content-type', response.format)
+			res.setHeader('Allow', 'GET')
+			res.json(response.status, {message: response.message, data: response.body})
+			res.end()
+		})
+	}).catch( err => {
+		res.send(status.notFound, { error: err})
+	}) 
 })
 
 const port = process.env.PORT || defaultPort
