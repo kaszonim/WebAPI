@@ -79,15 +79,23 @@ exports.getRestaurants = function (id, type) {
 				var result = JSON.parse(body)
 				
 				if (result.results_found > 0){
-					let restDetails = {}
-					console.log(result.restaurants.length)
+					let restDetails = []
+					restDetails.push({
+						'total_items': result.results_found
+					})
 					for(let restaurant in result.restaurants){
-						restDetails += {
-							'name' : result.restaurants[restaurant].restaurant.name
-						}
+						restDetails.push({
+							'name' : result.restaurants[restaurant].restaurant.name,
+							'location': result.restaurants[restaurant].restaurant.location,
+							'cuisines': result.restaurants[restaurant].restaurant.cuisines,
+							'delivery': result.restaurants[restaurant].restaurant.has_online_delivery === 0 ? false : true,
+							'rating': {
+								'value': result.restaurants[restaurant].restaurant.user_rating.aggregate_rating,
+								'rate': result.restaurants[restaurant].restaurant.user_rating.rating_text,
+								'votes': result.restaurants[restaurant].restaurant.user_rating.votes
+							}
+						})
 					}
-					
-					//console.log(restDetails)	
 					resolve({
 						status: globals.status.ok,
 						format: globals.format.json,
