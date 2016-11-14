@@ -33,7 +33,7 @@ exports.getCategories = function(callback){
 exports.getLocationDetails = function (location) {
 	return new Promise( (resolve, reject) => {
 		const options = {
-			url: `https://developers.zomato.com/api/v2.1/locatons?query=${location}`,
+			url: `https://developers.zomato.com/api/v2.1/locations?query=${location}`,
 			method: `GET`,
 			headers: {
 				'user-key': `53d2f755e44b12d31be6f3db16d397c9`   
@@ -45,13 +45,17 @@ exports.getLocationDetails = function (location) {
 				reject(error)
 			} else {
 				var result = JSON.parse(body)
-				var locationDetails = {
-					'id': result.location_suggestions[1].entity_id,
-					'type': result.location_suggestions[1].entity_type,
-					'title': result.location_suggestions[1].title
-				}
 				
-				resolve(locationDetails)
+				if(result.location_suggestions.length > 0) {
+					var locationDetails = {
+						'id': result.location_suggestions[1].entity_id,
+						'type': result.location_suggestions[1].entity_type,
+						'title': result.location_suggestions[1].title
+					}				
+					resolve(locationDetails)
+				} else {
+					resolve('No location details found')
+				}
 			}
 		})
 	})
