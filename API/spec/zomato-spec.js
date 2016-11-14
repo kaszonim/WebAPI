@@ -51,4 +51,35 @@ describe('Restaurant API', function () {
 			done()
 		})
 	})
+	
+	it('getRestaurants - no restaurants found for wrong type', (done) => {
+		data.getRestaurants(94264, 'city').then( (result) => {
+			expect(result).toBe('')
+			done()
+		}, (err) => {
+			expect(err).toBe('No restaurants found')
+			done()
+		})
+	})
+	
+	it('getRestaurants - no restaurants found for wrong id', (done) => {
+		data.getRestaurants(1251, 'zone').then( (result) => {
+			expect(result).toBe('')
+			done()
+		}, (err) => {
+			expect(err).toBe('No restaurants found')
+			done()
+		})
+	})
+	
+	it('getRestaurants - response body', (done) => {
+		data.getRestaurants(94264, 'zone').then(	(result) => {
+			for(var el in result.body){
+				console.log(el)
+				console.log(result.body[el])
+			}
+			expect(result.body.length).toBe(179)
+			done()
+		})
+	})
 })

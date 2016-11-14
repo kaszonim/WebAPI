@@ -79,11 +79,20 @@ exports.getRestaurants = function (id, type) {
 				var result = JSON.parse(body)
 				
 				if (result.results_found > 0){
+					let restDetails = {}
+					console.log(result.restaurants.length)
+					for(let restaurant in result.restaurants){
+						restDetails += {
+							'name' : result.restaurants[restaurant].restaurant.name
+						}
+					}
+					
+					//console.log(restDetails)	
 					resolve({
 						status: globals.status.ok,
 						format: globals.format.json,
 						message: `${result.results_found} restaurants found`,
-						body: result.restaurants
+						body: restDetails
 					})
 				} else {
 					reject('No restaurants found')
