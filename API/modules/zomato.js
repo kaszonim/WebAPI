@@ -4,56 +4,34 @@
 const request = require('request')
 const globals = require('./globals')
 
-exports.getCategories = function(callback){  
-  const options = {
-      url: `https://developers.zomato.com/api/v2.1/categories`,
-      method: `GET`,
-      headers: {
-        'user-key': `53d2f755e44b12d31be6f3db16d397c9`   
-      }    
-  }
-	
-	request(options, function (error, response, body) {
-    if (error) {
-      //console.log(error)
-      return callback(error)
-    } else {
-      //console.log(response.statusCode, body)
-      var result = JSON.parse(body)
-      return callback(null, {
-				status: globals.status.ok,
-				format: globals.format.json,
-				message: `${result.categories.length} categories found`,
-				body: result.categories
-			})
-    }
-  })
-}
+const userKey = '53d2f755e44b12d31be6f3db16d397c9'
+const url = 'https://developers.zomato.com/api/v2.1/'
 
-exports.getLocationDetails = function (location) {
+exports.getLocationDetails = function(location) {
 	return new Promise( (resolve, reject) => {
 		const options = {
-			url: `https://developers.zomato.com/api/v2.1/locations?query=${location}`,
-			method: `GET`,
+			url: `${url}/locations?query=${location}`,
+			method: 'GET',
 			headers: {
-				'user-key': `53d2f755e44b12d31be6f3db16d397c9`   
-			}    
+				'user-key': userKey
+			}
 		}
-		
-		request(options, function (error, response, body) {
+
+		request(options, function(error, response, body) {
 			if (error) {
 				reject(error)
 			} else {
-				var result = JSON.parse(body)
-				
+				const result = JSON.parse(body)
+
 				if(result.location_suggestions.length === 0) {
 					reject('No location details found')
 				} else {
-					var locationDetails = {
+					const locationDetails = {
 						'id': result.location_suggestions[0].entity_id,
 						'type': result.location_suggestions[0].entity_type,
 						'title': result.location_suggestions[0].title
 					}
+
 					resolve(locationDetails)
 				}
 			}
@@ -61,31 +39,32 @@ exports.getLocationDetails = function (location) {
 	})
 }
 
-exports.getRestaurants = function (id, type) {
+exports.getRestaurants = function(id, type) {
 	return new Promise( (resolve, reject) => {
 		const options = {
-			url: `https://developers.zomato.com/api/v2.1/search?entity_id=${id}&entity_type=${type}`,
-			method: `GET`,
+			url: `${url}/search?entity_id=${id}&entity_type=${type}`,
+			method: 'GET',
 			headers: {
-				'user-key': `53d2f755e44b12d31be6f3db16d397c9`   
-			}    
+				'user-key': userKey
+			}
 		}
-			
-		request(options, function (error, response, body) {
+
+		request(options, function(error, response, body) {
 			if (error) {
 				//console.log(error)
 				reject(error)
 			} else {
-				var result = JSON.parse(body)
-				
+				const result = JSON.parse(body)
+
 				if (result.results_found > 0){
-					let restDetails = []
+					const restDetails = []
+
 					restDetails.push({
-						'total_items': result.results_found
+						'items_shown': result.results_found
 					})
-					for(let restaurant in result.restaurants){
+					for(const restaurant in result.restaurants){
 						restDetails.push({
-							'name' : result.restaurants[restaurant].restaurant.name,
+							'name': result.restaurants[restaurant].restaurant.name,
 							'location': result.restaurants[restaurant].restaurant.location,
 							'cuisines': result.restaurants[restaurant].restaurant.cuisines,
 							'delivery': result.restaurants[restaurant].restaurant.has_online_delivery === 0 ? false : true,
@@ -96,6 +75,7 @@ exports.getRestaurants = function (id, type) {
 							}
 						})
 					}
+
 					resolve({
 						status: globals.status.ok,
 						format: globals.format.json,
@@ -110,42 +90,34 @@ exports.getRestaurants = function (id, type) {
 	})
 }
 
-exports.getCityDetails = function(cityName, callback) {
+/*
+exports.getCategories = function(callback) {
 	const options = {
-		url: `https://developers.zomato.com/api/v2.1/locatons?query=${cityName}`,
-		method: `GET`,
+		url: `${url}/categories`,
+		method: 'GET',
 		headers: {
-			'user-key': `53d2f755e44b12d31be6f3db16d397c9`   
-		}    
+			'user-key': userKey
+		}
 	}
-	
- request(options, function (error, response, body) {
+
+	request(options, function(error, response, body) {
 		if (error) {
 			//console.log(error)
 			return callback(error)
-		} else {
+		}else {
 			//console.log(response.statusCode, body)
-			var result = JSON.parse(body)			
-			if (result.location_suggestions.length === 0){
-				return callback(`No location suggestions for this city`, {
-					status: globals.status.ok,
-					format: globals.format.json,
-					message: `No location suggestions for this city`,
-					body: result.location_suggestions
-				})
-			} else {
-				return callback(null, {
-					status: globals.status.ok,
-					format: globals.format.json,
-					message: `${result.location_suggestions.length} cities found`,
-					body: result.location_suggestions
-				})
-			}
+			const result = JSON.parse(body)
+
+			return callback(null, {
+				status: globals.status.ok,
+				format: globals.format.json,
+				message: `${result.categories.length} categories found`,
+				body: result.categories
+			})
 		}
 	})
 }
 
-/*
 exports.getCuisinesInCity = function(location){
 	endpoint = `/api/v2.1/locations` 
   data = { 'query': location }

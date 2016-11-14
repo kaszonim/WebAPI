@@ -59,8 +59,9 @@ server.get('/city/:cityName', function(req, rest) {
 })
 
 server.get('/restaurants?q=', function(req, res) {
-	let reqParams = url.parse(req.url, true)
-	data.getLocationDetails(reqParams.query.q).then( (response) => {
+	const parameters = url.parse(req.url, true)
+
+	data.getLocationDetails(parameters.query.q).then( (response) => {
 		data.getRestaurants(response.id, response.type).then( (response) => {
 			console.log('GET city request')
 			console.log(`Response ${response.status}`)
@@ -70,8 +71,8 @@ server.get('/restaurants?q=', function(req, res) {
 			res.end()
 		})
 	}).catch( err => {
-		res.send(status.notFound, { error: err})
-	}) 
+		res.send(status.notFound, { error: err })
+	})
 })
 
 const port = process.env.PORT || defaultPort

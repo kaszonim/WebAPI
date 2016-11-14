@@ -74,7 +74,15 @@ describe('Restaurant API', function () {
 	
 	it('getRestaurants - response body', (done) => {
 		data.getRestaurants(94264, 'zone').then(	(result) => {
-			expect(result.body.length).toBe(result.body[0].total_items)
+			console.log(result)
+			//expect(true).toBe(true)
+			expect(result.body.length).toBe(result.body[0].items_shown)
+			done()
+		}, (err) => {
+			console.log(err)
+			done()
+		}).catch( err => {
+			console.log(err)
 			done()
 		})
 	})
