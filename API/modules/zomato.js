@@ -46,15 +46,15 @@ exports.getLocationDetails = function (location) {
 			} else {
 				var result = JSON.parse(body)
 				
-				if(result.location_suggestions.length > 0) {
-					var locationDetails = {
-						'id': result.location_suggestions[1].entity_id,
-						'type': result.location_suggestions[1].entity_type,
-						'title': result.location_suggestions[1].title
-					}				
-					resolve(locationDetails)
+				if(result.location_suggestions.length === 0) {
+					reject('No location details found')
 				} else {
-					resolve('No location details found')
+					var locationDetails = {
+						'id': result.location_suggestions[0].entity_id,
+						'type': result.location_suggestions[0].entity_type,
+						'title': result.location_suggestions[0].title
+					}
+					resolve(locationDetails)
 				}
 			}
 		})
@@ -76,15 +76,17 @@ exports.getRestaurants = function (id, type) {
 				//console.log(error)
 				reject(error)
 			} else {
-				//console.log(response.statusCode, body)
-				var result = JSON.parse(body)			
-				if (result.results_found.length > 0){
+				var result = JSON.parse(body)
+				
+				if (result.results_found > 0){
 					resolve({
 						status: globals.status.ok,
 						format: globals.format.json,
-						message: `${result.results_found.length} restaurants found`,
+						message: `${result.results_found} restaurants found`,
 						body: result.restaurants
 					})
+				} else {
+					reject('No restaurants found')
 				}
 			}
 		})

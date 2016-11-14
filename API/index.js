@@ -2,6 +2,7 @@
 'use strict'
 
 const data = require('./modules/zomato.js')
+const url = require('url')
 const restify = require('restify')
 const server = restify.createServer()
 
@@ -47,17 +48,24 @@ server.get('/city/:cityName', function(req, rest) {
 	})
 })
 
-server.get('/restaurants/:location', function(req, rest) {
+server.get('/restaurants?q=', function(req, rest) {
 	try{
-		data.getLocationDetails(req.params.location).then( (response) => {
-			data.getRestaurants(response.id, response.type).then( (response) => {
-				console.log('GET city request')
-				console.log(`Response ${response.status}`)
-				rest.setHeader('content-type', response.format)
-				rest.setHeader('Allow', 'GET')
-				rest.json(response.status, {message: response.message, data: response.body})
-				rest.end()
-			})
+		let reqParams = url.parse(req.url, true)
+		data.getLocationDetails(reqParams.query.q).then( (response) => {
+			console.log(response)
+			if (response){
+				console.log(response)
+				data.getRestaurants(response.body.id, response.body.type).then( (response) => {
+					console.log('GET city request')
+					console.log(`Response ${response.status}`)
+					rest.setHeader('content-type', response.format)
+					rest.setHeader('Allow', 'GET')
+					rest.json(response.status, {message: response.message, data: response.body})
+					rest.end()
+				})
+			} else {
+				console.log('no response')
+			}
 		}) 
 	} catch (err) {
 		console.log(err)

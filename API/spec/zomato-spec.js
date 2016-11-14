@@ -24,22 +24,31 @@ describe('Restaurant API', function () {
     })
   })
 	
-	it('check location details', () => {
-		data.getLocationDetails('coventry').then( (result) => {
-			expect(result.body.id).toBe(94264)
-			expect(result.body.type).toBe('zone')
+	it('getLocationDetails - results', (done) => {
+		data.getLocationDetails('coventry').then( (response) => {
+			expect(response.id).toBe(94264)
+			expect(response.type).toBe('zone')
+			done()
+		}, (err) => {
+			expect(err).toBe('No location details found')
+			done()
 		})
 	})
 	
-	it('no location details found', () => {
-		data.getLocationDetails('location').then( (result) => {
-			expect(result).toBe('No location details found')
+	it('getLocationDetails - no location details found', (done) => {
+		data.getLocationDetails('query').then( (result) => {
+			expect(result).toBe('')
+			done()
+		}, (err) => {
+			expect(err).toBe('No location details found')
+			done()
 		})
 	})
 	
-	it('check return message', () => {
-		data.getRestaurant().then( (result) => {
+	it('getRestaurants - return message', (done) => {
+		data.getRestaurants(94264, 'zone').then( (result) => {
 			expect(result.message).toBe('179 restaurants found')
+			done()
 		})
 	})
 })
