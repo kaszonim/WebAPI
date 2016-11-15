@@ -3,27 +3,23 @@
 var data = require("../modules/zomato")
 
 describe('Restaurant API', function () {
-  xit('check returned categories', (done) => {
-    data.getCategories(function(err, res) {
-		  expect(res.body.length).toBeGreaterThan(0)
+  it('getCategories - results returned', (done) => {
+    data.getCategories().then( (response) => {
+		  expect(response.length).toBeGreaterThan(0)
       done()
     })
 	})
-  
-  xit('return message for no city details', (done) => {
-    data.getCityDetails('coventry', function(err, res) {
-      expect(err).toBe('No location suggestions for this city')
-      done()
-    })
-  })
-  
-  xit('check returned city details', (done) => {
-    data.getCityDetails('london', function(err, res) {
-      expect(res.body.length).toBeGreaterThan(0)
-      done()
-    })
-  })
-	
+
+	it('getCategories - results not found', (done) => {
+		data.getCategories().then( (response) => {
+			expect(response).toBe('')
+			done()
+		}, (err) => {
+			expect(err.message).toBe('No categories found')
+			done()
+		})
+	})
+
 	it('getLocationDetails - results', (done) => {
 		data.getLocationDetails('coventry').then( (response) => {
 			expect(response.id).toBe(94264)
@@ -74,7 +70,7 @@ describe('Restaurant API', function () {
 	
 	it('getRestaurants - response body', (done) => {
 		data.getRestaurants(94264, 'zone').then(	(result) => {
-			console.log(result)
+			//console.log(result)
 			//expect(true).toBe(true)
 			expect(result.body.length).toBe(result.body[0].items_shown)
 			done()
