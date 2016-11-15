@@ -1,0 +1,3354 @@
+commit 3e21ae074fd81041763130bfc226edb0f2035b7f
+Author: Melinda Kaszoni <kaszonim@uni.coventry.ac.uk>
+Date:   Tue Oct 11 10:25:20 2016 -0400
+
+    3.1.1 in progress
+
+commit 3b5552ab4cbf060a4b8268940959281cd6662937
+Author: Melinda Kaszoni <kaszonim@uni.coventry.ac.uk>
+Date:   Tue Oct 11 09:15:03 2016 -0400
+
+    finished 2.1.1
+
+commit 7231faaca06bfb43cd4f0350f77bc6097db33cc4
+Merge: d6f4166 aa76913
+Author: Melinda Kaszoni <kaszonim@uni.coventry.ac.uk>
+Date:   Tue Oct 11 09:07:39 2016 -0400
+
+    Merge branch 'master' of https://github.com/covcom/304CEM
+
+commit aa76913ed6940b34927318d494396c5f0a1f0c0e
+Merge: dacf050 57923a2
+Author: Mark Tyers <marktyers@users.noreply.github.com>
+Date:   Mon Oct 10 12:53:35 2016 +0100
+
+    Merge pull request #2 from Radther/master
+    
+    Added reference to the index.js file that needs to be run to test cha…
+
+commit d6f41662d8fe513fc3cf64bd6ba0885c31dc6858
+Author: Melinda Kaszoni <kaszonim@uni.coventry.ac.uk>
+Date:   Mon Oct 10 07:44:37 2016 -0400
+
+    in progress 3.1.1
+
+commit 4c16f2dea15db489b8d7bfa8c3fde96d4359103a
+Author: Melinda Kaszoni <kaszonim@uni.coventry.ac.uk>
+Date:   Mon Oct 10 07:21:04 2016 -0400
+
+    exercise 2.1.1
+
+commit 874956f88a7fb8714f56d55767b02c0c985f9512
+Author: Melinda Kaszoni <kaszonim@uni.coventry.ac.uk>
+Date:   Mon Oct 10 07:15:54 2016 -0400
+
+    finished 2.2
+
+commit 4a606ff57efa28bc627cc4a9cab4539e48fe6ed3
+Author: Melinda Kaszoni <kaszonim@uni.coventry.ac.uk>
+Date:   Mon Oct 10 06:32:00 2016 -0400
+
+    finished lab 2 exercise 1.1
+
+commit dacf0506a6b6704e56b40a164bf9773691358824
+Author: codeanywhere <codeanywhere@c0l.in>
+Date:   Mon Oct 10 05:19:12 2016 -0400
+
+    change ref to arrow function
+
+commit 0c305c3c2639759a32a8220bf5e26eff9b7afe6f
+Author: codeanywhere <codeanywhere@c0l.in>
+Date:   Mon Oct 10 05:08:17 2016 -0400
+
+    make case example less confusing
+
+commit 60629db1322a1ee16b52f83f2ca7146f4a5f1d77
+Merge: d0f4d55 24b3c25
+Author: codeanywhere <codeanywhere@c0l.in>
+Date:   Mon Oct 10 04:33:58 2016 -0400
+
+    Merge branch 'master' of https://github.com/covcom/304CEM
+
+commit d0f4d55b2edc316e46d6c430030d199d5e571eaa
+Author: codeanywhere <codeanywhere@c0l.in>
+Date:   Mon Oct 10 04:33:30 2016 -0400
+
+    minor changes
+
+commit 24b3c25dbd0e5a20f9d62c1b17d7073300a13b60
+Merge: 8ff4cf8 2dde1c8
+Author: Colin Stephen <colin.stephen@gmail.com>
+Date:   Mon Oct 10 08:47:52 2016 +0100
+
+    Merge branch 'master' of https://github.com/covcom/304CEM
+
+commit 8ff4cf873f1c7192fe8f4270f1775f5225aeb654
+Author: Colin Stephen <colin.stephen@gmail.com>
+Date:   Mon Oct 10 06:14:03 2016 +0100
+
+    fix indentation
+
+commit e77d9807da6c37b5a24541cd7a35b48ddfe45090
+Author: Colin Stephen <colin.stephen@gmail.com>
+Date:   Mon Oct 10 06:07:35 2016 +0100
+
+    correct comment
+
+commit 2dde1c8a0b05df160527bf9b7575ee4759af2249
+Merge: 47e02b1 86c9275
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 8 16:42:09 2016 +0100
+
+    Merge branch 'master' of github.com:covcom/304CEM
+
+commit 47e02b1c7189e52e095d69d5161f5dc52547d923
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 8 16:41:47 2016 +0100
+
+    added issue tracker instructions
+
+commit 86c9275112aea2a6b5ba7d9c25de3b7d8ed262e3
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Oct 7 15:33:56 2016 +0100
+
+    issue 1 fixed
+
+commit 95ecac8e493748098fb2317a28882c6463a89346
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Oct 7 15:09:19 2016 +0100
+
+    added comments
+
+commit ffbbef0fdbb6e0e8f68a393e17d10e63e89481cb
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Oct 7 15:07:57 2016 +0100
+
+    fixed palindrome scope issue
+
+commit b339bfaf2c88af9a8fdd9e876e18d7679c24e411
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Oct 7 14:23:05 2016 +0100
+
+    added ubuntu instructions
+
+commit 57923a27ead91b43176e2a01122db21951302bc7
+Author: Tom Singleton <tomquil13@gmail.com>
+Date:   Fri Oct 7 08:59:08 2016 +0100
+
+    Added reference to the index.js file that needs to be run to test changes made to coffee.js file
+
+commit 7bbd6448bbff74ddf51fc82d0bcf71b7b66b43cc
+Author: codeanywhere <codeanywhere@c0l.in>
+Date:   Wed Oct 5 05:25:46 2016 -0400
+
+    demo of difference between var and let
+
+commit abd0ed92fbc8f133f24cdd7524a86413fcdea364
+Merge: e78754c 1721c7d
+Author: codeanywhere <codeanywhere@c0l.in>
+Date:   Wed Oct 5 04:03:25 2016 -0400
+
+    Merge branch 'master' of https://github.com/covcom/303CEM
+
+commit 1721c7de5ef2d4fb8368df60ba4a78791210c45c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 5 07:54:00 2016 +0100
+
+    warning about regex
+
+commit 21c69e604ee978bad600d067081b34f99ba32285
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 5 07:51:10 2016 +0100
+
+    spelling error
+
+commit 65e7a7833b62277ce6b32b3e7f9de5386cad72a2
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 5 07:50:09 2016 +0100
+
+    fixed merge conflict
+
+commit d80b8aadadd8922db8c2c905a0c4db8f0e003e6f
+Merge: 4e1e78a 1d5760c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 5 07:48:10 2016 +0100
+
+    resolved merge conflict
+
+commit 4e1e78a58be5809a083db27e3d0808b8a1233468
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 5 07:46:38 2016 +0100
+
+    updated instructions
+
+commit aff3f968a0d6d9824426cf95de3c135f8324387d
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 5 07:42:41 2016 +0100
+
+    updated instructions
+    showing how to run a NodeJS script.
+
+commit 1d5760cc599ad651282494160c662ac8a80be080
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 3 17:37:11 2016 +0100
+
+    fixed error in running todo
+
+commit b9417850951f10c38e0acba56f32448a20b7a56d
+Author: Melinda Kaszoni <kaszonim@uni.coventry.ac.uk>
+Date:   Mon Oct 3 07:44:45 2016 -0400
+
+    finished exercise 01
+
+commit e78754c8f3425cafa8f4be90325dad86c36dfe9b
+Author: codeanywhere <codeanywhere@c0l.in>
+Date:   Mon Oct 3 04:32:20 2016 -0400
+
+    example change
+
+commit e91f85144febea087b95fd1f1951108552052601
+Author: Colin Stephen <colin.stephen@gmail.com>
+Date:   Sun Oct 2 22:09:01 2016 +0100
+
+    add the most promising editor to the list of alternatives
+
+commit 4909cf4cd133c6a96a05d737c07e03704de6963c
+Author: Colin Stephen <colin.stephen@gmail.com>
+Date:   Sun Oct 2 22:08:10 2016 +0100
+
+    remove reference to cloud9
+
+commit 513d255fcb087ab36fc1e9221fc9ea4c5e1678a0
+Author: Colin Stephen <colin.stephen@gmail.com>
+Date:   Sun Oct 2 22:06:10 2016 +0100
+
+    refer to the not-yet implemented function in the task
+
+commit 61adbc57733dc228757a55754c226ddb5d855d09
+Author: Colin Stephen <colin.stephen@gmail.com>
+Date:   Sun Oct 2 21:59:40 2016 +0100
+
+    change filename to match the one actually in the directory
+
+commit ca2b9fe90ddd525aaa925af80c17b00cfecaebe6
+Author: Colin Stephen <colin.stephen@gmail.com>
+Date:   Sun Oct 2 21:48:51 2016 +0100
+
+    update refs from 305CDE to 304CEM
+
+commit 2c9f4a453f7dc883dd924e1b60f0b93af79eb730
+Author: Colin Stephen <colin.stephen@gmail.com>
+Date:   Sun Oct 2 21:47:16 2016 +0100
+
+    change refs from cloud9 to codeanywhere
+
+commit 697d6f96a8f9b61fd340a331336c4a348ec7bfb7
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Oct 2 10:25:49 2016 +0100
+
+    removed old linter files
+
+commit 8d78d730a842247216cd1f08c6ac0aa448c669fc
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Oct 2 09:57:25 2016 +0100
+
+    async lab finished
+
+commit e2a09abab13820d91b6068c1ec1f4676c35499b9
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Oct 2 08:28:33 2016 +0100
+
+    finished lab
+
+commit 34adeb11600f4448bf09e3e7a7f233e4c37f12b8
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Oct 2 08:18:31 2016 +0100
+
+    fixed error
+
+commit 1b4ae010b477a364874ea501e0581781c04ad14e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 1 19:00:19 2016 +0100
+
+    added extension task for week 4
+
+commit 89232d43e686fd2d0a8f9fc5ecdc2027f7302468
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 1 18:49:57 2016 +0100
+
+    renamed labs
+
+commit da423079d37536125eca60fdd53bc87af1299ddc
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 1 18:36:44 2016 +0100
+
+    added editor suggestions
+
+commit 7a885093bbbe6b40dd7d424019214ef826844723
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 1 18:26:05 2016 +0100
+
+    lab 1 extension activities
+
+commit 21c9a676d1a25a731126db9a3dc125c606377e48
+Merge: 554f2cb ddce057
+Author: marktyers <marktyers@gmail.com>
+Date:   Thu Sep 29 11:40:07 2016 -0400
+
+    Merge branch 'master' of https://github.com/covcom/304CEM
+
+commit 554f2cbf0e83418f0fb1f930ae570275d85d724d
+Author: marktyers <marktyers@gmail.com>
+Date:   Thu Sep 29 11:40:01 2016 -0400
+
+    created currency exercise
+
+commit ddce057da97f97a67bc1d066750898b8ed797ba6
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Sep 29 16:38:14 2016 +0100
+
+    minor amendments
+
+commit 2c988f145bac2a16b384439ad72c377aa4bcec60
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Sep 29 14:30:24 2016 +0100
+
+    updated node installation
+
+commit 701708420acbb01b4331b67151ed7d8c3323824b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Sep 29 14:11:51 2016 +0100
+
+    updated home screen
+
+commit c82178aacbc60188fa9039e80f70c118b3f2c80e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Aug 9 19:17:40 2016 +0100
+
+    implemented post list
+
+commit 8f75edbe7fdc7852cc6caf9feae9abc321b5a619
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 22:38:05 2016 +0100
+
+    working promise all
+
+commit d605a7a384e1b5afe18395cc1ef0b0e54fb05143
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 22:16:25 2016 +0100
+
+    simple promise all example
+
+commit 1b1e401bb76a6868aeb33d005ce595c5867ae34e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 21:05:17 2016 +0100
+
+    finished async lab
+
+commit 42c8b78175e344502fb26548aa171f3e01088ff4
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 21:04:58 2016 +0100
+
+    simple promise working
+
+commit 7ff95232b402558e3812476da49be0a580614651
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 09:35:39 2016 +0100
+
+    customised linting config
+
+commit f79fd7e4673f1591a4a5969dc8ba912f0c836bc8
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 09:35:15 2016 +0100
+
+    fixed multiple linting issues
+
+commit 6de0cc06d32060201a0434e55cad7abbf7d79bb0
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 08:58:34 2016 +0100
+
+    minor edits
+
+commit f876259728eaa5790bc216dced8c41589ea412ae
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 08:42:44 2016 +0100
+
+    added rule to linter config
+
+commit 5b78030c0f9fc5fc6f13b9ed15a6a02e8be22539
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 08:42:23 2016 +0100
+
+    renamed directories
+
+commit 166c3bb85aa7020df78a941dfdf0f2e7d597904c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 08:30:02 2016 +0100
+
+    removed duplicate lab
+
+commit b53db9e5a95ce39f65dd3d804c58e1810e3e4791
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 08:26:17 2016 +0100
+
+    removed old content
+
+commit 1791eae7ee53d8835e0cd7d33bf7a4ee6f3da166
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 08:20:17 2016 +0100
+
+    renamed lab 2
+
+commit 53f873a2b6f125be49f4d28e026fdca09b370d34
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 5 08:15:52 2016 +0100
+
+    finished weekly lab
+
+commit 1b901d935be41c9f63cfa15193f1b61d330bfbc4
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Aug 4 13:15:42 2016 +0100
+
+    completed extending objects activity
+
+commit f239415c2a997e590ccb87ed559e76db665389c2
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 21:58:23 2016 +0100
+
+    finished function object lab
+
+commit 361e0889370dbc6fef652ddc5acf62493c2c29f2
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 21:56:21 2016 +0100
+
+    Finished function object lab
+
+commit d042a9311f1e191c8c7ce13eb3a29dccf5618a03
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 20:47:01 2016 +0100
+
+    fixed markdown errors
+
+commit 9d36f38d55cd6e5e6b180c178759543719f403d5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 20:44:11 2016 +0100
+
+    completed lab
+    classes
+    inheritance
+
+commit 6e1c71b84cb5a1242b9b995bd00a4ffa3cbbb720
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 19:07:37 2016 +0100
+
+    renamed exercise directory
+
+commit 03aa55537b6d265a7e93c07cb155bcbc3b3f6327
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 19:06:49 2016 +0100
+
+    started class lab
+
+commit cec77b791299901469c52b933919818de1e391dd
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 17:15:26 2016 +0100
+
+    renamed directories
+
+commit 63a6758ba9377d737dcc9cc0272a122467acfafd
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 17:14:10 2016 +0100
+
+    deleted blank file
+
+commit d1dcefc6323f2334ca7a7fa34289d0587dd952b5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 17:13:02 2016 +0100
+
+    renamed directory
+
+commit 38eb1f0b9aa93c023cb8fcb7281e2f7fba20effd
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 12:54:25 2016 +0100
+
+    renamed lab
+
+commit 409f4dc7e499dac30c51cb9b759aac2e7cc4b4e5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 12:41:36 2016 +0100
+
+    deleted old materials
+
+commit 4d0f9e431216bf1652d4e9fa922c4fff532fa192
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 12:40:06 2016 +0100
+
+    updated node version
+
+commit ca50e71b6398575621918d88f7ceabfdd14b957a
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 12:37:12 2016 +0100
+
+    added deployment to API lab
+
+commit 24dc3e03c02902e673b0dfd064d2b71d83e05de4
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 12:29:29 2016 +0100
+
+    removed angular lab
+
+commit 1c742d1240c5e4c481057566d6b2a3342daadc8b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 12:20:14 2016 +0100
+
+    changed title of module
+
+commit 915259e6fc1a7cf2546614ef2ca0741c51ff42f0
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 3 12:19:18 2016 +0100
+
+    switched topics 2 and 3
+
+commit 8f14538fc43a6aae7605f1692269b8e3f0456406
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 20 10:46:22 2016 +0800
+
+    added image
+
+commit 195afef825cfb9f70ad1bf1c2981a7e1240d53b6
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 20 10:46:01 2016 +0800
+
+    moved images
+
+commit ee3596719a5e9a1cfb2b9d207e4c0ced082fd3b0
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 20 10:25:56 2016 +0800
+
+    updated guide for codeanywhere
+
+commit 2b700a7768cbcca4039ff55d12e796a77f9e7856
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 20 10:13:01 2016 +0800
+
+    removed debugger section
+
+commit b58970318c67a65cab535c9d8ee0f5dbcba34ba8
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 20 10:11:54 2016 +0800
+
+    added eq rule
+
+commit 7dae5703805df6d4505ddd9f2b37989ec0b82ca3
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 20 10:11:41 2016 +0800
+
+    introduced formatting errors
+
+commit bc85c3dc6b813a8aa53482e01af9e29bb1287235
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 20 09:50:18 2016 +0800
+
+    Fixed linting issues
+
+commit e18dd1253aa4e009bed58f5e48517c6fc0ca7692
+Author: marktyers <marktyers@gmail.com>
+Date:   Tue Jul 19 11:36:34 2016 -0400
+
+    added jshint config file
+
+commit 79ec61cc0ba027754c6829445e984437ab53c8e9
+Author: marktyers <marktyers@gmail.com>
+Date:   Tue Jul 19 10:52:16 2016 -0400
+
+    simplified url using template literals
+
+commit 1072d4302f23305ab1b6bc7f0f4e97dc69342669
+Author: marktyers <marktyers@gmail.com>
+Date:   Tue Jul 19 09:34:02 2016 -0400
+
+    fixed list formatting
+
+commit 6369717409828baa00513a098b3ad75415a46489
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Jul 19 07:50:43 2016 +0000
+
+    minor formatting
+
+commit b3f3be273c06ed4b0355a0ca52976573e1b1b5e5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Jul 19 07:48:05 2016 +0000
+
+    removed solution from script
+
+commit 7448ed7c0e46c9e9cdde1441c56cfc14d1721186
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Jul 19 07:46:43 2016 +0000
+
+    completed second task
+
+commit 9c779956eb21bb6c96a1d11934fa0b6f3e43eed8
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Jul 19 07:25:33 2016 +0000
+
+    completed lab code
+
+commit 8e3b5672593b4946ea2e2d034036a84de708ecaf
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Jul 19 06:44:55 2016 +0000
+
+    removed testing exercises
+
+commit 697910c0ed8514761fe05a679190186e3b98eca2
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Jul 19 06:44:19 2016 +0000
+
+    finished currency exercise
+
+commit b3c092697f544c8eee4b45d7d4d3dcf617f1e983
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Jul 19 06:43:45 2016 +0000
+
+    added linter rules
+
+commit 6e2e26a7f4c356fa07430206db15016234c8c794
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Jul 19 06:43:08 2016 +0000
+
+    removed lab solution code
+
+commit c3e424c7acddeab4f14659b8c3e3b2c584ce0176
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Jul 19 06:32:49 2016 +0000
+
+    fully functional currency converter
+
+commit 714be60b0b2c49d1ff5642595822ded3fdb53642
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 09:42:35 2016 +0000
+
+    minor corrections
+
+commit 59d594db85132991a0731a4d97f501d73c24d9b3
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 09:09:15 2016 +0000
+
+    copied files
+
+commit 7b6e28f0023cb5fdf9d4dbff9ad0038dda2c4f80
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 09:07:42 2016 +0000
+
+    updated readme
+
+commit 1108319049884632afa8df8f836241a39067ef4a
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 09:07:06 2016 +0000
+
+    copied shopping project
+
+commit c37f7c57a9d54be4e2c45ed573245dd950ff5360
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 09:06:31 2016 +0000
+
+    added debugging instructions
+
+commit 7e3caf333dc29fdfd20f590dd463e4aa1ceb6918
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 08:02:55 2016 +0000
+
+    updated robust code content
+
+commit a22c38bfee093d811f72c2d75243938dd6b7d491
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 04:49:55 2016 +0000
+
+    changed title of lab
+
+commit 379ffeb68a13764b1c7c1477c104287b29f18c94
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 03:07:34 2016 +0000
+
+    fixed image naming problem
+    image should not display in readme
+
+commit e90d6703572fcfb2eca3bf08300eb1f69e2c9521
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 03:03:26 2016 +0000
+
+    fixed format error
+
+commit 66f25fdfaf6e3adb7982a02d781127eba6a8ff51
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 03:03:02 2016 +0000
+
+    fixed minor bugs
+
+commit f68f79eab31ee596e148e00064ed0afee525aae9
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 02:54:00 2016 +0000
+
+    added images
+
+commit a06d304f03505a5b4d7ff930039b27e9f7aabf18
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 02:53:33 2016 +0000
+
+    added linting task
+
+commit ac26cf918b259a99d302638a423f575d5777cbf4
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Jul 18 02:29:47 2016 +0000
+
+    added files with errors
+
+commit 23d1bf44c13863ba78226e096255320d5f297af9
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jul 17 08:05:45 2016 +0000
+
+    fixed linting issues
+
+commit bda322ebe2ff1b76d231fefe75f511467beba53a
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jul 17 08:04:05 2016 +0000
+
+    replaced concatenation with escaped variables
+
+commit 1cce14241d122e1347c14e297e09b18ae86e7d42
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jul 17 08:03:25 2016 +0000
+
+    fixed incorrect title
+
+commit a5efe2dae8701c95256e3df2ed6ad36d99bcf223
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jul 17 07:57:16 2016 +0000
+
+    moved lint config and fixed bug
+
+commit 5540dc8c5ef0d4777080cc37a1abdfcfca5ddc1a
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Jan 14 20:33:39 2016 +0000
+
+    updated node version in worksheet
+
+commit e44b07be865ab198e3eb7212b914e88621ad8787
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jan 3 10:46:45 2016 +0000
+
+    completed error exercise
+
+commit b4530ce0fbe9f554a86958c9cff6bbc55552bf17
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Jan 2 08:58:33 2016 +0000
+
+    switched topics 2 and 3
+
+commit 0a17085fcaa804cb8b64e5fe6f3ee38a29cfc984
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 31 13:13:42 2015 +0000
+
+    moved testing materials to topic 2
+
+commit 4789b49f7b8b4e85f16d5f7d056efc7d82e345fa
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 31 13:08:43 2015 +0000
+
+    renumbered sections
+
+commit 08189a62972d0ac7ee0221815292101c006732bc
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 31 13:01:53 2015 +0000
+
+    completed lab 2 worksheet
+
+commit 2e8c3497f7e5ea0580ff4de216809bcc91a58b62
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Dec 29 11:52:05 2015 +0000
+
+    added unit tests
+
+commit 1eac2a8b047e1c4561bbd9509d007d9516de0cdb
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 14:16:40 2015 +0000
+
+    added screenshots
+
+commit b02fdfa699e8a0aa915e24d06212c614e36e222f
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 14:13:23 2015 +0000
+
+    added tasks to topic 1
+
+commit 5b880feaf18b0aea4bd03ba56b51552f60f0b536
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 11:07:06 2015 +0000
+
+    added eslint settings
+
+commit 3ca72a644e80c7ae47326ef6f83034453ac30655
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 10:23:04 2015 +0000
+
+    info on VS config
+
+commit e129518df55f165c420d760e06226df1724bbb1f
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 10:22:41 2015 +0000
+
+    deleted a lot of old files
+
+commit ba61072e05a28adaea42f7eed647cd8355a785a7
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 09:48:42 2015 +0000
+
+    moved Heroku lab
+
+commit eef2dca1ed440fa9ce4bd3d32d75bab94651d00e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 09:45:43 2015 +0000
+
+    deleted jsconfig.json file
+    
+    updated .gitignore
+
+commit 8b5073c22dd7b6788cdd1c4e1c948a4cb9a80a34
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 09:41:58 2015 +0000
+
+    deleted .codio file
+
+commit 53919018f8a7a5bb7d2335657da5446df887368e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 09:41:26 2015 +0000
+
+    deleted mongo startup script
+
+commit c0af70a17b19c0077b0bd4efcfcc907619eb1af2
+Merge: 5016238 d51cccf
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 09:17:03 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit 5016238831ef88a0477482ffe3df372d5d231900
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Dec 24 09:16:33 2015 +0000
+
+    moved labs to root directory
+
+commit d51cccff6e52e1ac4d482de5e2a957b42c0ab05a
+Merge: f91d473 ef8c13d
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Dec 9 18:16:02 2015 +0000
+
+    Merge branch 'master' of https://github.com/covcom/305CDE
+
+commit f91d473db50297d0ff727fd06ca51edc26fd16c5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Dec 9 18:15:36 2015 +0000
+
+    added VSC instructions
+
+commit ef8c13d690689292e16930c9db517b6f90d44363
+Merge: ab212b2 0c9f54f
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Dec 9 15:29:29 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit ab212b287061da3bf1a4287932a42ff3fa93da32
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Dec 9 15:29:14 2015 +0000
+
+    added exercises
+
+commit 0c9f54f2de7db1c4ccbb2846ab4762569d92fb0e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Dec 8 21:30:16 2015 +0000
+
+    added sections
+
+commit da502cd525b9061afefdb4d2222e69cb10bd4678
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Dec 8 21:30:06 2015 +0000
+
+    restructured code
+
+commit ea3854a2631ac953f970b442c488459f5ff1de03
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Dec 8 21:29:49 2015 +0000
+
+    added for-next and comments
+
+commit 51ca25caf71fb05c2d6caece3834c9184f1199f9
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Dec 8 14:32:16 2015 +0000
+
+    fixed simple html scraper
+
+commit 1bed205ffbe64f554361c62eed3ac8f84a62c8af
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 23:08:27 2015 +0000
+
+    missing character in url
+
+commit ca8fad494d3641896e94378d37e26e20665c4ec1
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 23:07:04 2015 +0000
+
+    simple quote extractor
+
+commit dc826837d05071437375f51181fdaf22f2c73122
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 22:28:21 2015 +0000
+
+    added comment
+
+commit d2b50da4264e34b2db458678f6f41993cd2f757d
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 22:27:26 2015 +0000
+
+    finished weather example
+
+commit 162d76a576cd933f3ffe76650b3747cb41fc08fb
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 22:07:37 2015 +0000
+
+    fixed indentation
+
+commit 859d67bb655eda4d6b3593b288f39e6ae78a14d6
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 22:07:15 2015 +0000
+
+    basic direction finder script
+
+commit 57f8f9378d2e48883484ca4f2746f6de19bb5bea
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 21:52:47 2015 +0000
+
+    moved all query parameters into object
+
+commit 14c23291be5d7249905168db10e769b71d2f46a5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 21:51:25 2015 +0000
+
+    added addressFilnder code
+
+commit 7df192dc14a69e03bc99d167dee4b4ff41826226
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 21:12:38 2015 +0000
+
+    renamed old lab directory
+
+commit a395b7e33f429d5280aa1ae3a60da5ae7238969b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 21:09:39 2015 +0000
+
+    added function/object scripts
+
+commit 3094cdef6bce6771c5fa58caacb8be156c82e72c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 20:40:01 2015 +0000
+
+    created makeCar script
+
+commit 30a2063cf92e2b4f31db191e799fb8f0772374ea
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 20:21:56 2015 +0000
+
+    minor change
+
+commit 673cca51770ec9d12be8d72f92076c9f23162952
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 20:19:46 2015 +0000
+
+    minor changes
+
+commit 65ab383be6051f54accb91b5efaac75da31e7c7b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 20:19:35 2015 +0000
+
+    added membership code
+
+commit c74a019bfb7020ca9eae71f3d55190e0f292eb1c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 20:08:23 2015 +0000
+
+    created new worksheet
+
+commit 2841a45ea383f23eccab9cccd37e6172194fd4bd
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 20:08:12 2015 +0000
+
+    added first activity
+
+commit 35604e1fcaad95affefa0ef663693cc6014d4cea
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 20:06:57 2015 +0000
+
+    updated the todo example code
+
+commit 4921822f77681143733ef05b7daa46b74827eca5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 20:06:39 2015 +0000
+
+    added contacts code
+
+commit d9c21bebbecdb391fad5e5d5ab939ed17d376284
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Dec 7 18:30:15 2015 +0000
+
+    renamed 2015 topics
+
+commit 264b3036873f63812c9f7a4fccb658f93c9ee54b
+Merge: 5809d76 4bc8ce2
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 30 10:18:53 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit 5809d7649af9f03ea0ac906ef4217c4a6113a68d
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 30 10:18:35 2015 +0000
+
+    added weather example
+
+commit 4bc8ce27f3da178a59cb499b34bae4a989476157
+Merge: fe196d4 1521f2e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 29 09:59:20 2015 +0000
+
+    Merge branch 'master' of https://github.com/covcom/305CDE
+
+commit fe196d40ec4da9fd261c7b31433727630386065d
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 29 09:56:44 2015 +0000
+
+    fixed errors in routes worksheet
+
+commit 4e3e35d6565e2c2ec6fce0384e7b5725fca6c5eb
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 29 09:53:23 2015 +0000
+
+    completed routes worksheet
+
+commit 1521f2eb1a15bd3c8ace9626e002c33a6d6c339f
+Merge: d5648bb 284cbcc
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Nov 27 20:49:06 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit d5648bbb1aa2b8f4805aff45bc508425fb994912
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Nov 27 20:48:48 2015 +0000
+
+    added video link
+
+commit 284cbcc98b0edfde8b53cf8f853353922aefcd3c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Nov 27 17:29:07 2015 +0000
+
+    added simple routing example
+
+commit 1c10b14404f06b7e24444d6054a0adf057459fe5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Nov 25 14:31:42 2015 +0000
+
+    added local copies of angular libraries
+
+commit bb39ed569aa7c546cbe470dac025e17a08ce2f62
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Nov 25 12:02:55 2015 +0000
+
+    added local angular file
+
+commit 0ae9ba91415b5abe808b655da6849a0d37515d6c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 21:24:53 2015 +0000
+
+    added auth worksheet exercise
+
+commit b042a40624a520e77ab03391a4039b69e65855ef
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 21:06:54 2015 +0000
+
+    added comments to auth activity.
+
+commit 40f21be2ef39e99654836e38d19492615414afea
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 20:28:47 2015 +0000
+
+    deleted tests
+
+commit 431fdc57bb1621509300e68ea5489d9b87de5db2
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 20:28:26 2015 +0000
+
+    deleted AngularJS testing lab
+
+commit 33b4d7a9ad6e1e715932d8003bd9fbe2b9084ae7
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 20:27:59 2015 +0000
+
+    account lab
+    account creation
+    check login
+
+commit a6170ea70d0226d569cb0f046fddc8712d15a1aa
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 18:52:12 2015 +0000
+
+    removed testing lab
+
+commit e02286e2518621abc3d3a8b13aeb3442b36cc502
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 07:56:53 2015 +0000
+
+    replaced blockquote with bullet
+
+commit ad254e94dd09a8e9b566fa0b95440afc08d940ba
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 07:55:36 2015 +0000
+
+    replaced table with blockquote
+
+commit b261b46a166ae793bc399d77c6b603244c725762
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 07:53:15 2015 +0000
+
+    content experiment
+
+commit ff20b4590976f27b071c12a134afc39c2c8a584e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 07:46:39 2015 +0000
+
+    changes to advanced topics list
+
+commit 2791cf08f24ca05c0b5fe9a5a46163d6de123fa3
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 24 07:43:00 2015 +0000
+
+    inserted correct host name into link urls
+
+commit 1de44c5da8573020223864d5fddfeed54c073c16
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 23 21:12:34 2015 +0000
+
+    moved advanced topics to worksheet 3
+
+commit 04ff14df0b8e9fa00b0922f14d92f2ac7e26afd5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 23 21:11:04 2015 +0000
+
+    tidied up the end of the worksheet
+
+commit 440df863a62725ff99b79fef802d2584f8d158b9
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 23 21:09:25 2015 +0000
+
+    minor errors corrected
+
+commit 1d60ba4d080c4e2f768783189cddfd966f8e4aa8
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 23 21:06:54 2015 +0000
+
+    comments added to gallery code
+
+commit 4f9f31ef803432cb3f6458099d4bb5f45541b21b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 23 20:54:26 2015 +0000
+
+    completed file upload exercise
+
+commit c8c5c86ef2e5526636ecaccfb10617765c260f54
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 23 20:35:50 2015 +0000
+
+    updated ignore files
+
+commit a33dd63da81ae6d6486f4da141be40598badf246
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 23 20:35:25 2015 +0000
+
+    completed gallery app
+
+commit 4cb4b87485c30c224ed40f5a863eefbc416dd58c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Nov 21 12:23:38 2015 +0000
+
+    added an advanced book challenge
+
+commit 161135ee78b31502dbbf3c95e4219a105d69c548
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Nov 21 12:18:24 2015 +0000
+
+    updated paths in worksheet
+
+commit c74ac657d75d549107a3392067be5d4acd9ca871
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Nov 21 12:16:44 2015 +0000
+
+    renamed errors directory
+
+commit 1da8ec25baa4115a7c6d022defd9c9bae5b7c812
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Nov 21 12:00:57 2015 +0000
+
+    added a try-catch-finally block
+
+commit 84dc43cc60a408ca59d6d618d9b4d62e087aa0ca
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Nov 21 10:51:22 2015 +0000
+
+    completed the errors worksheet
+
+commit a708e91bbfc1e74c69282cc470d2f2d83034ddda
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Nov 21 09:43:21 2015 +0000
+
+    added sync error activities
+
+commit 4e5e7d5e3838d3b4f7ead76d344f2603f10df471
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Nov 21 09:13:11 2015 +0000
+
+    updated notes to cover latest node version
+
+commit 1542288c724d5a6add952425d680f9b9c1f28d2e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Nov 21 09:08:21 2015 +0000
+
+    included additional install instructions for nvm
+
+commit c464da85ed0beccad94c61b738b6d77ebd34b67a
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Nov 21 09:07:49 2015 +0000
+
+    Added the VS config directory to ignore list
+
+commit 4bfcab87b0b2c99eb73ff77096587f74d665c00f
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Nov 20 22:11:44 2015 +0000
+
+    created basic error examples
+
+commit 855e34bd501f009aaa1e4f5ffff018ef8981f4bf
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 17 17:44:42 2015 +0000
+
+    moved readme from old directory
+
+commit 60bdabc79cbcf864360cc30ab1a824a5cad2e7c6
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 17 17:33:03 2015 +0000
+
+    changed sequence of labs
+
+commit f0712f81b72d340f5bde4fabf0ed43e8f74e3a3a
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 17 17:19:26 2015 +0000
+
+    deleted old routing code
+
+commit a84273513d9e80e49b1612f9d9955cee5aea9a53
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 17 17:18:27 2015 +0000
+
+    added localstorage
+
+commit 27f7a4f88bc1fe86d11a635ff12116b3831b0d55
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 17 16:08:54 2015 +0000
+
+    added simple routing example
+
+commit ebd26821a3e7b9e30837b2f331aab0c510de5614
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Nov 17 15:23:54 2015 +0000
+
+    completed test suite for Angular intro
+
+commit 3da9d378556bf9735b5a0f670582602ff61c4b95
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 16 22:04:38 2015 +0000
+
+    finished todo list app
+
+commit b7425782ff42018e222ec20b850484afcf5b611b
+Merge: 07525b4 5227fd0
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 16 19:50:32 2015 +0000
+
+    merge conflict resolved
+
+commit 07525b4c895d49bcbb76b8bc1f2796fcc4750336
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 16 19:49:06 2015 +0000
+
+    renamed first angular worksheet
+
+commit 5227fd031d93c68d2abcf23014d667d55eb17c1d
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 16 19:46:43 2015 +0000
+
+    first spec written
+
+commit b52b7394689b1c589faa04fbeeba3f5b1e447707
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 16 19:14:15 2015 +0000
+
+    completed AngularJS shopping example
+
+commit ce249f0dafa0aaa16a9c4d0c7c57bbf62914b995
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 16 08:25:43 2015 +0000
+
+    added directives and spec file
+
+commit cc53d5d059be06bded92a2b69dfa0662de1891f7
+Merge: 1860ba0 6dabfb6
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 16 07:59:46 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit 1860ba05ee154fd2dd122fa8615d4605d21eeb11
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 16 07:59:18 2015 +0000
+
+    copied basic math to angular week
+
+commit 6dabfb6b9a337cec90742cb883ad6e2a51153879
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 9 08:29:10 2015 +0000
+
+    added presentation links
+
+commit af0c66b327e5253e8d8ad08867408b7e61646fd9
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 16:33:46 2015 +0000
+
+    added topic instructions
+
+commit 02ec8ef7e73d5def4ab4609d0067c3da113cbf77
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 16:22:41 2015 +0000
+
+    completed persistence worksheet
+
+commit a33602855a279be780dcb9d4f77c706720c86625
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 15:55:28 2015 +0000
+
+    renumbered db labs
+
+commit 47d546a2179cf217f350f2b79ce160efa8651791
+Merge: 23d4f99 4fc20db
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 15:53:31 2015 +0000
+
+    Merge branch 'master' of https://github.com/covcom/305CDE
+
+commit 23d4f99db738f6c697778ff48605bcf2ed3f33ed
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 15:53:05 2015 +0000
+
+    updated project info
+
+commit 4fc20dbea50f46f29b1a6134da9f0b54956b6439
+Merge: 81bc42b 97336d1
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 15:47:36 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit 81bc42b954d0d6b7ae11414c305374523c35e580
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 15:47:25 2015 +0000
+
+    updated api
+
+commit 97336d1ed751bed258253cd05ae9403ec5a1529e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 15:45:33 2015 +0000
+
+    added the mongodb lab files
+
+commit 13d54590e99c8c9aabaa6874d98485abb7f05227
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 12:24:31 2015 +0000
+
+    added mongodb data directory
+
+commit e03c543639b3926bc2e83ebe7458ea3de67f8c54
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 8 10:55:03 2015 +0000
+
+    updates
+
+commit d6f6d429f4763c418a5493eaa44830445c255806
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Nov 4 19:52:32 2015 +0000
+
+    copied todo api into data persistence 1
+
+commit 1b104a904cf711cf077b71e1e3d6f3e789f6a67a
+Merge: b47676b d7e648b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Nov 4 19:49:16 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit b47676b53c7804fe021dd632831358ce0793c41d
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Nov 4 19:49:03 2015 +0000
+
+    re-ordered data persistence labs
+
+commit d7e648baacad9dc98714d48eadd1a268b2e89b41
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Nov 4 19:47:04 2015 +0000
+
+    additional tests
+
+commit 987d41f2b68fc42345714283971f16a200287f3c
+Merge: f4bde6f 1ec6fd9
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Nov 4 09:49:42 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit 1ec6fd9b68f040bbcd03e86b24fdb776d7d2572a
+Author: Colin Stephen <ab5169@coventry.ac.uk>
+Date:   Tue Nov 3 10:54:54 2015 +0000
+
+    very simple api example from class
+
+commit 1fd4807a1c95cb100d6bc4884c136562dfc13f2e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 2 19:55:48 2015 +0000
+
+    completed worksheet
+
+commit f2efd53975c0e2a7f2c6d625d372c8d17ef7fafe
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Nov 2 19:22:23 2015 +0000
+
+    completed UI tests
+
+commit acae7a2ebf00c6570585773b5e83fa97bc412423
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 1 17:54:21 2015 +0000
+
+    fix for coverage error
+
+commit f4bde6f4645c745ea291efd872ddb4c2d933dddf
+Merge: c07c3e9 e06feb6
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 1 15:23:14 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit e06feb6dc2b92b06c6167f001859e70302942fe2
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 1 14:42:57 2015 +0000
+
+    added api for frisby testing
+
+commit e999d870553d3ade4a49dacff02623e6118d1adf
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 1 13:55:04 2015 +0000
+
+    unit testing worksheet finished
+
+commit 06c3cb83a62768c364d4031c38595fb4b5177f48
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Nov 1 11:53:23 2015 +0000
+
+    working async tests
+
+commit 0b164a691d450ae8fae5dd675e633dd22ca3a2e1
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 31 23:11:03 2015 +0000
+
+    deleted folders to be ignored
+
+commit 81e209fb4344a9e74541b23af641ec3273b66b04
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 31 23:09:29 2015 +0000
+
+    async tests pass
+
+commit 823417372c70aac070a0fc2be68e5bf6c88cc0f8
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 31 21:04:06 2015 +0000
+
+    completed sync testing exercise
+
+commit 6024b050c40e8295458c82948e4a21a687243b00
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 31 19:25:06 2015 +0000
+
+    removed coverage directory
+
+commit 34a7540f2d4615c6fdd6e9565c0dcff55859bcc5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 31 19:15:40 2015 +0000
+
+    completed coverage tests
+
+commit e2ed689df007cf9744fcff24eb07c900cc236f55
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 31 17:07:11 2015 +0000
+
+    changed directory structure
+
+commit c07c3e94c1726c986d7a1ccd7337e55be694a40c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 27 23:17:15 2015 +0000
+
+    removed dummy text file
+
+commit ebf5678be323511691d23ab131cdb629ca4425e3
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 27 23:15:55 2015 +0000
+
+    moved promises to topic 4
+
+commit 84dd6fac52bf94e891ecd5cb7c0377bf8681104f
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 27 20:43:52 2015 +0000
+
+    wrote promises exercise
+
+commit 83e303984d254773e37ef27d40879d24ab75b788
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 27 17:57:16 2015 +0000
+
+    added nvm default instruction
+
+commit a7a9ada631199a5acd1e3e2cc119bab38b85d198
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 27 16:32:07 2015 +0000
+
+    added nvm instructions
+
+commit 2b290431b2f68daa25d1c72b2abc72f942931039
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 27 07:24:23 2015 +0000
+
+    creates images directory on startup
+
+commit e0d60b1d15e05d5510cf8fb5c5365291ca0f7397
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 27 07:04:32 2015 +0000
+
+    create image dir before save
+
+commit ec42c242c9e44d5ac5bf47572eab1340f30e1c81
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 26 21:01:04 2015 +0000
+
+    working promise chain
+
+commit 616497116815b149e1ec584fe68f84308f4d6b2e
+Merge: b861f06 0035e23
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 26 09:48:45 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit b861f06f02ee5baf34b455c118bcbd62809b7553
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 26 09:48:35 2015 +0000
+
+    started API worksheet 2
+
+commit 0035e23dc8d1cf40b69126def49a8ff48f26ec6a
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 26 09:03:41 2015 +0000
+
+    added comments to code
+
+commit 6a69249a5594f7ea7b0c1087266618fa9e8c53c5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Oct 25 12:12:49 2015 +0000
+
+    updated worksheet for cloud 9
+
+commit e17ca737c40c0d137151d00eee24b97895134804
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Oct 25 12:10:49 2015 +0000
+
+    updated worksheet for cloud 9
+
+commit 2daa50bd496674d01734903c27a16b129ec43141
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 24 18:08:24 2015 +0100
+
+    finished topic introduction
+
+commit 12fcd73bb2ef9c8a1bd4a908b7a87dff444771ac
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 24 17:49:21 2015 +0100
+
+    completed rest introduction
+
+commit b8dbe6abbc15c55a2da7e025fa56c29e6d6874ec
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 24 12:24:11 2015 +0100
+
+    working basic API
+
+commit fbab09afb7c7358d05e685efa9e5c9811fb0e352
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 24 11:11:45 2015 +0100
+
+    working lists API
+
+commit 582a2c2ce384df00ae57d10ba9b2afbb2a10aee1
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 24 08:31:28 2015 +0100
+
+    modified simple API
+
+commit 18e002933912d7700e24a41646cbf482c05e4224
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 19 21:11:27 2015 +0100
+
+    moved existing lab materials
+
+commit 92a20f8b2c3a217da40ea94f97d7d33bea589c5b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 19 19:30:44 2015 +0100
+
+    added debugger exercise
+
+commit c162803d5502b7a4561b8f37133d32ad0092acb1
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 19 19:09:58 2015 +0100
+
+    deleted remove option
+
+commit 9d48f842a21e98d4c623b5584c6025302a8cbfa2
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 19 18:55:39 2015 +0100
+
+    removed trim to keep whitespace
+
+commit 4432324343e328bcc1b84a91f35a0c5ad47d00d6
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 19 18:51:55 2015 +0100
+
+    introduced error into todo
+
+commit dc7d866c0d8c3eee07fa6e1c9e055bb843c133d1
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 19 18:13:39 2015 +0100
+
+    minor edits
+
+commit ca4b12d40239c087306610d6ec0fd93e43f3c11f
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Oct 19 12:20:22 2015 +0100
+
+    started simple api example
+
+commit 764a8f4c3c5b57fc9dca8a003222dd73c9967625
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 17 21:13:40 2015 +0100
+
+    finished node intro worksheet
+
+commit e1bb1fe4d1998319f62dd803ddb8309b9d6b1cf8
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 17 17:15:32 2015 +0100
+
+    fixed numbered list
+
+commit 348cecee124ff2e6fd12cd0a9c3608dd840ab8ed
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 17 17:13:36 2015 +0100
+
+    completed nodejs intro 1
+
+commit 4a1c215633af30cfea2e8becd1a94bdf713e7457
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 17 16:38:49 2015 +0100
+
+    topic 4 lab 1 worksheet
+
+commit de3ce19675656365297eb985bb47451430713389
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 17 16:38:25 2015 +0100
+
+    updated gitignore
+
+commit 6e9e40bd979b6bb0b7ca01cf26ab9f537345ba27
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Oct 16 19:54:15 2015 +0100
+
+    updated topic 4 exercise 1
+
+commit e80e277d4140a00006753e560da71c630f74b884
+Merge: 2b4aa99 6663363
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Oct 16 17:19:37 2015 +0100
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit 2b4aa999ec54d4715246314c1fa21cd6e913a239
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Oct 16 17:19:14 2015 +0100
+
+    added first 2 exercises to node intro
+
+commit 6663363de4d7e3fd0033ea193870fa2c8a438186
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Oct 11 16:47:37 2015 +0100
+
+    edited promises worksheet
+
+commit a28f7374effb331dc0510eb1f5e7d4b201e4a341
+Author: Colin Stephen <ab5169@coventry.ac.uk>
+Date:   Fri Oct 9 14:39:55 2015 +0000
+
+    add quick closure example
+
+commit c7878e7ec937b1bac66503e69e587edbc523463b
+Merge: 1af449d 4e40639
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Oct 8 08:28:57 2015 +0100
+
+    fixed merge conflict
+
+commit 1af449d42ae140a93bf309a14bf7dc87d2d72f5e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Oct 8 08:26:26 2015 +0100
+
+    added ajax lab
+
+commit 4e40639d1d42a677c5e7ab69e153a0c6ab4068c3
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 7 15:58:57 2015 +0100
+
+    edits to ajax lab
+
+commit 66137197db5ff767a21102473b4a0ed8408f3177
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 7 15:20:42 2015 +0100
+
+    added slide link to readme files
+
+commit eeae5b0bc2665398cc8612364a0b48cdb084d174
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 7 08:21:02 2015 +0100
+
+    updated topic 2 intro
+
+commit 3bbd3ef34d68df296301283f59ccc8576f600999
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 7 07:33:57 2015 +0100
+
+    changed fork to clone
+
+commit 4b9b87d61243056320e601f9f864693b3e7dc333
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 7 07:29:44 2015 +0100
+
+    moved homework to topic 1
+
+commit 7419fab73efdf728e1e90a1517d49df45e33fc17
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 7 07:28:06 2015 +0100
+
+    updated readme files
+
+commit f46b245809ebf382242c7ae439fa2797df461cad
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Oct 7 07:21:46 2015 +0100
+
+    updated readme files
+
+commit 505fca52db312dfb5949b9fe152d6ba0b67f2e29
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 6 20:16:35 2015 +0100
+
+    added intro to topic 1
+
+commit 1962d327e118f6c62359ca7d7add515a8a8d75af
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 6 19:59:23 2015 +0100
+
+    edited the closure worksheet
+
+commit 972a989f16b889248cb904db80e092a9b382c636
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 6 19:02:12 2015 +0100
+
+    added modules advanced worksheet
+
+commit 19c51eb6a865526aa2c305fa4e5917d77927aaa3
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 6 18:48:02 2015 +0100
+
+    edits to readme
+
+commit df566dcbf149b0d2dde450e7b26d1386db81eb95
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 6 18:44:31 2015 +0100
+
+    minor corrections
+
+commit da369b1f7beffd252101b8c23efe8e156bd13b2d
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 6 18:34:01 2015 +0100
+
+    completed module worksheet
+
+commit b64e9e9c928d1ed3c89289a09e1fb3dced150201
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 6 17:55:18 2015 +0100
+
+    moved module code
+
+commit 3d679d4d38760c5a1ee89e018b3949a658f65ffa
+Merge: 8d66160 efcad27
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 6 17:47:46 2015 +0100
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit 8d66160452ff625636e958ec516c920fdc5487d6
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 6 17:47:20 2015 +0100
+
+    updated language readme
+
+commit efcad270d5418eb4fe7409bf1bddf8b961f8a28b
+Author: Colin Stephen <ab5169@coventry.ac.uk>
+Date:   Tue Oct 6 08:15:10 2015 +0000
+
+    remove ref to brackets
+
+commit 1874752b6fa83c32c29be451bb99fb299cb27332
+Merge: f7e2ba1 453a17b
+Author: Colin Stephen <ab5169@coventry.ac.uk>
+Date:   Tue Oct 6 08:03:16 2015 +0000
+
+    Merge remote-tracking branch 'upstream/master'
+
+commit 453a17bc1f030faa816bf2f0ed5269bd633639ec
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Sep 30 20:55:37 2015 +0100
+
+    restructured weeks 2 and 3
+
+commit 9e3b9dd4ae708803f5fc1317e5847f416c9a4232
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Sep 29 22:13:36 2015 +0100
+
+    revised initial instructions
+
+commit f7e2ba14bfefb6ea4ee8ef52766e8348e0d4b3d0
+Author: Colin Stephen <ab5169@coventry.ac.uk>
+Date:   Tue Sep 29 09:10:33 2015 +0000
+
+    Added test file
+
+commit b427851fe8c5be59dd4ae1c822e1a681499b2fb1
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Sep 28 21:19:31 2015 +0100
+
+    renamed worksheets to readme
+
+commit 98c056401b26b12e549a50115eb80295c97939a0
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Mon Sep 28 21:16:58 2015 +0100
+
+    Minor edits
+
+commit 7447fab141ac6376494f74bec98f28ab83424652
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Sep 15 19:57:43 2015 +0100
+
+    Added debugger and exception handling labs
+
+commit dd119cd7f581706447abb95a41503aa1306cc812
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Sep 15 17:34:26 2015 +0100
+
+    Labs added for topic 1
+
+commit 2352b3cade2fb1a3af950f93713b5fc29c338d5f
+Merge: 3e95e1c 5d0445c
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Sep 15 10:19:02 2015 +0100
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit 3e95e1ccccb2e1107379635b3ab3481d631ba65e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Sep 15 10:16:30 2015 +0100
+
+    rest client lab
+
+commit 5d0445ce770a96f776bbb82d4033dd13e830b100
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Sep 15 08:41:24 2015 +0000
+
+    moved deplyment to week 6
+
+commit 022f8aaa617ded064948b944337fc270a5ecb0ba
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Sep 15 08:39:56 2015 +0000
+
+    Grouped labs into weekly topics
+
+commit 5cb5b34fed2d8ab8a7b43893c010cfb1783c8165
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Aug 22 18:43:36 2015 +0100
+
+    completed microservices worksheet
+
+commit 74ad355289afa5b049e061fad43f558612a14f77
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 21 14:27:11 2015 +0100
+
+    started docker swarm worksheet
+
+commit 5d7bcea637ae8dc8ff0860d8edc6d2048fda9d8b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 19 21:06:54 2015 +0100
+
+    corrections to the Microservices worksheet
+
+commit d113208848a0a0324855e8fa65d17d485c901f79
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 19 20:57:09 2015 +0100
+
+    completed microservices worksheet
+
+commit 5989bddd66ad60fea891b091e4da97508fe553d4
+Merge: 55807ba 1cb41e5
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 19 08:26:29 2015 +0100
+
+    merge resolved
+
+commit 55807ba8b773b98d7a82f851c69aba4ada690547
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Aug 19 08:24:55 2015 +0100
+
+    AJAX Notes
+
+commit 1cb41e533022a64f623b26369c0563310a72f158
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Aug 18 22:47:12 2015 +0100
+
+    minor corrections
+
+commit 08faa1dbac38f7409574f90644c273134dc2a199
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Aug 18 22:41:00 2015 +0100
+
+    completed Docker worksheet
+
+commit 5e6a20ab6c8bb8a236e3600deecefbc030645f90
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Aug 18 21:24:00 2015 +0100
+
+    Added Docker tutorial
+
+commit 5131fb558822213720d7b653ab658e6459fcdcee
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Aug 18 13:35:31 2015 +0100
+
+    renamed directories
+    
+    Now matches the module guide v2.4
+
+commit 6d02c4b62ae49c08b87eb8e5c195d9e86853602b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Aug 16 11:28:11 2015 +0100
+
+    modified authors json file
+
+commit 1c535d75765ac4ee5f9c9deafde3735b26cf06b9
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Aug 9 20:31:34 2015 +0100
+
+    Tidied up worksheet
+    
+    Moved unneeded materials to a backup file
+
+commit ded8e9d7d5dee28a2f0bbe52348cad49b34e870b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Aug 9 20:31:01 2015 +0100
+
+    Added predefs to .jshintrc file
+
+commit 4930f15a4e454cef8ce7b87a4e62aeb71d476e65
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Aug 9 20:30:36 2015 +0100
+
+    Added geocoder files
+
+commit ad4b9800a8e564cae8fd98938e9eac31f65e4992
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 7 13:57:42 2015 +0100
+
+    Reactive lab materials
+
+commit bd0fda205e5a2633731fbc4f905c4f8eb3a512cb
+Merge: e4df21a 13aab6d
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Aug 7 13:27:14 2015 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 2ae1694c0cb475bd0cfbb712ce3389ec65f00489
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 29 21:07:19 2015 +0100
+
+    Added link to describe trampolining
+
+commit 13aab6d0efa3f4dfcf3ec525c67c579465715796
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 29 14:59:27 2015 +0100
+
+    added activity to AJAX lab
+
+commit 6adae575d5e121c6976a0e8513184e8ccb7a4e43
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Wed Jul 29 13:01:12 2015 +0100
+
+    Moved prototype and class materials to lab 7
+
+commit e4df21ac1c321c589a31d0b8e1308719d96bb232
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Jul 24 17:46:34 2015 +0100
+
+    Added Rx framework files
+
+commit 3defa6c06bc74aff4be142fc2e5a81af2f49697b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Jul 24 17:46:14 2015 +0100
+
+    Simple Button example
+
+commit d85dbeb3332773fe3b596eb6fcd07deb6e7bbb6b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Jul 24 17:45:54 2015 +0100
+
+    Added Rx globals to .jshintrc
+
+commit 8464bc088c9b22ac0c12ce82fb9f11dedfe937d8
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Jul 24 10:50:35 2015 +0100
+
+    deleted hidden settings file
+
+commit e0dbb21298e7a93a604d0c03247d497b6ca6a36a
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Jul 24 10:49:31 2015 +0100
+
+    Renamed directories
+
+commit acfc8d8d25b2dc5e7122c83575c776522e4b75ac
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jul 19 08:24:05 2015 +0100
+
+    Deleted old film list
+
+commit da05500f14fd2bb641919b8c921963e6ebb7988e
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jul 19 08:23:50 2015 +0100
+
+    Archived early films
+
+commit a145a86373d055d72c024f2757f8a25640d18292
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Jul 18 21:45:39 2015 +0100
+
+    Added try...catch block to handle API errors
+
+commit 18dd5b3157990024bc2f89aa26bbc71ac3ab7f2f
+Merge: 7a9e436 51a7cb3
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Jul 18 20:46:02 2015 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 7a9e436897ce47d83798fb300b427802f317dce3
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Jul 18 20:45:46 2015 +0100
+
+    Get film id and title from OMDb
+    
+    Brute force approach of checking every possible id...
+
+commit 51a7cb30f9ddfe69f4c32ebe3e2e6516a9d2e9c1
+Merge: 517d669 ceb58a2
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Jul 17 18:27:54 2015 +0100
+
+    directory renaming
+
+commit 517d6690f5e22e17256c44bb04bb7eb1b5516535
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Fri Jul 17 18:22:36 2015 +0100
+
+    renamed readme and created a ew one
+
+commit ceb58a215992f28c1634b2d15682436bea12e40b
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jul 12 12:03:01 2015 +0100
+
+    added references to Async JavaScript
+
+commit 1728e695cba1775d3656dbe0fc41b90f34db8cff
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jul 12 11:47:45 2015 +0100
+
+    Added README files to each lab directory
+
+commit d3099aa30e8572a688d18ba5ebb1e6de38ca1e75
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sun Jul 12 11:39:06 2015 +0100
+
+    updated lab directory structure
+
+commit 5ddff2fef9cc8e857d9c0b226a1223c655e92df8
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Jun 11 08:31:49 2015 +0100
+
+    Added Codio hidden files to .gitignore
+
+commit aa8d4a7cab71fb81a21b1d5faa519ffb22eadcf4
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Jun 11 08:30:04 2015 +0100
+
+    added .DS_Store to .gitignore
+    
+    Prevents OSX Spotlight files being added to the repository
+
+commit 8fb78b183c8183449e292f2fa753e87c5cccae5d
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun May 3 18:04:55 2015 +0000
+
+    corrected missing protocol in image URL
+
+commit 3c22909370e0804857a1f819c847c536bdd31a2b
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun May 3 18:02:26 2015 +0000
+
+    implemented basic GET functionality
+
+commit 4085ea57e9b3cde91a37371ce4dafde5ddfef5f6
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun May 3 15:45:56 2015 +0000
+
+    basic delete functionality done
+
+commit 933e7dd6040ff94fa924b1fb2d271d0a9ee686cc
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun May 3 15:20:02 2015 +0000
+
+    changed header key to "image"
+
+commit d6b838c2cc3e4671fbd7d9b0d7b3fa3af01a62d1
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun May 3 15:14:17 2015 +0000
+
+    rewrote file uploader
+
+commit 8f54dd100529408d8e56b81fc899d050636ed881
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun May 3 09:54:25 2015 +0000
+
+    uploads now check MIME type for extension
+
+commit 4a9f14f4055fdc310ddf5c826dcd9b9917a49177
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun May 3 07:57:34 2015 +0000
+
+    added demo upload file in header
+
+commit 69d016ec38aa0056f195d382602eb88b90cf947d
+Author: marktyers <marktyers@gmail.com>
+Date:   Fri May 1 19:48:40 2015 +0000
+
+    renamed Simple API folder as lab 17
+
+commit 72a3163dfa7dd40531347f0910c582c539750f57
+Author: marktyers <marktyers@gmail.com>
+Date:   Fri May 1 19:43:16 2015 +0000
+
+    Simple file upload API
+
+commit 581fbff339e4f27bc2299d3edca0ccb21ac1bb81
+Author: marktyers <marktyers@gmail.com>
+Date:   Fri May 1 17:08:10 2015 +0000
+
+    started location services exercise
+
+commit 6c5baa4f060aca15c2ef1d6d862caea102204395
+Merge: c94235c ec543a6
+Author: marktyers <marktyers@gmail.com>
+Date:   Fri Apr 24 17:24:59 2015 +0000
+
+    Merge branch 'master' of github.com:covcom/305CDE
+
+commit c94235ce071adce3c8d740e929874cc0fa2f249a
+Author: marktyers <marktyers@gmail.com>
+Date:   Fri Apr 24 17:24:43 2015 +0000
+
+    renamed folders and added bus stop api call
+
+commit ec543a600eeb5ab12ae2f023afa9be08642c6b1a
+Author: Colin Stephen <gitlab.com@c0l.in>
+Date:   Tue Apr 21 13:42:49 2015 +0100
+
+    add node slides
+
+commit 5057d573e9de567ce39ba7f59e929e2bf0bc415f
+Author: Colin Stephen <gitlab.com@c0l.in>
+Date:   Tue Apr 21 13:18:56 2015 +0100
+
+    fix code formatting
+
+commit fce28af4d0d225cadecf3081dc104d3277181a6e
+Author: Colin Stephen <gitlab.com@c0l.in>
+Date:   Tue Apr 21 12:54:47 2015 +0100
+
+    add node worksheet
+
+commit 26e20e60f85d925b15cf697ba812d31bc6136aac
+Author: Colin Stephen <gitlab.com@c0l.in>
+Date:   Tue Apr 21 07:45:53 2015 +0100
+
+    add restify material
+
+commit dee625a1bb344b0078f1779f490c7cdf82c59753
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Apr 18 10:12:49 2015 +0000
+
+    base files for AMD guestbook
+
+commit 8fc6e01b89f5a5e0b4dc55ae8ad94b6fbeaed276
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Apr 18 09:58:38 2015 +0000
+
+    Added basic AMD exercise code
+
+commit 8975386ba87b14542c3cda8d48ba33a4570778a2
+Author: marktyers <marktyers@gmail.com>
+Date:   Fri Apr 17 19:35:33 2015 +0000
+
+    tidied up spacing in specs
+
+commit 62359e1a61723a9932bb5a3383daa79576993975
+Author: marktyers <marktyers@gmail.com>
+Date:   Fri Apr 17 07:01:30 2015 +0000
+
+    broke todo to create exercise steps
+
+commit d1ef512b1fd00e231cc492c741c08bd3fda8e8e7
+Author: marktyers <marktyers@gmail.com>
+Date:   Thu Apr 16 19:54:27 2015 +0000
+
+    completed the Taxi exercise
+
+commit 484e80a209a3d3562ea883776435c8e5fdaf5955
+Author: marktyers <marktyers@gmail.com>
+Date:   Thu Apr 16 11:23:48 2015 +0000
+
+    set all tests to pending
+
+commit a3e48839a00f01b50222ad76895b020bfd72a464
+Author: marktyers <marktyers@gmail.com>
+Date:   Thu Apr 16 09:30:33 2015 +0000
+
+    completed Taxi module
+
+commit 4184e221a8259cfff792fc0e24c0f4d8cc107f43
+Author: marktyers <marktyers@gmail.com>
+Date:   Wed Apr 15 21:34:17 2015 +0000
+
+    taxi module
+    returns distance and duration
+
+commit 8054696942643270a88b5e27dcf91924e89091c2
+Author: marktyers <marktyers@gmail.com>
+Date:   Wed Apr 15 21:18:33 2015 +0000
+
+    taxi module
+
+commit 2b5d6c4a1d9448cb58eee7d2b666923ffe5601af
+Author: marktyers <marktyers@gmail.com>
+Date:   Mon Mar 30 18:33:44 2015 +0000
+
+    added timer to main code
+
+commit b27ba363430d3d0624a4cdd6c70273f4e6b15d64
+Author: marktyers <marktyers@gmail.com>
+Date:   Mon Mar 30 18:20:22 2015 +0000
+
+    added simple script to run module
+
+commit 831386933ec4b785c00ab74b1630c42d461f0d33
+Author: marktyers <marktyers@gmail.com>
+Date:   Mon Mar 30 17:52:55 2015 +0000
+
+    removed all logging messages
+
+commit 71f9f86d149a5ff304a223f0f339af134ce4774d
+Author: marktyers <marktyers@gmail.com>
+Date:   Mon Mar 30 17:27:41 2015 +0000
+
+    17: async API now caches daily data
+
+commit c360fe8974001e96303e28063a4e560358c66e8b
+Author: marktyers <marktyers@gmail.com>
+Date:   Mon Mar 30 14:48:45 2015 +0000
+
+    created simple async test
+
+commit 09b98f3f5d76e1a265a5d28013d93b73e82395ea
+Author: marktyers <marktyers@gmail.com>
+Date:   Mon Mar 30 14:48:05 2015 +0000
+
+    created sync tests
+
+commit 6249f4260ad57c6f16b14b0faecd4c37d3cf7fa0
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Mar 28 16:44:33 2015 +0000
+
+    added simple todo module and tests
+
+commit 2fda00fe3364d06e5f3482dcc9e711ae32b20b65
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Mar 28 12:20:29 2015 +0000
+
+    updated README file
+
+commit e725604624b82a44f67ac38fdd3058b529d03506
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Mar 28 11:21:56 2015 +0000
+
+    added readme files to empty folders
+
+commit 31df22250f0dcc6a00b4717149297a98ceb0f9b5
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Mar 28 11:20:42 2015 +0000
+
+    added readme files to empty folders
+
+commit 2102697eea2866774b9332f712449492657f3ce0
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Mar 28 11:14:25 2015 +0000
+
+    Re-arranged and renamed folders for 2015-16
+
+commit 550cb6c7d87fb2b981bd2ea109477d92263d484f
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun Mar 8 11:01:46 2015 +0000
+
+    added simple QUnit test (14)
+
+commit 07a17be3eb0be3610c68c6d5c2ce2125e8164a81
+Author: marktyers <marktyers@gmail.com>
+Date:   Tue Mar 3 22:00:54 2015 +0000
+
+    changed global declaration to .jshintrc file
+
+commit 1185837bd3262ea5295ee84be667781ac9f576ff
+Author: marktyers <marktyers@gmail.com>
+Date:   Mon Mar 2 10:40:02 2015 +0000
+
+    working RxJS example using button
+
+commit 161cc91d3b77fd780dff5cdf0df69e6bce98f52d
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Feb 28 13:18:49 2015 +0000
+
+    moved closure files into lab 5
+
+commit 5d4051b9dc946d978d045c0834007c0d190f291c
+Author: marktyers <marktyers@gmail.com>
+Date:   Fri Feb 27 20:03:35 2015 +0000
+
+    renamed lab 6
+
+commit 9bb947b035ee35c11f801f78be0517f531e731ea
+Author: marktyers <marktyers@gmail.com>
+Date:   Fri Feb 27 14:07:26 2015 +0000
+
+    added offline storage code
+
+commit 7ee402827f885164bdb570139d9d15a9c73bca1a
+Author: marktyers <marktyers@gmail.com>
+Date:   Thu Feb 26 22:19:42 2015 +0000
+
+    fixed bug in web database
+
+commit 2e9a7f2a750e2865c9fde270e1a467a8aecbf9a6
+Author: marktyers <marktyers@gmail.com>
+Date:   Thu Feb 26 22:05:29 2015 +0000
+
+    Added web database activity
+
+commit 8e1d4174086e92f2840bbe71cf04d1042db98f1d
+Author: marktyers <marktyers@gmail.com>
+Date:   Thu Feb 26 20:59:49 2015 +0000
+
+    added the LocalStorage activity
+
+commit 6576315609a248293c6b0127d23d2dad138d76ee
+Author: marktyers <marktyers@gmail.com>
+Date:   Thu Feb 26 16:14:52 2015 +0000
+
+    deleted lab activity code from lecture_notes
+
+commit 90eee6a7d554bc955fc5f39ae0229ce50d4df913
+Author: marktyers <marktyers@gmail.com>
+Date:   Wed Feb 25 20:03:00 2015 +0000
+
+    SPA - comments added
+    commented out the code students will be expected to add.
+
+commit 0c604d2bad18163799da322162b8b4f381ec6f10
+Author: marktyers <marktyers@gmail.com>
+Date:   Wed Feb 25 18:48:03 2015 +0000
+
+    Created building lists program
+
+commit e73bc7a25c1e89aa23733a1d743b8fe7b8b34196
+Author: marktyers <marktyers@gmail.com>
+Date:   Wed Feb 25 17:24:10 2015 +0000
+
+    simple DOM code added
+
+commit af55714f809135a8a198c2c3116dee95e3c64acf
+Author: marktyers <marktyers@gmail.com>
+Date:   Wed Feb 25 12:34:53 2015 +0000
+
+    stylesheet updated
+
+commit eaa2616e54747954871b41950ada75b8e6a62b18
+Author: marktyers <marktyers@gmail.com>
+Date:   Wed Feb 25 12:27:18 2015 +0000
+
+    Add and Edit functionality implemented
+
+commit 88afd55ca46a408f8892831bd2178e3a65eff252
+Author: marktyers <marktyers@gmail.com>
+Date:   Tue Feb 24 21:17:23 2015 +0000
+
+    Added lecture notes program
+
+commit 60f31dae980a940722ce90a9e73e9f9d6360be40
+Author: marktyers <marktyers@gmail.com>
+Date:   Tue Feb 24 15:25:32 2015 +0000
+
+    boilerplate code for SPA
+
+commit fa4cf9b752fa5b76d5abf72cdb5b3f1bd041af2c
+Author: marktyers <marktyers@gmail.com>
+Date:   Tue Feb 24 14:58:51 2015 +0000
+
+    lab 2 language organised
+
+commit da45b352cc7e69f7124165979cf8af11f3c1cc2d
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun Feb 22 15:09:05 2015 +0000
+
+    Completed Notes prep
+
+commit c3e4a00351dcb4f98393c0239fe9bb5ba6726573
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun Feb 22 14:48:25 2015 +0000
+
+    Removed LocalStorage
+    removed all references to LocalStorage.
+
+commit ec0bdaa96a6159d0822ad8b18e84133db4d49239
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun Feb 22 14:42:16 2015 +0000
+
+    Deleted week 1 and added errors to notes.js
+    created new folder for first lab, moved important items in and deleted old folder
+    added errors to notes.js to be picked up by jslint and strict mode.
+
+commit e91f2d2c8867199073245e5b7a5cd1eb1886abcf
+Author: marktyers <marktyers@gmail.com>
+Date:   Sun Feb 22 13:25:59 2015 +0000
+
+    Working Notes App
+    DOM, array, localStorage
+
+commit 651f931ee4634a4e4cf805900da43c9f99e7bb56
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Dec 9 12:16:37 2014 +0000
+
+    update slides
+
+commit b46dc08d45f96cd42bee8506baa164abae4fecec
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Dec 9 11:55:15 2014 +0000
+
+    slides for week11 lecture
+
+commit 8494952dc206b5a014d4c01c88c722910e478961
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Mon Dec 8 02:00:49 2014 +0000
+
+    lab10
+
+commit fbaa049aebb5fb971981558aa39d593e87469d6d
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Mon Dec 1 13:42:56 2014 +0000
+
+    lab 9 code back
+
+commit f11e2bceb5f0691f923a7f0944629bc0724e2edf
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Mon Dec 1 13:33:45 2014 +0000
+
+    remove code folder lab9
+
+commit c32d6d5e6b0c55c1908d0ea9417c64a5e43c7412
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Mon Dec 1 01:21:53 2014 +0000
+
+    week9 2
+
+commit c47af247c44e20b03c26a1861bb0ee0a6587a720
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Mon Dec 1 01:18:29 2014 +0000
+
+    week9
+
+commit c312ad462d775eddc4fac8e24d9e41edcbf33575
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Wed Nov 12 01:23:08 2014 +0000
+
+    lab7
+
+commit 8700d40c753c106beaf0f40a19f96a84290c06c7
+Merge: 254569f 557a699
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Nov 11 17:34:01 2014 +0000
+
+    Merge branch 'master' of gitlab:c0lin/305cde
+
+commit 254569f9a161310215de4f2927732547c00f26e8
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Nov 11 17:33:07 2014 +0000
+
+    additional closure example
+
+commit 557a69910fd98eca847dc7f7514f643ad9a26489
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Nov 8 12:17:02 2014 +0000
+
+    formatting and spelling errors
+
+commit 964c22d037db678f161f84c0fb992f2d9f793115
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Nov 8 11:57:23 2014 +0000
+
+    corrected minor error in worksheet 6
+
+commit eb495faa2cbd429ae37b398bd7a40617c2f6b3d9
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Nov 8 11:56:13 2014 +0000
+
+    deleted binary worksheets
+
+commit b7e50d9c2f7b2abc412f037752774724403cb758
+Author: marktyers <marktyers@gmail.com>
+Date:   Sat Nov 8 11:48:35 2014 +0000
+
+    converted worksheet to markdown format
+
+commit 621f13846613aca09d9d7412627e3fd641f1c6b4
+Merge: 167fe16 ee1f5ef
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Nov 4 16:30:10 2014 +0000
+
+    Merge branch 'master' of gitlab:c0lin/305cde
+
+commit 167fe16d5953455f1b8fbd629e4ab5e27a12a872
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Nov 4 16:29:06 2014 +0000
+
+    remove test
+
+commit cfc7eda6ff4d419f82c60ab7c255eae3f491d0e3
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Nov 4 14:25:37 2014 +0000
+
+    test
+
+commit ee1f5ef084014359231e2da2454ee683bc7fb372
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Tue Nov 4 00:52:08 2014 +0000
+
+    correct wrong pdf
+
+commit 91693e07ecfc0e4291766a173e7625f7ed9af847
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Tue Nov 4 00:43:57 2014 +0000
+
+    lab6 no1
+
+commit a3e886ee6eb9bca7937ee45e4767777f27fe3580
+Merge: 37d3124 01f4c60
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 31 17:25:36 2014 +0000
+
+    Merge branch 'master' of gitlab:c0lin/305cde
+
+commit 37d312415373389dc3dc31d978b353bdcb363845
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 31 17:24:17 2014 +0000
+
+    attribution
+
+commit 01f4c60ce39fed1918b5485a5927aa12b493f976
+Author: Colin Stephen <ab5169@coventry.ac.uk>
+Date:   Mon Oct 27 11:57:05 2014 +0000
+
+    remove reference to non-existent code
+
+commit 49684af3be395e3a86e93e1411dff501a1283805
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Oct 26 18:49:07 2014 +0000
+
+    list alternative endpoint for wikipedia
+
+commit b10f81964ae6dd0f38dfbe7864eb74e83f053885
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Oct 26 16:14:33 2014 +0000
+
+    add link to a good resource: JS the right way
+
+commit e25922c9492a6ebad23e14def00202f37abbc536
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Oct 26 02:29:08 2014 +0000
+
+    fix urls for chapter data
+
+commit a8a7a37fbcd71a3d3fa578c3d0551ea125c74630
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Oct 26 02:14:12 2014 +0000
+
+    rename parameter
+
+commit a5c71801620e532a848cbe76028cdf3fb2576d69
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Oct 26 01:02:19 2014 +0000
+
+    add readme
+
+commit a476c9eb7bddf282f30968e9de9136d891ec558a
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Oct 26 01:48:45 2014 +0100
+
+    finish worksheet
+
+commit 57564f042650618f6a7673c467ec8b7835774808
+Author: Colin Stephen <code@c0l.in>
+Date:   Sat Oct 25 23:48:49 2014 +0100
+
+    update URLs in json calls
+
+commit acd487252ae42ec22f5e45ddf56fa7275f0f872d
+Author: Colin Stephen <code@c0l.in>
+Date:   Sat Oct 25 22:28:34 2014 +0100
+
+    use xypic for function diagram
+
+commit 4b7f8440f838b7a02780a49dda1626a999f74d73
+Author: Colin Stephen <code@c0l.in>
+Date:   Sat Oct 25 22:02:26 2014 +0100
+
+    include formatting metadata
+
+commit 24aa97e14b3a55a5bd6f44e25c99ba1c2e8d9fd3
+Author: Colin Stephen <code@c0l.in>
+Date:   Sat Oct 25 20:02:56 2014 +0100
+
+    continue last commit
+
+commit 4c82f7da0f310648860949cdf3f490994a2679aa
+Author: Colin Stephen <code@c0l.in>
+Date:   Sat Oct 25 20:02:22 2014 +0100
+
+    add first promises walkthrough
+
+commit 475948d5cc0b041e65a3ac0c786927ffea66a36c
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 24 22:44:40 2014 +0100
+
+    add comments and fix data url
+
+commit 4b8551dcfa6d8e18338d6bffab59273d41cb06b2
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 24 21:54:53 2014 +0100
+
+    more bonus material on map-reduce
+
+commit 9e7b98d0b989323b4ff76608917e65da3d24f8af
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 24 21:42:37 2014 +0100
+
+    add promise methods slide
+
+commit 4f225c7831e0a34a7732e6f594c2f46dd6a0f98f
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 24 14:45:39 2014 +0100
+
+    add challenge sheet - no challenge this week
+
+commit d780fc532cb8cf76feda4c7c7b8f5a92e59cad7c
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 24 14:38:34 2014 +0100
+
+    complete promise slides
+
+commit 0c30dc7c787ace736108f05f54fa9d3a6e690c95
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 24 12:47:30 2014 +0100
+
+    start slides
+
+commit 7d1e5f368740d9ffaeb5843aedc1d7106a7b8dee
+Author: Colin Stephen <code@c0l.in>
+Date:   Wed Oct 22 05:42:44 2014 +0100
+
+    add slides
+
+commit 5bff72453691e3e047439565743a01093beccf36
+Author: Colin Stephen <code@c0l.in>
+Date:   Wed Oct 22 01:19:57 2014 +0100
+
+    add track 2 to worksheet 4 (advanced track)
+
+commit d0a82c88fde70a0e4ca677b45f75dd63537eccb0
+Author: Colin Stephen <code@c0l.in>
+Date:   Wed Oct 22 00:33:41 2014 +0100
+
+    allow ajax sync to work with live preview
+
+commit d8b5b09e44f324deef2ad953b25e2c9dc95261ed
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 21 22:16:45 2014 +0100
+
+    complete worksheet first track and adjust code comments
+
+commit 268870c090ca3449016aa2482be32327365217e0
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 21 21:21:58 2014 +0100
+
+    add some more DOM manipulation
+
+commit 41b67f8c405cf6ac0297c6b43e1c6d6a7da26261
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 21 20:34:22 2014 +0100
+
+    fix typo
+
+commit 65afdcf839dbaedd43b917977675619eafee5e29
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 21 20:23:57 2014 +0100
+
+    add pdf of challenge 4
+
+commit ab0848abc2b343ebda78e5bec440f7bed808cc87
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 21 20:22:24 2014 +0100
+
+    complete week 4 challenge
+
+commit 960620a71f0daf22ac7d89f4d08d8ef066a0c8cd
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 17 23:29:35 2014 +0100
+
+    begin first task
+
+commit 89b495674b81ac2138a86b8ac3dc5c56ce270064
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 17 13:38:31 2014 +0100
+
+    add comment re callback
+
+commit 4b5db0e4df45f5ad781c13252d131ba0d366e21e
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 17 12:33:27 2014 +0100
+
+    set files required on each track
+
+commit 30c8cb61d93b5fd696071fd9a72a7be4e79a7cc7
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 17 11:16:57 2014 +0100
+
+    start week4 materials
+
+commit 5df1de1174682c7e21d1c174572ef068cc0a8f9d
+Author: Colin Stephen <code@c0l.in>
+Date:   Wed Oct 15 00:31:50 2014 +0200
+
+    add challenge
+
+commit 31ab1d206f207065b7c377e0440cc442809c4fc0
+Merge: 52be1d9 2679328
+Author: Colin Stephen <code@c0l.in>
+Date:   Wed Oct 15 00:08:58 2014 +0200
+
+    Merge branch 'master' of gitlab:c0lin/305cde
+
+commit 52be1d9f357a30e23e789cfd2094368e8ff3e2a3
+Author: Colin Stephen <code@c0l.in>
+Date:   Wed Oct 15 00:00:32 2014 +0200
+
+    finish slides
+
+commit 2679328b8ca8d627e37b117de3970d0d27423003
+Merge: 4c4aef6 8149d47
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Tue Oct 14 21:17:19 2014 +0100
+
+    Merge branch 'master' of https://gitlab.com/c0lin/305cde
+
+commit 8149d477ed9435f91866df7156675a31a187c035
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 22:15:31 2014 +0200
+
+    fix link
+
+commit 6e36d9efe5dc4ec39bb889a572d5df996ca1343e
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 22:11:29 2014 +0200
+
+    fix typo
+
+commit 335910d32fed6b26527f010eefa73911d35c86fe
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 21:59:58 2014 +0200
+
+    add extra reference on IIFEs
+
+commit 543ce51c9b01f88c3111c84ba71ad37165fcbad3
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 21:52:20 2014 +0200
+
+    fix typo
+
+commit c98426561b988c3dce361b5a1694324b8ad8eb48
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 21:50:56 2014 +0200
+
+    finish worksheet
+
+commit 0e2bfe29349882904db8d1ef173af9d5711251c8
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 20:32:55 2014 +0200
+
+    add closure functions task
+
+commit 05db1d8778d0ecaeb4e87abc7ce73de1c8fe3b7e
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 19:27:36 2014 +0200
+
+    list tasks for worksheet
+
+commit f0f94ba352b14597b8bb52120d5d0d7f3f4413f6
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 19:01:27 2014 +0200
+
+    continued from last commit...
+
+commit 87de1d0b33f612dc5c003367bc027e9881a49e8e
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 19:01:09 2014 +0200
+
+    add git forking stuff
+
+commit d5ffa0e95539c5bad8e8680419762b28a25ecb1e
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 10:53:37 2014 +0100
+
+    create week 3 files
+
+commit 1c20f006aab913063ca2691ff5968cb78192357a
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 14 10:53:19 2014 +0100
+
+    create week 3 files
+
+commit 4c4aef6089a7f0d6c3e179895b8b1ea2ef74c261
+Merge: 1b79cf4 29e7811
+Author: Mark Tyers <marktyers@googlemail.com>
+Date:   Mon Oct 13 21:04:17 2014 +0100
+
+    Merge branch 'master' of https://gitlab.com/c0lin/305cde
+
+commit 29e78114b39a9b9d959610b8011acee200740354
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 7 21:28:59 2014 +0100
+
+    add worksheet and static resources
+
+commit d10866db8a5b406177aefd3f8280da4121f80ccf
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 7 21:14:04 2014 +0100
+
+    output to console
+
+commit 244bc5ae18a7d72666c46b2055f2207b03f1ee33
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 7 19:56:21 2014 +0100
+
+    fix conflicted code
+
+commit 37e23a3d8660071d26a682be014436a33f1f1920
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 7 19:50:15 2014 +0100
+
+    update this and that
+
+commit eb1841b0b6221635bd8dc51138df9cba72169199
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 7 18:14:39 2014 +0100
+
+    revert last change
+
+commit 5e23f92f473a5920c78db1608f0d5ad1e61830fa
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 7 18:12:07 2014 +0100
+
+    format title for html rendering
+
+commit 0b984594ca9b21f9f215a7f4cad552f2b00d0a83
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 7 18:00:16 2014 +0100
+
+    add pdf of challenge 2
+
+commit 06824a477605d94e0066c1464f89fd989491e24f
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Oct 7 17:58:52 2014 +0100
+
+    finish slides
+
+commit bb744e44758884f5804b36d288ecd6c9e5cda835
+Author: Colin Stephen <code@c0l.in>
+Date:   Mon Oct 6 13:15:46 2014 +0100
+
+    add pdf of challenge 1
+
+commit 241dfbc788829cad126dd7e40d9047e7c5d5a19f
+Author: Colin Stephen <code@c0l.in>
+Date:   Mon Oct 6 13:14:37 2014 +0100
+
+    add pdf of worksheet 1
+
+commit 600fd6c4fc5d8be25d601fad1228d3006cf322e6
+Author: Colin Stephen <code@c0l.in>
+Date:   Mon Oct 6 00:17:32 2014 +0100
+
+    plan slides on functions
+
+commit 0fe6863bdf99839e2236c59eeae9a770106a26aa
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Oct 5 23:59:36 2014 +0100
+
+    fix numbered list issue
+
+commit c483754feaa56abd3448104742630c00c5f29359
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Oct 5 23:56:10 2014 +0100
+
+    finish slides on objects; TODO: functions
+
+commit 1b79cf4415f0ac44ccebe6b92d8d39a62272b9d0
+Merge: 149f4e8 05d36b9
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 4 19:49:24 2014 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 149f4e8c60f510e91c2ea50e87f70749bd0fbbce
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Sat Oct 4 19:48:23 2014 +0100
+
+    Tidied up Mac hidden files
+
+commit 05d36b9c386fd4275b90d4ac1a9b03a66648307e
+Merge: e7969da 29d1839
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 3 17:25:10 2014 +0100
+
+    Merge branch 'master' of gitlab:c0lin/305cde
+
+commit e7969dadefa996fcc3276362401e20e9f80254f0
+Author: Colin Stephen <code@c0l.in>
+Date:   Fri Oct 3 17:24:51 2014 +0100
+
+    add second challenge
+
+commit 29d18394773df7bfa258c7ef7cb77342e82b40db
+Author: Mark Tyers <marktyers@gmail.com>
+Date:   Thu Oct 2 17:54:48 2014 +0100
+
+    Test: added blank line to top of syllabus.md
+
+commit a770b8857a940c311120e7965ad658f6b44ccb28
+Merge: e42e364 ce5f1e5
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Thu Oct 2 12:16:20 2014 +0100
+
+    Merge branch 'master' of gitlab.com:c0lin/305cde
+    
+    Conflicts:
+    	labs/week1/code/conditionals_booleans.html
+    	labs/week1/code/switch_case.html
+
+commit e42e36464bd591051460153b65d0c906338b05b4
+Author: Jianhua Yang <jianhua.email@gmail.com>
+Date:   Thu Oct 2 12:10:33 2014 +0100
+
+    macNo1
+
+commit ce5f1e57ec94df35b45b01074670af36c5236723
+Author: Colin Stephen <code@c0l.in>
+Date:   Wed Oct 1 01:27:21 2014 +0100
+
+    fix typo
+
+commit d24f1a0815207665857b946157d50dbde973d456
+Author: Colin Stephen <code@c0l.in>
+Date:   Wed Oct 1 01:20:25 2014 +0100
+
+    add slides
+
+commit 13f6c1053d0883f8443dee2e24941f7467dac1a4
+Author: Colin Stephen <code@c0l.in>
+Date:   Wed Oct 1 00:21:15 2014 +0100
+
+    point to correct style file
+
+commit a6452e0362ddb33bfef4458a764420f0e03d5de5
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 23:11:33 2014 +0100
+
+    clarify wording
+
+commit 8168e5b0edefc8ab247abce7bc25fb378fdebef4
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 23:09:25 2014 +0100
+
+    add first challenge
+
+commit 5c8e0d19ee8372ae70bc52bd180ff8f39ffb336e
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 22:06:06 2014 +0100
+
+    add screenshots
+
+commit c0b3b441d7a6020bd30c034f23b9cef84e19ad05
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 22:00:15 2014 +0100
+
+    add link to dev tools info
+
+commit f4efe54effbd81be6b31d6d1c96e794b94f143c6
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 21:58:14 2014 +0100
+
+    remove redundant file
+
+commit 5c15cc9a5162c81ea642aff78974f46a8b12948d
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 21:54:12 2014 +0100
+
+    add last code example
+
+commit 0de36830a8f130a8b4fa1e5e26bfabb1d404cae4
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 20:21:15 2014 +0100
+
+    encourage raising issues for any problems
+
+commit 59be5f1611cce2b7789e8c712004044b0c76b622
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 20:10:33 2014 +0100
+
+    fix typo
+
+commit 134534676053283eacb0f395d784ed31cdb203ef
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 20:08:19 2014 +0100
+
+    first two JS examples
+
+commit 3f7d4726eecce2ca29508a5ebb50db7fc4d74b8d
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 17:49:11 2014 +0100
+
+    first half of worksheet1
+
+commit 64fbdeea92a9264faec82d325b269905a823ffa3
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 16:42:44 2014 +0100
+
+    test embedded images
+
+commit 8a79c16b797499ca4d1c5f2a5651043f240384d7
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 04:22:55 2014 +0100
+
+    remove test file
+
+commit a2d05547eb29d0f9e3e72635fdc8212dbc66faa8
+Merge: f6947dd 66dc515
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 04:20:37 2014 +0100
+
+    Merge branch 'master' of gitlab:c0lin/305cde
+
+commit f6947dd574290782a7e618a7aebfd7e24dab15f8
+Author: Colin Stephen <code@c0l.in>
+Date:   Tue Sep 30 04:19:50 2014 +0100
+
+    reorganise folders
+
+commit 66dc5150f145374182bdc3e9b72a62d7bf8a607d
+Author: unknown <aa7401@EC213-15.coventry.ac.uk>
+Date:   Mon Sep 29 16:24:35 2014 +0100
+
+    test commit for sourcetree
+
+commit 07e97a228d4d04fb3f2e7a7ba8c9cd006dd64303
+Merge: 82bff77 b5bc046
+Author: Colin Stephen <code@c0l.in>
+Date:   Mon Sep 29 03:10:30 2014 +0100
+
+    Merge branch 'worksheets_slides'
+
+commit b5bc04620b43736aea204712da995a4d1a0d1dae
+Author: Colin Stephen <code@c0l.in>
+Date:   Mon Sep 29 03:09:58 2014 +0100
+
+    add lab introduction slides
+
+commit 82bff77704e6da4bd28411db15185e0efc6dbbbe
+Merge: 8cea78b dc6e103
+Author: Colin Stephen <code@c0l.in>
+Date:   Mon Sep 29 01:08:13 2014 +0100
+
+    Merge branch 'worksheets_slides'
+
+commit dc6e103e9b0009393418d975305a8c0aa8ed24b0
+Author: Colin Stephen <code@c0l.in>
+Date:   Mon Sep 29 01:07:29 2014 +0100
+
+    update docs
+
+commit 8cea78b82b7114b1da58c603397c9f719ded830d
+Merge: e762aa1 d8efba4
+Author: Colin Stephen <code@c0l.in>
+Date:   Thu Sep 25 16:44:47 2014 +0100
+
+    Merge branch 'worksheets_slides'
+
+commit d8efba43451eff9fc92d0f99559a94e5c73b7993
+Author: Colin Stephen <code@c0l.in>
+Date:   Thu Sep 25 16:44:13 2014 +0100
+
+    ignore sub repos
+
+commit c08b2de551490f6a0988db6ae55e62ca76549a60
+Author: Colin Stephen <code@c0l.in>
+Date:   Thu Sep 25 16:37:07 2014 +0100
+
+    ignore modules
+
+commit a3ca62604b31ca6d5e6aa94cb68b429fae4a1e32
+Author: Colin Stephen <code@c0l.in>
+Date:   Thu Sep 25 12:43:10 2014 +0100
+
+    update doc with lab structure
+
+commit e762aa1b4a07a9e631cb654d7db75f78364f2a56
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 18:43:23 2014 -0700
+
+    update docs
+
+commit 37d54e5cfd25a24b7734f8555f75e1d7d6a16ace
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 18:42:19 2014 -0700
+
+    update docs
+
+commit e4e69f942a9be9eaa29cbdf9491ee02f710b0390
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 18:39:15 2014 -0700
+
+    renaming and adding docs
+
+commit 83f7336929ea4a35a46f8b91530e70e1fe9ee75c
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 18:22:35 2014 -0700
+
+    rename file
+
+commit 254efe7a27b859edf85124a11fa68305a8ed5871
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 18:21:55 2014 -0700
+
+    rename some files
+
+commit 4ad8e6e83a34d757d1e747cfef90f09cb0f19c3c
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 18:08:28 2014 -0700
+
+    remove unnecessary dependencies
+
+commit 0d6d71122c72fafdd2874204f768a33e7701a851
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 18:06:02 2014 -0700
+
+    add week 3 example code
+
+commit 47f7a1cc8387f70c1aaca6571278060261ca94ca
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 16:42:46 2014 -0700
+
+    update docs
+
+commit 58a0e2dc3054372dc5ea2209796ed49c9110dfdd
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 16:41:01 2014 -0700
+
+    rename files
+
+commit 866b555059aa1c3bbea0ad297fd08fecc1e90580
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 16:36:22 2014 -0700
+
+    week 4 finished
+
+commit e8c6a790fac48447a1a4c3d34711043d00772ee7
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 16:29:33 2014 -0700
+
+    week 5 finished
+
+commit 009fc807281f6e218ade05d5bb67322098f24a07
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 16:16:17 2014 -0700
+
+    add some simpler examples
+
+commit dedc9f3bef129bef08fa97d8b37c4e8e74d8a6db
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 16:12:54 2014 -0700
+
+    continuation of last commit
+
+commit 32973de4d01a706bf910aed3846a6cb635ae46f7
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 16:12:29 2014 -0700
+
+    add globally scoped dom methods
+
+commit 61fc0225880944d9e3f9c0b1f99fafa873fd8b52
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 15:57:48 2014 -0700
+
+    add dom scripting example
+
+commit 28187626fe1ad03023c349ac482b09474b97aff2
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 15:33:20 2014 -0700
+
+    rename utils file
+
+commit 1fff7d94410fe90f15069cd2123927ce3e6b9e59
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 15:31:52 2014 -0700
+
+    remove unneeded styling
+
+commit ba74288a67e0130b2d156ae0cf22adb6fccc9eeb
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 15:23:07 2014 -0700
+
+    remove redundant code
+
+commit bca6b7ea2bccb9da7ff5bf143413d17e12b57b10
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 15:17:29 2014 -0700
+
+    remove redundant function
+
+commit b8354131d3902441b3fe58f62634c2edca41c166
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 15:13:43 2014 -0700
+
+    fix css path
+
+commit 337dbff9771ee8d0f03368358733a74a5381f603
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 15:11:23 2014 -0700
+
+    add a plain AJAX script page
+
+commit 035aa968141b3bb9faf7ee2181fff2eecebcfe6a
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 15:01:08 2014 -0700
+
+    include basic blocking ajax
+
+commit 7489da9e66a55e82e910e6cf0011401129cbdfb0
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 15:00:19 2014 -0700
+
+    add comment with alternative gist url
+
+commit 5670593ce7ddd21046d2ad6266a34d2c5d11c6e2
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 11:38:55 2014 -0700
+
+    add commentary and gist urls for working examples
+
+commit 3abe709c7e296bb4d4c842096f427a3f3db0cf25
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 11:16:26 2014 -0700
+
+    add promises code to final week
+
+commit 0e72f082d185cad147d2f30c80acce0744f55710
+Author: Colin Stephen <code@c0l.in>
+Date:   Sun Sep 7 11:00:13 2014 -0700
+
+    add the original weeks from google drive
+
+commit b885c2f9e7f9db50869a145acc271311dd344d91
+Author: colin <colin.stephen@gmail.com>
+Date:   Sun Sep 7 02:22:15 2014 -0700
+
+    update copy
+
+commit 915e634fdef27c4b12ab3f11ab5150e57ec461e0
+Author: colin <colin.stephen@gmail.com>
+Date:   Sun Sep 7 02:15:32 2014 -0700
+
+    initial commit
