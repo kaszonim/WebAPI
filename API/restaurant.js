@@ -1,6 +1,7 @@
 'use strict'
 
 const zomato = require('./modules/zomato')
+const persistence = require('./modules/persistence')
 const url = require('url')
 
 exports.categories = function(callback) {
@@ -30,4 +31,11 @@ exports.restaurants = function(request, callback) {
 	}).catch( err => {
 		return callback(err)
 	})
+}
+
+exports.addUser = (request, callback) => {
+	let data
+    data.name = 'test name'
+	
+	return persistence.addAccount(data)
 }

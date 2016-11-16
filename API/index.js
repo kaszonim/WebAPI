@@ -49,6 +49,19 @@ server.get('/restaurants?q=', function(req, res) {
 	})
 })
 
+server.post('/users', function(req, res) {
+	data.addUser(req, (err, data) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET, POST')
+		if (err) {
+			res.send(status.badRequest, {error: err.message})
+		} else {
+			res.send(status.added, {user: data})
+		}
+		res.end()
+	})
+})
+
 const port = process.env.PORT || defaultPort
 
 server.listen(port, function(err) {

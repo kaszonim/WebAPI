@@ -17,7 +17,8 @@
     "sync-request": "^2.1.0",
     "csprng": "^0.1.1",
     "restify": "^4.1.1",
-    "xmlbuilder": "^8.2.2"
+    "xmlbuilder": "^8.2.2",
+    "mongoose": "^4.6.7"
   },
   "devDependencies": {
     "eslint": "^3.10.0",
