@@ -3,29 +3,26 @@
 const schema = require('../schema/schema')
 
 exports.createUser = details => new Promise( (resolve, reject) => {
-	/*if (!'username' in details && !'password' in details && !'name' in details) {
-		reject(new Error('invalid user object'))
-	}*/
 	if(!details.username || !details.password || !details.name){
 		reject(new Error('invalid user object'))
+	} else {
+		const user = new schema.User(details)
+
+		user.save( (err, user) => {
+			if (err) {
+				reject(new Error('error creating account'))
+			}
+			delete details.password
+			resolve(details)
+		})
 	}
-
-	const user = new schema.User(details)
-
-	user.save( (err, user) => {
-		if (err) {
-			reject(new Error('error creating account'))
-		}
-		delete details.password
-		resolve(details)
-	})
 })
 
 exports.getUsers = function() {
-	return new Promise( (resole, reject) => {
+	return new Promise( (resolve, reject) => {
+		const result = ''
 		schema.User.find({}, function(err, users) {
 			if (err) {
-				console.log('error getting users')
 				reject(err)
 			}
 			// object of all the users
@@ -34,5 +31,33 @@ exports.getUsers = function() {
 			}
 			resolve(users)
 		})
+	})
+}
+
+exports.deleteUsers = function(id) {
+	return new Promise( (resolve, reject) => {
+		if(!id){
+			schema.User.remove(function(err, removed) {
+				if (err) {
+					reject(err)
+				}
+				if (removed === 0){
+					reject(new Error('users cannot be deleted'))
+				} else {
+					resolve('All users removed successfully')
+				}
+			})
+		} else {
+			schema.User.remove({}, function(err, removed) {
+				if (err) {
+					reject(err)
+				}
+				if (removed === 0){
+					reject(new Error('users cannot be deleted'))
+				} else {
+					resolve(removed)
+				}
+			})
+		}
 	})
 }

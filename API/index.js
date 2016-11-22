@@ -62,12 +62,13 @@ server.get('/restaurants?q=', function(req, res) {
 })
 
 server.get('/users', function(req, res) {
-	data.users(req, (err, result) => {
+	data.users( (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
+			console.log(result)
 			res.send(status.ok, result)
 		}
 	})
@@ -85,10 +86,10 @@ server.post('/users', function(req, res) {
 		res.end()
 	})
 })
-
+ /*
 server.delete('/users/:id', function(req, res) {
 	//TO-DO! delete user from database
-})
+})*/
 
 server.put('/users/:id', function(req, res) {
 	//TO-DO! update user details in database
@@ -117,10 +118,10 @@ server.post('/favourites', function(req, res) {
 		}
 	})
 })
-
-server.detele('/favourites/:id', function(req, res) {
+/*
+server.delete('/favourites/:id', function(req, res) {
 	//TO-DO! delete from favourites list based on ID
-})
+})*/
 
 
 //need more functions for PUT and DELETE
