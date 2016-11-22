@@ -36,10 +36,22 @@ server.get('/categories', function(req, res) {
 	})
 })
 
+server.get('/cuisines?loc=', function(req, res) {
+	data.cuisines(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+	})
+})
+
 server.get('/restaurants?q=', function(req, res) {
 	data.restaurants(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('Allow', 'GET')
+		res.setHeader('accepts', 'GET')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
@@ -49,18 +61,69 @@ server.get('/restaurants?q=', function(req, res) {
 	})
 })
 
+server.get('/users', function(req, res) {
+	data.users(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET', 'POST')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+	})
+})
+
 server.post('/users', function(req, res) {
-	data.addUser(req, (err, data) => {
+	data.addUser(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET, POST')
 		if (err) {
-			res.send(status.badRequest, {error: err.message})
+			res.send(status.badRequest, { error: err.message })
 		} else {
-			res.send(status.added, {user: data})
+			res.send(status.created, { user: result })
 		}
 		res.end()
 	})
 })
+
+server.delete('/users/:id', function(req, res) {
+	//TO-DO! delete user from database
+})
+
+server.put('/users/:id', function(req, res) {
+	//TO-DO! update user details in database
+})
+
+server.get('/favourites', function(req, res) {
+	data.favourites(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET', 'POST')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+	})
+})
+
+server.post('/favourites', function(req, res) {
+	data.getUsers(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET', 'POST')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.created, result)
+		}
+	})
+})
+
+server.detele('/favourites/:id', function(req, res) {
+	//TO-DO! delete from favourites list based on ID
+})
+
+
+//need more functions for PUT and DELETE
 
 const port = process.env.PORT || defaultPort
 

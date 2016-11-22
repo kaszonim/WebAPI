@@ -2,7 +2,7 @@
 
 const schema = require('../schema/schema')
 
-exports.addAccount = details => new Promise( (resolve, reject) => {
+exports.createUser = details => new Promise( (resolve, reject) => {
 	/*if (!'username' in details && !'password' in details && !'name' in details) {
 		reject(new Error('invalid user object'))
 	}*/
@@ -20,3 +20,19 @@ exports.addAccount = details => new Promise( (resolve, reject) => {
 		resolve(details)
 	})
 })
+
+exports.getUsers = function() {
+	return new Promise( (resole, reject) => {
+		schema.User.find({}, function(err, users) {
+			if (err) {
+				console.log('error getting users')
+				reject(err)
+			}
+			// object of all the users
+			if (!users) {
+				reject(new Error('no users found'))
+			}
+			resolve(users)
+		})
+	})
+}

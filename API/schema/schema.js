@@ -32,7 +32,7 @@ mongo.MongoClient.connect(uri, function(err, db){
 
 //  create a schema
  const restaurantSchema = new Schema({
- 	name: String,
+ 	 name: String,
      location: Object,
      cusisines: String,
      delivery: Boolean,
@@ -40,7 +40,7 @@ mongo.MongoClient.connect(uri, function(err, db){
  })
 
  // create a model using the schema
- exports.Book = mongoose.model('Restaurant', restaurantSchema)
+ exports.Restaurant = mongoose.model('Restaurant', restaurantSchema)
 
 
 
