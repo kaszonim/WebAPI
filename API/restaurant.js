@@ -34,12 +34,32 @@ exports.restaurants = (request, callback) => {
 }
 
 exports.addUser = (request, callback) => {
-    const parameters = url.parse(request.url, true)
+    /*const parameters = url.parse(request.url, true)
     console.log(parameters.query.username)
     console.log(parameters.query.password)
 	
-	//return persistence.createUser(data)
+	//return persistence.createUser(data)*/
+    if (request.body === undefined || request.body['name'] === undefined || request.body['password'] === undefined || request.body['username'] === undefined) {
+        callback(new Error('Request body missing'))
+    } else {
+        persistence.createUser({
+            'name': request.body['name'],
+            'username': request.body['username'],
+            'password': request.body['password']
+        }).then( resolve => {
+            console.log(resolve)
+            return callback(null, resolve)
+        }).catch( err => {
+            return callback(err)
+        })
+    }
 }
+
+
+const extractBodyKey = (request, key) => new Promise( (resolve, reject) => {
+	if (request.body === undefined || request.body[key] === undefined) reject(new Error(`missing key ${key} in request body`))
+	resolve(request.body[key])
+})
 
 exports.users = (callback) => {
     persistence.getUsers().then( (response) => {

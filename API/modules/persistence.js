@@ -26,7 +26,7 @@ exports.getUsers = function() {
 				reject(err)
 			}
 			// object of all the users
-			if (!users) {
+			if (users.length === 0) {
 				reject(new Error('no users found'))
 			}
 			resolve(users)
