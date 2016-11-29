@@ -1,13 +1,16 @@
 'use strict'
 
+/*istanbul ignore next*/
+/* global expect */
+
 var data = require("../modules/zomato")
 
 describe('Restaurant API', function () {
-  it('getCategories - results returned', (done) => {
-    data.getCategories().then( (response) => {
-		  expect(response.length).toBeGreaterThan(0)
-      done()
-    })
+	it('getCategories - results returned', (done) => {
+		data.getCategories().then( (response) => {
+			expect(response.length).toBeGreaterThan(0)
+			done()
+		})
 	})
 
 	it('getCategories - results not found', (done) => {
@@ -68,7 +71,7 @@ describe('Restaurant API', function () {
 		})
 	})
 	
-	it('getRestaurants - response body', (done) => {
+	xit('getRestaurants - response body', (done) => {
 		data.getRestaurants(94264, 'zone').then(	(result) => {
 			//console.log(result)
 			//expect(true).toBe(true)
