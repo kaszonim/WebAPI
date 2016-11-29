@@ -34,9 +34,9 @@ exports.getUsers = function() {
 	})
 }
 
-exports.deleteUsers = function(id) {
+exports.deleteUsers = function(usernam) {
 	return new Promise( (resolve, reject) => {
-		if(!id){
+		if(usernam === undefined){
 			schema.User.remove(function(err, removed) {
 				if (err) {
 					reject(err)
@@ -59,5 +59,28 @@ exports.deleteUsers = function(id) {
 				}
 			})
 		}
+	})
+
+
+
+	// username came as part of the URL
+	const username = req.params.username
+
+	// username must match authorization username
+	const authuser = req.authorization.basic.username
+	if (username !== authuser) return res.send(400, {message: 'You can\'t delete other users!'})
+
+	// if it matches then connect to the store and delete
+	usersConnection(res, usersDB => {
+		usersDB.removeItem(username, err => {
+			if (err) return res.send(500, {message: 'Could not delete user.'})
+
+			// if successful then delete all of the user's favourites
+			favouritesConnection(req, res, favourites => {
+				favourites.clearSync()
+			})
+
+			return res.send({message: `User ${username} and all favourites deleted`})
+		})
 	})
 }

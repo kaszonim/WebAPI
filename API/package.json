@@ -5,19 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/jasmine-node spec --color --verbose --autotest --watch .",
-     "coverage": "./node_modules/.bin/istanbul cover -x **spec/** -x **index.js** -x **debug.js** node_modules/.bin/jasmine-node spec"
+     "coverage": "./node_modules/.bin/istanbul cover -x spec/* -x index.js -x restaurant.js -x schema/* node_modules/.bin/jasmine-node spec",
+     "coverage2": "istanbul cover -x spec/* -x index.js -x restaurant.js -x schema/* jasmine-node spec" 
   },
   "author": "M Kaszoni",
   "license": "ISC",
   "dependencies": {
     "cheerio": "^0.19.0",
-    "readline-sync": "^1.2.21",
     "request": "^2.67.0",
-    "https": "^1.0.0",
-    "sync-request": "^2.1.0",
-    "csprng": "^0.1.1",
     "restify": "^4.1.1",
-    "xmlbuilder": "^8.2.2",
     "mongoose": "^4.6.7"
   },
   "devDependencies": {

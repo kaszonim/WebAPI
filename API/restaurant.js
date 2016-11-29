@@ -55,12 +55,6 @@ exports.addUser = (request, callback) => {
     }
 }
 
-
-const extractBodyKey = (request, key) => new Promise( (resolve, reject) => {
-	if (request.body === undefined || request.body[key] === undefined) reject(new Error(`missing key ${key} in request body`))
-	resolve(request.body[key])
-})
-
 exports.users = (callback) => {
     persistence.getUsers().then( (response) => {
         if(!response){
@@ -76,5 +70,21 @@ exports.users = (callback) => {
         }
     }).catch( err => {
         return callback(err)
+    })
+}
+
+exports.removeUsers = (request, callback) => {
+    persistence.deleteUsers(request.params.username).then( response => {
+        if(!response) {
+            return callback(new Error('User cannot be deleted'))
+        } else {
+            const cleanData = response.map( element => {
+                return {
+                    username: element.username,
+                    name: element.name
+                }
+            })
+            return callback(null, cleanData)
+        }
     })
 }

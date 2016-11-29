@@ -86,10 +86,20 @@ server.post('/users', function(req, res) {
 		res.end()
 	})
 })
- /*
-server.delete('/users/:id', function(req, res) {
+ 
+server.del('/users/:username', function(req, res) {
 	//TO-DO! delete user from database
-})*/
+	data.addUser(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET, POST')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.created, { user: result })
+		}
+		res.end()
+	})
+})
 
 server.put('/users/:id', function(req, res) {
 	//TO-DO! update user details in database
