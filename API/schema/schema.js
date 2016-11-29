@@ -7,7 +7,7 @@ const db = {
 	pass: 'dbus3r'
 }
 
-mongoose.connect('mongodb://'+db.user+':'+db.pass+'$@ds155747.mlab.com:55747/restaurants')
+mongoose.connect('mongodb://'+db.user+':'+db.pass+'@ds155747.mlab.com:55747/restaurants')
 mongoose.Promise = global.Promise
 const Schema = mongoose.Schema
 

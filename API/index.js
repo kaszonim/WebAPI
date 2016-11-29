@@ -49,14 +49,14 @@ server.get('/restaurants?q=', function(req, res) {
 	})
 })
 
-server.post('/users', function(req, res) {
-	data.addUser(req, (err, data) => {
+server.get('/restaurants/:id', function(req, res) {
+	data.restaurantById(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET, POST')
+		res.setHeader('Allow', 'GET')
 		if (err) {
-			res.send(status.badRequest, {error: err.message})
+			res.send(status.badRequest, { error: err.message })
 		} else {
-			res.send(status.added, {user: data})
+			res.send(status.ok, result)
 		}
 		res.end()
 	})
