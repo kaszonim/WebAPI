@@ -4,6 +4,7 @@ const zomato = require('./modules/zomato')
 const persistence = require('./modules/persistence')
 const url = require('url')
 
+<<<<<<< HEAD
 exports.categories = (callback) => {
     zomato.getCategories().then( (response) => {
         if (response.length === 0) {
@@ -11,6 +12,12 @@ exports.categories = (callback) => {
         } else {
             return callback(null, response)
         }
+=======
+exports.categories = callback => {
+    zomato.getCategories().then( response => {
+        if (response.length === 0) return callback('No categories found')
+        else return callback(null, response)
+>>>>>>> master
     }).catch(err => {
         return callback(err)
     })
@@ -19,13 +26,12 @@ exports.categories = (callback) => {
 exports.restaurants = (request, callback) => {
     const parameters = url.parse(request.url, true)
 
-	zomato.getLocationDetails(parameters.query.q).then( (response) => {
-		zomato.getRestaurants(response.id, response.type).then( (response) => {
-			if (!response.body) {
+	zomato.getLocationDetails(parameters.query.q).then( response => {
+		zomato.getRestaurants(response.id, response.type).then( response => {
+			if (!response) {
                 return callback('No restaurants found')
             } else {
-                console.log(response)
-                return callback(null, response.body)
+                return callback(null, response)
             }
 		})
 	}).catch( err => {
@@ -33,6 +39,7 @@ exports.restaurants = (request, callback) => {
 	})
 }
 
+<<<<<<< HEAD
 exports.addUser = (request, callback) => {
     /*const parameters = url.parse(request.url, true)
     console.log(parameters.query.username)
@@ -87,4 +94,14 @@ exports.removeUsers = (request, callback) => {
             return callback(null, cleanData)
         }
     })
+=======
+exports.restaurantById = (request, callback) => {
+    const id = request.params.id
+
+    zomato.getRestaurantsById(id).then( response => {
+        return callback(null, response)
+    }).catch( err => {
+        return callback(err)
+    })
+>>>>>>> master
 }

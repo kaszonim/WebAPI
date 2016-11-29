@@ -61,6 +61,7 @@ server.get('/restaurants?q=', function(req, res) {
 	})
 })
 
+<<<<<<< HEAD
 server.get('/users', function(req, res) {
 	data.users( (err, result) => {
 		res.setHeader('content-type', 'application/json')
@@ -76,12 +77,20 @@ server.get('/users', function(req, res) {
 
 server.post('/users', function(req, res) {
 	data.addUser(req, (err, result) => {
+=======
+server.get('/restaurants/:id', function(req, res) {
+	data.restaurantById(req, (err, result) => {
+>>>>>>> master
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET, POST')
+		res.setHeader('Allow', 'GET')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
+<<<<<<< HEAD
 			res.send(status.created, { user: result })
+=======
+			res.send(status.ok, result)
+>>>>>>> master
 		}
 		res.end()
 	})

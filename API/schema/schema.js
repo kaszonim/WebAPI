@@ -8,7 +8,11 @@ const db = {
 	pass: 'dbus3r'
 }
 
+<<<<<<< HEAD
 mongoose.connect('mongodb://dbwebapiuser:dbus3r@ds155747.mlab.com:55747/restaurants')
+=======
+mongoose.connect('mongodb://'+db.user+':'+db.pass+'@ds155747.mlab.com:55747/restaurants')
+>>>>>>> master
 mongoose.Promise = global.Promise
 const Schema = mongoose.Schema
 

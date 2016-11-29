@@ -6,7 +6,6 @@
  */
 
 const request = require('request')
-const globals = require('./globals')
 
 const userKey = '53d2f755e44b12d31be6f3db16d397c9'
 const url = 'https://developers.zomato.com/api/v2.1/'
@@ -27,7 +26,6 @@ exports.getCategories = function() {
 				reject(error)
 			} else {
 				const result = JSON.parse(body)
-				console.log(result.categories.length)
 
 				if(result.categories.length === 0){
 					reject(new Error('No categories found'))
@@ -63,7 +61,7 @@ exports.getLocationDetails = function(location) {
 				const result = JSON.parse(body)
 
 				if(result.location_suggestions.length === 0) {
-					reject('No location details found')
+					reject(new Error('No location details found'))
 				} else {
 					const locationDetails = {
 						'id': result.location_suggestions[0].entity_id,
@@ -103,14 +101,17 @@ exports.getRestaurants = function(id, type) {
 			} else {
 				const result = JSON.parse(body)
 
-				if (result.results_found > 0){
+				if (result.results_found > 0) {
 					const restDetails = []
 
 					restDetails.push({
-						'items_shown': result.results_found
+						'items_found': result.results_found,
+						'items_shown': result.results_shown
 					})
 					for(const restaurant in result.restaurants){
 						restDetails.push({
+							'position': restaurant,
+							'id': result.restaurants[restaurant].restaurant.id,	
 							'name': result.restaurants[restaurant].restaurant.name,
 							'location': result.restaurants[restaurant].restaurant.location,
 							'cuisines': result.restaurants[restaurant].restaurant.cuisines,
@@ -123,16 +124,41 @@ exports.getRestaurants = function(id, type) {
 						})
 					}
 
-					resolve({
-						status: globals.status.ok,
-						format: globals.format.json,
-						message: `${result.results_found} restaurants found`,
-						body: restDetails
-					})
+					resolve(restDetails)
 				} else {
 					reject('No restaurants found')
 				}
 			}
 		})
+	})
+}
+
+exports.getRestaurantsById = id => {
+	return new Promise( (resolve, reject) => {
+		if(id === undefined){
+			reject(new Error('Invalid restaurant ID'))
+		} else {
+			const options = {
+				url: `${url}/restaurant?res_id=${id}`,
+				method: 'GET',
+				headers: {
+					'user-key': userKey
+				}
+			}
+
+			request(options, function(error, response, body) {
+				if (error) {
+					reject(error)
+				} else {
+					const result = JSON.parse(body)
+
+					if(result.R.res_id != id){
+						reject(new Error(`Restaurant with ID ${id} cannot be found`))
+					} else {
+						resolve(result)
+					}
+				}
+			})
+		}
 	})
 }
