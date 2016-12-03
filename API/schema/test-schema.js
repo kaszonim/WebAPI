@@ -4,19 +4,19 @@
 const mongoose = require('mongoose')
 const mongo = require('mongodb')
 const db = {
-	user: 'dbwebapiuser',
-	pass: 'dbus3r'
+	user: 'dbTestUser',
+	pass: 'dbt3stus3r'
 }
 
-mongoose.connect('mongodb://'+db.user+':'+db.pass+'@ds155747.mlab.com:55747/restaurants')
+mongoose.connect('mongodb://dbTestUser:dbt3stus3r@ds119548.mlab.com:19548/restaurantstest')
 mongoose.Promise = global.Promise
 const Schema = mongoose.Schema
 
 // create a schema
 const userSchema = new Schema({
-name: String,
-username: String,
-password: String
+	name: String,
+	username: String,
+	password: String
 })
 
 //  create a model using the schema

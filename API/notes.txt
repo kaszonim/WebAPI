@@ -3,3 +3,6 @@ datauser
 git flow 
 
 
+
+
+istanbul cover --include-all-sources jasmine-node spec
