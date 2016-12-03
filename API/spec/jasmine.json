@@ -1,0 +1,9 @@
+{
+	"spec_files": [
+		"persistence-spec.js",
+		"zomato-spec.js"
+	],
+	"helpers": [
+		"helpers/**/*.js"
+	]
+}

@@ -77,6 +77,13 @@ describe('API data persistence', () => {
      })
 
      describe('getUsers', () => {
+        beforeEach( done => {
+            schema.User.remove({}, err => {
+                if (err) expect(true).toBe(false)
+                done()
+            })
+        })
+
         it('should return users', done => {
             persist.getUsers().then( response => {
                 expect(response.length).toBe(1)
@@ -103,6 +110,21 @@ describe('API data persistence', () => {
         it('should delete all users', done => {
             persist.deleteUsers().then( response => {
                 expect(response).toBe('All users removed successfully')
+                schema.User.count({}, (err, count) => {
+					if (err) expect(true).toBe(false)
+					expect(count).toBe(0)
+					done()
+				})
+                done()
+            }).catch( err => {
+                if (err) expect(true).toBe(false)
+                done()
+            })
+        })
+
+        it('should delete one user', done => {
+            persist.deleteUsers('jdoe').then( response => {
+                expect(response).toBe('jdoe deleted successfully')
                 schema.User.count({}, (err, count) => {
 					if (err) expect(true).toBe(false)
 					expect(count).toBe(0)

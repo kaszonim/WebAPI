@@ -18,7 +18,7 @@ exports.createUser = details => new Promise( (resolve, reject) => {
 	}
 })
 
-exports.getUsers = function() {
+exports.getUsers = () =>  {
 	return new Promise( (resolve, reject) => {
 		const result = ''
 		schema.User.find({}, function(err, users) {
@@ -34,9 +34,9 @@ exports.getUsers = function() {
 	})
 }
 
-exports.deleteUsers = function(usernam) {
+exports.deleteUsers = inUsername => {
 	return new Promise( (resolve, reject) => {
-		if(usernam === undefined){
+		if(inUsername === undefined){
 			schema.User.remove(function(err, removed) {
 				if (err) {
 					reject(err)
@@ -48,14 +48,14 @@ exports.deleteUsers = function(usernam) {
 				}
 			})
 		} else {
-			schema.User.remove({}, function(err, removed) {
+			schema.User.remove({ username: inUsername}, function(err, removed) {
 				if (err) {
 					reject(err)
 				}
 				if (removed === 0){
 					reject(new Error('users cannot be deleted'))
 				} else {
-					resolve(removed)
+					resolve(`${inUsername} deleted successfully`)
 				}
 			})
 		}
