@@ -1,6 +1,6 @@
 'use strict'
 
-const schema = require('../schema/schema')
+const schema = require('../schema/test-schema')
 
 exports.createUser = details => new Promise( (resolve, reject) => {
 	if(!details.username || !details.password || !details.name){

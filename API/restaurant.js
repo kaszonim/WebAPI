@@ -4,7 +4,7 @@ const zomato = require('./modules/zomato')
 const persistence = require('./modules/persistence')
 const url = require('url')
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 exports.categories = (callback) => {
     zomato.getCategories().then( (response) => {
         if (response.length === 0) {
@@ -21,7 +21,7 @@ exports.categories = callback => {
     }).catch(err => {
         return callback(err)
     })
-}
+}*/
 
 exports.restaurants = (request, callback) => {
     const parameters = url.parse(request.url, true)
@@ -39,7 +39,6 @@ exports.restaurants = (request, callback) => {
 	})
 }
 
-<<<<<<< HEAD
 exports.addUser = (request, callback) => {
     /*const parameters = url.parse(request.url, true)
     console.log(parameters.query.username)
@@ -94,7 +93,8 @@ exports.removeUsers = (request, callback) => {
             return callback(null, cleanData)
         }
     })
-=======
+}
+
 exports.restaurantById = (request, callback) => {
     const id = request.params.id
 
@@ -103,5 +103,4 @@ exports.restaurantById = (request, callback) => {
     }).catch( err => {
         return callback(err)
     })
->>>>>>> master
 }

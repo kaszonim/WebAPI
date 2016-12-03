@@ -61,7 +61,6 @@ server.get('/restaurants?q=', function(req, res) {
 	})
 })
 
-<<<<<<< HEAD
 server.get('/users', function(req, res) {
 	data.users( (err, result) => {
 		res.setHeader('content-type', 'application/json')
@@ -73,7 +72,7 @@ server.get('/users', function(req, res) {
 			res.send(status.ok, result)
 		}
 	})
-})
+})/*
 
 server.post('/users', function(req, res) {
 	data.addUser(req, (err, result) => {
@@ -94,7 +93,7 @@ server.get('/restaurants/:id', function(req, res) {
 		}
 		res.end()
 	})
-})
+})*/
  
 server.del('/users/:username', function(req, res) {
 	//TO-DO! delete user from database
