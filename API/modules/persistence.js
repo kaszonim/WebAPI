@@ -54,7 +54,11 @@ exports.checkExists = account => new Promise( (resolve, reject) => {
 })
 
 exports.addToFavourites = (user, restaurant) => new Promise( (resolve, reject) => {
-
+	if (user === undefined || restaurant === undefined) reject(new Error('username/restaurant must be provided'))
+	new schema.Restaurant(restaurant).save( (err, restaurant) => {
+		if (err) reject(err)
+		resolve(restaurant)
+	})
 })
 
 exports.deleteFavourite = (user, restaurant) => new Promise( (resolve, reject) => {

@@ -57,6 +57,9 @@ describe('API data persistence', () => {
                         done()
                     })
                     done()
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
+                    done()
                 })
             })
 
@@ -91,7 +94,7 @@ describe('API data persistence', () => {
                     expect(response.length).toBe(1)
                     done()
                 }).catch( err => {
-                    expect(true).toBe(false)
+                    if (err) expect(true).toBe(false)
                     done()
                 })
             })
@@ -148,11 +151,11 @@ describe('API data persistence', () => {
 
             it('should find existing username', done => {
                 persist.checkExists('jdoe').then( () => {
-                expect(true).toBe(true)
-                done()
+                    expect(true).toBe(true)
+                    done()
                 }).catch( err => {
-                if (err) expect(true).toBe(false)
-                done()
+                    if (err) expect(true).toBe(false)
+                    done()
                 })
             })
 
@@ -247,7 +250,7 @@ describe('API data persistence', () => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(err.message).toBe('username must be specified')
+                    expect(err.message).toBe('username/restaurant must be provided')
                     done()
                 })
             })
@@ -257,7 +260,38 @@ describe('API data persistence', () => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(err.message).toBe('restaurant must be specified')
+                    expect(err.message).toBe('username/restaurant must be provided')
+                    done()
+                })
+            })
+
+            it('should add to favourites', done => {
+                 const restaurant = {
+                    'name': 'Akbars',
+                    'location': {
+                        'address': '7 Butts, West Midlands, UK CV1 3',
+                        'locality': 'Coventry',
+                        'city': 'West Midlands',
+                        'city_id': 330,
+                        'latitude': '52.4046430000',
+                        'longitude': '-1.5214160000',
+                        'zipcode': 'CV1 3',
+                        'country_id': 215
+                    },
+                    'cuisines': 'Indian',
+                    rating: {
+                        'value': '3.5',
+                        'rate': 'Good',
+                        'votes': '97'
+                    }
+                }
+
+                persist.addToFavourites('jdoe', restaurant).then( response => {
+                    expect(response.name).toBe('Akbars')
+                    expect(response.rating.value).toBe('3.5')
+                    done()
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
                     done()
                 })
             })
