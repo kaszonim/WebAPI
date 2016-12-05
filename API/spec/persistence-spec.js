@@ -1,7 +1,7 @@
 'use strict'
 
-var persist = require("../modules/persistence")
-var schema = require("../schema/test-schema")
+var persist = require('../modules/persistence')
+var schema = require('../schema/test-schema')
 
 describe('API data persistence', () => {
     describe('users persistence', () => {
@@ -169,7 +169,99 @@ describe('API data persistence', () => {
     })
 
     describe('favourites persistence', () => {
-        describe('addToFavourites', () => {})
+        beforeEach( done => {
+            schema.User.remove({}, err => {
+                if (err) expect(true).toBe(false)
+                const details = {
+                    'name': 'John Doe',
+                    'username': 'jdoe',
+                    'password': 't3st'
+                }
+                new schema.User(details).save( (err, user) => {
+                    if (err) expect(true).toBe(false)
+                    schema.User.count({}, (err, count) => {
+                        if (err) expect(true).toBe(false)
+                        expect(count).toBe(1)
+                        done()
+                    })
+                })
+            })
+
+            schema.Restaurant.remove({}, err => {
+                if (err) expect(true).toBe(false)
+                const restaurant = {
+                    name: 'Cosmos',
+                    location:  {
+                        'address': '36-42 Corporation St, Coventry, UK CV1 1',
+                        'locality': 'Coventry',
+                        'city': 'West Midlands',
+                        'city_id': 330,
+                        'latitude': '52.4094114000',
+                        'longitude': '-1.5140075000',
+                        'zipcode': 'CV1 1',
+                        'country_id': 215
+                    },
+                    cuisines: 'Chinese, Italian',
+                    delivery: false,
+                    rating: {
+                        'value': '3.9',
+                        'rate': 'Good',
+                        'votes': '290'
+                    }
+                }
+
+                new schema.Restaurant(restaurant).save( (err, restaurant) => {
+                    if (err) expect(true).toBe(false)
+                    schema.Restaurant.count({}, (err, count) => {
+                        if (err) expect(true).toBe(false)
+                        expect(count).toBe(1)
+                        done()
+                    })
+                })
+            })
+        })
+
+        describe('addToFavourites', () => {
+            it('should error if no user provided', done => {
+                const restaurant = {
+                    'name': 'Akbars',
+                    'location': {
+                        'address': '7 Butts, West Midlands, UK CV1 3',
+                        'locality': 'Coventry',
+                        'city': 'West Midlands',
+                        'city_id': 330,
+                        'latitude': '52.4046430000',
+                        'longitude': '-1.5214160000',
+                        'zipcode': 'CV1 3',
+                        'country_id': 215
+                    },
+                    'cuisines': 'Indian',
+                    rating: {
+                        'value': '3.5',
+                        'rate': 'Good',
+                        'votes': '97'
+                    }
+                }
+
+                persist.addToFavourites(restaurant).then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username must be specified')
+                    done()
+                })
+            })
+
+            it('should fail if no restaurant provided', done => {
+                persist.addToFavourites('jdoe').then(response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('restaurant must be specified')
+                    done()
+                })
+            })
+        })
 
         describe('deleteFavourites', () => {})
 
