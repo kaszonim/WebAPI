@@ -172,6 +172,7 @@ describe('API data persistence', () => {
     })
 
     describe('favourites persistence', () => {
+        let restaurantId
         beforeEach( done => {
             schema.User.remove({}, err => {
                 if (err) expect(true).toBe(false)
@@ -215,6 +216,8 @@ describe('API data persistence', () => {
 
                 new schema.Restaurant(restaurant).save( (err, restaurant) => {
                     if (err) expect(true).toBe(false)
+                    restaurantId = restaurant._id
+
                     schema.Restaurant.count({}, (err, count) => {
                         if (err) expect(true).toBe(false)
                         expect(count).toBe(1)
@@ -297,7 +300,37 @@ describe('API data persistence', () => {
             })
         })
 
-        describe('deleteFavourites', () => {})
+        describe('deleteFavourites', () => {
+            it('should fail if no params provided', done => {
+                persist.deleteFavourite().then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/restaurantId must be provided')
+                    done()
+                }) 
+            })
+
+            it('should fail if no user provided', done => {
+                persist.deleteFavourite(restaurantId).then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/restaurantId must be provided')
+                    done()
+                })
+            })
+
+            it('should fail if no restaurantId provided', done => {
+                persist.deleteFavourite('jdoe').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/restaurantId must be provided')
+                    done()
+                })
+            })
+        })
 
         describe('deleteFavourite', () => {})
 
