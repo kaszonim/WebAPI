@@ -52,3 +52,23 @@ exports.checkExists = account => new Promise( (resolve, reject) => {
 		resolve()
 	})
 })
+
+exports.addToFavourites = (user, restaurant) => new Promise( (resolve, reject) => {
+
+})
+
+exports.deleteFavourite = (user, restaurant) => new Promise( (resolve, reject) => {
+
+})
+
+exports.deleteFavourites = user => new Promise( (resolve, reject) => {
+
+})
+
+exports.updateFavourite = (user, restaurant) => new Promise( (resolve, reject) => {
+
+})
+
+exports.getFavourites = user => new Promise( (resolve, reject) => {
+
+})
