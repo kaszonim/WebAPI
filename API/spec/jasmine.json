@@ -1,5 +1,6 @@
 {
 	"spec_files": [
+		"authentication-spec.js",
 		"persistence-spec.js",
 		"zomato-spec.js"
 	],

@@ -61,7 +61,7 @@ server.get('/restaurants?q=', function(req, res) {
 	})
 })
 
-server.get('/users', function(req, res) {
+/*server.get('/users', function(req, res) {
 	data.users( (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST')
@@ -72,38 +72,31 @@ server.get('/users', function(req, res) {
 			res.send(status.ok, result)
 		}
 	})
-})/*
+})*/
 
-server.post('/users', function(req, res) {
+server.post('/users', (req, res) => {
 	data.addUser(req, (err, result) => {
-=======
-server.get('/restaurants/:id', function(req, res) {
-	data.restaurantById(req, (err, result) => {
->>>>>>> master
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('Allow', 'GET')
+		res.setHeader('accepts', 'GET', 'POST')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
-<<<<<<< HEAD
-			res.send(status.created, { user: result })
-=======
-			res.send(status.ok, result)
->>>>>>> master
+			res.send(status.created, result)
 		}
-		res.end()
 	})
-})*/
+})
+
+/*
  
 server.del('/users/:username', function(req, res) {
 	//TO-DO! delete user from database
-	data.addUser(req, (err, result) => {
+	data.removeUser(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET, POST')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
-			res.send(status.created, { user: result })
+			res.send(status.ok, result)
 		}
 		res.end()
 	})

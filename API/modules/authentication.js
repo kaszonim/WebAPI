@@ -1,6 +1,6 @@
 'use strict'
 
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 exports.getCredentials = request => new Promise( (resolve, reject) => {
 	if (request.authorization === undefined || request.authorization.basic === undefined) {
@@ -15,13 +15,17 @@ exports.getCredentials = request => new Promise( (resolve, reject) => {
 })
 
 exports.hashPassword = credentials => new Promise( (resolve, reject) => {
-  const salt = bcrypt.genSaltSync(10)
+  if (credentials === undefined) reject(new Error('missing credentials'))
+	if (credentials.password === undefined) reject(new Error('missing password'))
+
+	const salt = bcrypt.genSaltSync(10)
   credentials.password = bcrypt.hashSync(credentials.password, salt)
   resolve(credentials)
 })
 
-exports.checkPassword = (provided, stored) => new Promise( (resolve, reject) => {
-  if (!bcrypt.compareSync(provided, stored)) {
+exports.verifyPassword = (provided, stored) => new Promise( (resolve, reject) => {
+  if (provided === undefined || stored === undefined) reject(new Error('missing provided/stored password'))
+	if (!bcrypt.compareSync(provided, stored)) {
 		reject(new Error('invalid password'))
 	}
   resolve()

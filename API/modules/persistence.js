@@ -24,6 +24,14 @@ exports.getUsers = () => new Promise( (resolve, reject) => {
 	})
 })
 
+exports.getUserAccount = credentials => new Promise( (resolve, reject) => {
+	schema.User.find({username: credentials.username}, (err, docs) => {
+		if (err) reject(new Error('database error'))
+		if (docs.length) resolve(docs)
+		reject(new Error(`invalid username`))
+	})
+})
+
 exports.deleteUsers = inUsername => new Promise( (resolve, reject) => {
 	if(inUsername === undefined){
 		schema.User.remove(function(err, removed) {
@@ -38,4 +46,11 @@ exports.deleteUsers = inUsername => new Promise( (resolve, reject) => {
 			resolve(`${inUsername} deleted successfully`)
 		})
 	}
+})
+
+exports.checkExists = account => new Promise( (resolve, reject) => {
+	schema.User.find({username: account.username}, (err, docs) => {
+		if (docs.length) reject(new Error(`username already exists`))
+		resolve()
+	})
 })
