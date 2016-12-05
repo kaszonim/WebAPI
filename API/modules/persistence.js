@@ -10,8 +10,12 @@ exports.createUser = details => new Promise( (resolve, reject) => {
 			if (err) {
 				reject(new Error('error creating account'))
 			}
-			delete user.password
-			resolve(user)
+			const credentails = {
+				id: user._id,
+				name: user.name,
+				username: user.username
+			}
+			resolve(credentails)
 		})
 	}
 })
@@ -32,23 +36,17 @@ exports.getUserAccount = credentials => new Promise( (resolve, reject) => {
 	})
 })
 
-exports.deleteUsers = inUsername => new Promise( (resolve, reject) => {
-	if(inUsername === undefined){
-		schema.User.remove(function(err, removed) {
-			if (err) reject(err)
-			if (removed === 0) reject(new Error('users cannot be deleted'))
-			resolve('All users removed successfully')
-		})
-	} else {
-		schema.User.remove({ username: inUsername}, function(err, removed) {
-			if (err) reject(err)
-			if (removed === 0) reject(new Error('users cannot be deleted'))
-			resolve(`${inUsername} deleted successfully`)
-		})
-	}
+exports.deleteUser = provided => new Promise( (resolve, reject) => {
+	if(provided === undefined) reject(new Error('missing username'))
+	schema.User.remove({ username: provided}, function(err, removed) {
+		if (err) reject(err)
+		if (removed === 0) reject(new Error(`${provided} cannot be deleted`))
+		resolve(`${provided} deleted successfully`)
+	})
 })
 
 exports.checkExists = account => new Promise( (resolve, reject) => {
+	if(account === undefined) reject(new Error('missing username'))
 	schema.User.find({username: account.username}, (err, docs) => {
 		if (docs.length) reject(new Error(`username already exists`))
 		resolve()

@@ -59,7 +59,7 @@ describe('API data persistence', () => {
             })
         })
 
-        it('should fail', done => {
+        it('should fail if error in creating account', done => {
             const details = {
                 'username': 'testuser',
                 'password': 't3stus3r',
@@ -77,12 +77,13 @@ describe('API data persistence', () => {
      })
 
      describe('getUsers', () => {
-        beforeEach( done => {
+         //Needs to be uncommented to be able to test the fail bit
+      /*  beforeEach( done => {
             schema.User.remove({}, err => {
                 if (err) expect(true).toBe(false)
                 done()
             })
-        })
+        })*/
 
         it('should return users', done => {
             persist.getUsers().then( response => {
@@ -99,7 +100,6 @@ describe('API data persistence', () => {
                 if (response) expect(true).toBe(false)
                 done()
             }).catch( err => {
-                //console.log(err)
                 expect(err.message).toBe('no users found')
                 done()
             })
@@ -107,23 +107,19 @@ describe('API data persistence', () => {
      })
 
      describe('deleteUsers', () => {
-        it('should delete all users', done => {
-            persist.deleteUsers().then( response => {
-                expect(response).toBe('All users removed successfully')
-                schema.User.count({}, (err, count) => {
-					if (err) expect(true).toBe(false)
-					expect(count).toBe(0)
-					done()
-				})
+         it('should fail on missing username', done => {
+             persist.deleteUser().then( response => {
+                if (response) expect(true).toBe(false)
                 done()
-            }).catch( err => {
-                if (err) expect(true).toBe(false)
-                done()
-            })
-        })
+             }).catch( err => {
+                 expect(err.message).toBe('missing username')
+                 done()
+             })
+         })
+
 
         it('should delete one user', done => {
-            persist.deleteUsers('jdoe').then( response => {
+            persist.deleteUser('jdoe').then( response => {
                 expect(response).toBe('jdoe deleted successfully')
                 schema.User.count({}, (err, count) => {
 					if (err) expect(true).toBe(false)
@@ -136,5 +132,37 @@ describe('API data persistence', () => {
                 done()
             })
         })
+     })
+
+     describe('checkExists', () => {
+         it('should error on missing username', done => {
+             persist.checkExists().then( response => {
+                 if (response) expect(true).toBe(false)
+                 done()
+             }).catch( err => {
+                 expect(err.message).toBe('missing username')
+                 done()
+             })
+         })
+
+         it('should find existing username', done => {
+             persist.checkExists('jdoe').then( () => {
+                expect(true).toBe(true)
+                done()
+             }).catch( err => {
+                if (err) expect(true).toBe(false)
+                done()
+             })
+         })
+
+         it('should fail to find the username', done => {
+             persist.checkExists('jdoe2').then( response => {
+                 if (response) expect(true).toBe(false)
+                 done()
+             }).catch( err => {
+                 expect(err.message).toBe('username already exists')
+                 done()
+             })
+         })
      })
 })
