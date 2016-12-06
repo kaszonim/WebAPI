@@ -61,8 +61,13 @@ exports.addToFavourites = (user, restaurant) => new Promise( (resolve, reject) =
 	})
 })
 
-exports.deleteFavourite = (user, restaurant) => new Promise( (resolve, reject) => {
-
+exports.deleteFavourite = (user, restaurantId) => new Promise( (resolve, reject) => {
+	if (user === undefined || restaurantId === undefined) reject(new Error('username/restaurantId must be provided'))
+	schema.Restaurant.remove({_id: restaurantId}, (err, removed) => {
+		if (err) reject(err)
+		if (removed === 0) reject(new Error(`${restaurantId} cannot be deleted from favourites`))
+		resolve(`${restaurantId} has been deleted successfully`)
+	})
 })
 
 exports.deleteFavourites = user => new Promise( (resolve, reject) => {

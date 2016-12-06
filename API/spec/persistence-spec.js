@@ -258,7 +258,7 @@ describe('API data persistence', () => {
                 })
             })
 
-            it('should fail if no restaurant provided', done => {
+            it('should error if no restaurant provided', done => {
                 persist.addToFavourites('jdoe').then(response => {
                     if (response) expect(true).toBe(false)
                     done()
@@ -292,6 +292,11 @@ describe('API data persistence', () => {
                 persist.addToFavourites('jdoe', restaurant).then( response => {
                     expect(response.name).toBe('Akbars')
                     expect(response.rating.value).toBe('3.5')
+                    schema.Restaurant.count({}, (err, count) => {
+                        if (err) expect(true).toBe(false)
+                        expect(count).toBe(2)
+                        done()
+                    })
                     done()
                 }).catch( err => {
                     if (err) expect(true).toBe(false)
@@ -300,7 +305,7 @@ describe('API data persistence', () => {
             })
         })
 
-        describe('deleteFavourites', () => {
+        describe('deleteFavourite', () => {
             it('should fail if no params provided', done => {
                 persist.deleteFavourite().then( response => {
                     if (response) expect(true).toBe(false)
@@ -330,9 +335,34 @@ describe('API data persistence', () => {
                     done()
                 })
             })
+
+            it('should delete from favourites', done => {
+                persist.deleteFavourite('jdoe', restaurantId).then( response => {
+                    expect(response).toBe(`${restaurantId} has been deleted successfully`)
+                    schema.Restaurant.count({}, (err, count) => {
+                        if (err) expect(true).toBe(false)
+                        expect(count).toBe(0)
+                        done()
+                    })
+                    done()
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
+                    done()
+                })
+            })
+
+            it('should fail if problem with deletion', done => {
+                persist.deleteFavourite('jdoe', restaurantId).then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe(`${restaurantId} cannot be deleted from favourites`)
+                    done()
+                })
+            })
         })
 
-        describe('deleteFavourite', () => {})
+        describe('deleteFavourites', () => {})
 
         describe('updateFavourite', () => {})
 
