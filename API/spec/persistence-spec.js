@@ -350,13 +350,8 @@ describe('API data persistence', () => {
 
             it('should not find any to delete for user', done => {
                 persist.deleteFavourite('mkasz', restaurantId).then( response => {
-                    console.log(response)
-                    //expect(response).toBe(`${restaurantId} has been deleted successfully`)
-                    schema.Restaurant.count({}, (err, count) => {
-                        if (err) expect(true).toBe(false)
-                        expect(count).toBe(1)
-                        done()
-                    })
+                    if (response) expect(true).toBe(false)
+                    done()
                 }).catch( err => {
                     expect(err.message).toBe(`${restaurantId} cannot be found in users favourites`)
                     done()
@@ -364,7 +359,40 @@ describe('API data persistence', () => {
             })
         })
 
-        describe('deleteFavourites', () => {})
+        describe('deleteFavourites', () => {
+            it('should error if no user provided', done => {
+                persist.deleteFavourites().then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('user must be provided')
+                    done()
+                })
+            })
+
+            it('should error if user does not have favourites', done => {
+                persist.deleteFavourites('mkasz').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('mkasz does not have any favourites')
+                    done()
+                })
+            })
+
+            it('should delete all users favourites', done => {
+                persist.deleteFavourites('jdoe').then( response => {
+                    schema.Restaurant.count({}, (err, count) => {
+                        if (err) expect(true).toBe(false)
+                        expect(count).toBe(0)
+                        done()
+                    })
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
+                    done()
+                })
+            })
+        })
 
         describe('updateFavourite', () => {})
 
