@@ -55,6 +55,7 @@ exports.checkExists = account => new Promise( (resolve, reject) => {
 
 exports.addToFavourites = (user, restaurant) => new Promise( (resolve, reject) => {
 	if (user === undefined || restaurant === undefined) reject(new Error('username/restaurant must be provided'))
+	restaurant.username = user
 	new schema.Restaurant(restaurant).save( (err, restaurant) => {
 		if (err) reject(err)
 		resolve(restaurant)
@@ -63,15 +64,15 @@ exports.addToFavourites = (user, restaurant) => new Promise( (resolve, reject) =
 
 exports.deleteFavourite = (user, restaurantId) => new Promise( (resolve, reject) => {
 	if (user === undefined || restaurantId === undefined) reject(new Error('username/restaurantId must be provided'))
-	schema.Restaurant.remove({_id: restaurantId}, (err, removed) => {
+	schema.Restaurant.remove({_id: restaurantId, username: user}, (err, removed) => {
 		if (err) reject(err)
-		if (removed === 0) reject(new Error(`${restaurantId} cannot be deleted from favourites`))
+		if (removed.result.n === 0) reject(new Error(`${restaurantId} cannot be found in users favourites`))
 		resolve(`${restaurantId} has been deleted successfully`)
 	})
 })
 
 exports.deleteFavourites = user => new Promise( (resolve, reject) => {
-
+	
 })
 
 exports.updateFavourite = (user, restaurant) => new Promise( (resolve, reject) => {

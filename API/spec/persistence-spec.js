@@ -56,7 +56,6 @@ describe('API data persistence', () => {
                         expect(count).toBe(2)
                         done()
                     })
-                    done()
                 }).catch( err => {
                     if (err) expect(true).toBe(false)
                     done()
@@ -130,7 +129,6 @@ describe('API data persistence', () => {
                         expect(count).toBe(0)
                         done()
                     })
-                    done()
                 }).catch( err => {
                     if (err) expect(true).toBe(false)
                     done()
@@ -177,9 +175,9 @@ describe('API data persistence', () => {
             schema.User.remove({}, err => {
                 if (err) expect(true).toBe(false)
                 const details = {
-                    'name': 'John Doe',
-                    'username': 'jdoe',
-                    'password': 't3st'
+                    name: 'John Doe',
+                    username: 'jdoe',
+                    password: 't3st'
                 }
                 new schema.User(details).save( (err, user) => {
                     if (err) expect(true).toBe(false)
@@ -194,23 +192,24 @@ describe('API data persistence', () => {
             schema.Restaurant.remove({}, err => {
                 if (err) expect(true).toBe(false)
                 const restaurant = {
+                    username: 'jdoe',
                     name: 'Cosmos',
                     location:  {
-                        'address': '36-42 Corporation St, Coventry, UK CV1 1',
-                        'locality': 'Coventry',
-                        'city': 'West Midlands',
-                        'city_id': 330,
-                        'latitude': '52.4094114000',
-                        'longitude': '-1.5140075000',
-                        'zipcode': 'CV1 1',
-                        'country_id': 215
+                        address: '36-42 Corporation St, Coventry, UK CV1 1',
+                        locality: 'Coventry',
+                        city: 'West Midlands',
+                        city_id: 330,
+                        latitude: '52.4094114000',
+                        longitude: '-1.5140075000',
+                        zipcode: 'CV1 1',
+                        country_id: 215
                     },
                     cuisines: 'Chinese, Italian',
                     delivery: false,
                     rating: {
-                        'value': '3.9',
-                        'rate': 'Good',
-                        'votes': '290'
+                        value: '3.9',
+                        rate: 'Good',
+                        votes: '290'
                     }
                 }
 
@@ -230,22 +229,22 @@ describe('API data persistence', () => {
         describe('addToFavourites', () => {
             it('should error if no user provided', done => {
                 const restaurant = {
-                    'name': 'Akbars',
-                    'location': {
-                        'address': '7 Butts, West Midlands, UK CV1 3',
-                        'locality': 'Coventry',
-                        'city': 'West Midlands',
-                        'city_id': 330,
-                        'latitude': '52.4046430000',
-                        'longitude': '-1.5214160000',
-                        'zipcode': 'CV1 3',
-                        'country_id': 215
+                    name: 'Akbars',
+                    location: {
+                        address: '7 Butts, West Midlands, UK CV1 3',
+                        locality: 'Coventry',
+                        city: 'West Midlands',
+                        city_id: 330,
+                        latitude: '52.4046430000',
+                        longitude: '-1.5214160000',
+                        zipcode: 'CV1 3',
+                        country_id: 215
                     },
-                    'cuisines': 'Indian',
+                    cuisines: 'Indian',
                     rating: {
-                        'value': '3.5',
-                        'rate': 'Good',
-                        'votes': '97'
+                        value: '3.5',
+                        rate: 'Good',
+                        votes: '97'
                     }
                 }
 
@@ -270,22 +269,22 @@ describe('API data persistence', () => {
 
             it('should add to favourites', done => {
                  const restaurant = {
-                    'name': 'Akbars',
-                    'location': {
-                        'address': '7 Butts, West Midlands, UK CV1 3',
-                        'locality': 'Coventry',
-                        'city': 'West Midlands',
-                        'city_id': 330,
-                        'latitude': '52.4046430000',
-                        'longitude': '-1.5214160000',
-                        'zipcode': 'CV1 3',
-                        'country_id': 215
+                    name: 'Akbars',
+                    location: {
+                        address: '7 Butts, West Midlands, UK CV1 3',
+                        locality: 'Coventry',
+                        city: 'West Midlands',
+                        city_id: 330,
+                        latitude: '52.4046430000',
+                        longitude: '-1.5214160000',
+                        zipcode: 'CV1 3',
+                        country_id: 215
                     },
-                    'cuisines': 'Indian',
+                    cuisines: 'Indian',
                     rating: {
-                        'value': '3.5',
-                        'rate': 'Good',
-                        'votes': '97'
+                        value: '3.5',
+                        rate: 'Good',
+                        votes: '97'
                     }
                 }
 
@@ -297,7 +296,6 @@ describe('API data persistence', () => {
                         expect(count).toBe(2)
                         done()
                     })
-                    done()
                 }).catch( err => {
                     if (err) expect(true).toBe(false)
                     done()
@@ -338,25 +336,29 @@ describe('API data persistence', () => {
 
             it('should delete from favourites', done => {
                 persist.deleteFavourite('jdoe', restaurantId).then( response => {
-                    expect(response).toBe(`${restaurantId} has been deleted successfully`)
+                    //expect(response).toBe(`${restaurantId} has been deleted successfully`)
                     schema.Restaurant.count({}, (err, count) => {
                         if (err) expect(true).toBe(false)
                         expect(count).toBe(0)
                         done()
                     })
-                    done()
                 }).catch( err => {
                     if (err) expect(true).toBe(false)
                     done()
                 })
             })
 
-            it('should fail if problem with deletion', done => {
-                persist.deleteFavourite('jdoe', restaurantId).then( response => {
-                    if (response) expect(true).toBe(false)
-                    done()
+            it('should not find any to delete for user', done => {
+                persist.deleteFavourite('mkasz', restaurantId).then( response => {
+                    console.log(response)
+                    //expect(response).toBe(`${restaurantId} has been deleted successfully`)
+                    schema.Restaurant.count({}, (err, count) => {
+                        if (err) expect(true).toBe(false)
+                        expect(count).toBe(1)
+                        done()
+                    })
                 }).catch( err => {
-                    expect(err.message).toBe(`${restaurantId} cannot be deleted from favourites`)
+                    expect(err.message).toBe(`${restaurantId} cannot be found in users favourites`)
                     done()
                 })
             })
