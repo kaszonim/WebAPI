@@ -28,19 +28,19 @@ exports.getUsers = () => new Promise( (resolve, reject) => {
 	})
 })
 
-exports.getUserAccount = credentials => new Promise( (resolve, reject) => {
+/*exports.getUserAccount = credentials => new Promise( (resolve, reject) => {
 	schema.User.find({username: credentials.username}, (err, docs) => {
 		if (err) reject(new Error('database error'))
 		if (docs.length) resolve(docs)
 		reject(new Error(`invalid username`))
 	})
-})
+})*/
 
 exports.deleteUser = provided => new Promise( (resolve, reject) => {
 	if(provided === undefined) reject(new Error('missing username'))
 	schema.User.remove({ username: provided}, function(err, removed) {
 		if (err) reject(err)
-		if (removed === 0) reject(new Error(`${provided} cannot be deleted`))
+		if (removed.result.n === 0) reject(new Error(`${provided} cannot be deleted`))
 		resolve(`${provided} deleted successfully`)
 	})
 })

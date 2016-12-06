@@ -109,7 +109,7 @@ describe('API data persistence', () => {
             })
         })
 
-        describe('deleteUsers', () => {
+        describe('deleteUser', () => {
             it('should fail on missing username', done => {
                 persist.deleteUser().then( response => {
                 if (response) expect(true).toBe(false)
@@ -131,6 +131,16 @@ describe('API data persistence', () => {
                     })
                 }).catch( err => {
                     if (err) expect(true).toBe(false)
+                    done()
+                })
+            })
+
+            it('should error if incorrect user', done => {
+                persist.deleteUser('mkasz').then( response => {
+                if (response) expect(true).toBe(false)
+                done()
+                }).catch( err => {
+                    expect(err.message).toBe('mkasz cannot be deleted')
                     done()
                 })
             })
