@@ -80,8 +80,9 @@ exports.deleteFavourites = user => new Promise( (resolve, reject) => {
 	})
 })
 
-exports.updateFavourite = (user, restaurant) => new Promise( (resolve, reject) => {
-
+exports.updateFavourite = (user, updateDetails) => new Promise( (resolve, reject) => {
+	//What would you actually update?
+	//Should I add a new field something like favourites order - which can be update?
 })
 
 exports.getFavourites = user => new Promise( (resolve, reject) => {

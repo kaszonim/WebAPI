@@ -430,10 +430,26 @@ describe('API data persistence', () => {
             })
         })
 
-        describe('updateFavourite', () => {
-            it('should error if no user provided', done => {})
+        xdescribe('updateFavourite', () => {
+            it('should error if no user provided', done => {
+                persist.updateFavourite().then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/update details must be provided')
+                    done()
+                }) 
+            })
 
-            it('should error if no restaurant provided', done => {})
+            it('should error if no update details provided', done => {
+                persist.updateFavourite().then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/restaurantId must be provided')
+                    done()
+                }) 
+            })
 
             it('should error if no params provided', done => {})
 
