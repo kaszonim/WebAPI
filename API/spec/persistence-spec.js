@@ -390,7 +390,6 @@ describe('API data persistence', () => {
                     schema.Restaurant.count({}, (err, count) => {
                         if (err) expect(true).toBe(false)
                         expect(count).toBe(2)
-                        console.log(count)
                         done()
                     })
                 })
@@ -431,7 +430,17 @@ describe('API data persistence', () => {
             })
         })
 
-        describe('updateFavourite', () => {})
+        describe('updateFavourite', () => {
+            it('should error if no user provided', done => {})
+
+            it('should error if no restaurant provided', done => {})
+
+            it('should error if no params provided', done => {})
+
+            it('should error if restaurant not found for user', done => {})
+
+            it('should successfully update restaurant for user', done => {})
+        })
 
         describe('getFavourites', () => {})
     })
