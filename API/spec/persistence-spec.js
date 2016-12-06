@@ -464,14 +464,14 @@ describe('API data persistence', () => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(err.message).toBe('username be provided')
+                    expect(err.message).toBe('username must be provided')
                     done()
                 }) 
             })
 
             it('should return message if favourites not found for user', done => {
-                persist.getFavourites('jdoe').then( response => {
-                    expect(response).toBe(`no favourites found for user jdoe`)
+                persist.getFavourites('mkasz').then( response => {
+                    expect(response.message).toBe(`no favourites found for user mkasz`)
                     done()
                 }).catch( err => {
                     if (err) expect(true).toBe(false)
@@ -482,6 +482,8 @@ describe('API data persistence', () => {
             it('should return successfully user favourites', done => {
                 persist.getFavourites('jdoe').then( response => {
                     expect(response.length).toBe(1)
+                    expect(response[0].name).toBe('Cosmos')
+                    expect(response[0].username).toBe('jdoe')
                     done()
                 }).catch( err => {
                     if (err) expect(true).toBe(false)

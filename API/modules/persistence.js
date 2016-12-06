@@ -86,5 +86,10 @@ exports.updateFavourite = (user, updateDetails) => new Promise( (resolve, reject
 })
 
 exports.getFavourites = user => new Promise( (resolve, reject) => {
-
+	if (user === undefined) reject(new Error('username must be provided'))
+	schema.Restaurant.find({username: user}, (err, found) => {
+		if (err) reject(err)
+		if (found.length === 0) resolve({ message: `no favourites found for user ${user}` })
+		resolve(found)
+	})
 })
