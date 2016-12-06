@@ -458,7 +458,38 @@ describe('API data persistence', () => {
             it('should successfully update restaurant for user', done => {})
         })
 
-        describe('getFavourites', () => {})
+        describe('getFavourites', () => {
+            it('should error if no user provided', done => {
+                persist.getFavourites().then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username be provided')
+                    done()
+                }) 
+            })
+
+            it('should return message if favourites not found for user', done => {
+                persist.getFavourites('jdoe').then( response => {
+                    expect(response).toBe(`no favourites found for user jdoe`)
+                    done()
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
+                    done()
+                }) 
+            })
+
+            it('should return successfully user favourites', done => {
+                persist.getFavourites('jdoe').then( response => {
+                    expect(response.length).toBe(1)
+                    done()
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
+                    done()
+                }) 
+            })
+
+        })
     })
     
 })
