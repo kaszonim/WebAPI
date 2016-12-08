@@ -13,9 +13,9 @@ exports.categories = callback => {
 }
 
 exports.restaurants = (request, callback) => {
-    const parameters = url.parse(request.url, true)
+    //const parameters = url.parse(request.url, true)
 
-    zomato.getLocationDetails(parameters.query.q).then( response => {
+    zomato.getLocationDetails('coventry').then( response => {
         zomato.getRestaurants(response.id, response.type).then( response => {
             if (!response) {
                 return callback('No restaurants found')
@@ -24,6 +24,16 @@ exports.restaurants = (request, callback) => {
             }
         })
     }).catch( err => callback(err) )
+}
+
+exports.restaurantById = (request, callback) => {
+    const id = request.params.id
+
+    zomato.getRestaurantsById(id).then( response => {
+        return callback(null, response)
+    }).catch( err => {
+        return callback(err)
+    })
 }
 
 exports.addUser = (request, callback) => {
@@ -40,8 +50,7 @@ exports.addUser = (request, callback) => {
     .catch( err => callback(err) )
 }
 
-exports.users = (callback) => {
-
+exports.getUsers = (callback) => {
     persistence.getUsers().then( (response) => {
         if(!response){
             return callback('No users found')
@@ -58,17 +67,6 @@ exports.users = (callback) => {
 }
 
 exports.removeUser = (request, callback) => {
-    /*auth.getCredentials(request).then( credentials => {
-        const hash = credentials.password
-        console.log('hash: ' + hash)
-        console.log('password' + this.password)
-		return auth.checkPassword(this.password, hash)
-    }).then( () => {
-        return persistence.deleteUsers(credentials.username)
-    }).then( (response) => callback(null, response) )
-    .catch( err => callback(err))
-
-*/
     let user
 
     auth.getCredentials(request).then( credentials => {
@@ -76,40 +74,14 @@ exports.removeUser = (request, callback) => {
             this.password = credentials.password
             return auth.hashPassword(credentials)
         }).then( credentials => {
-            console.log(credentials)
-            return persistence.getUserAccount(credentials)
+            return persistence.getUsers(credentials)
         }).then( account => {
             user = account
-            console.log(account)
             const hash = account[0].password
-            return auth.checkPassword(this.password, hash)
+            return auth.verifyPassword(this.password, hash)
         }).then( () => {
-            return persistence.deleteUsers(user.username)
+            return persistence.deleteUser(user.username)
         }).then( response => {
             return callback(response)
         }).catch( err => callback(null, err))
-
-    /*persistence.deleteUsers(request.params.username).then( response => {
-        if(!response) {
-            return callback(new Error('User cannot be deleted'))
-        } else {
-            const cleanData = response.map( element => {
-                return {
-                    username: element.username,
-                    name: element.name
-                }
-            })
-            return callback(null, cleanData)
-        }
-    })*/
-}
-
-exports.restaurantById = (request, callback) => {
-    const id = request.params.id
-
-    zomato.getRestaurantsById(id).then( response => {
-        return callback(null, response)
-    }).catch( err => {
-        return callback(err)
-    })
 }

@@ -4,11 +4,12 @@
   "description": "Simple API to manipulate restaurants",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "node_modules/.bin/jasmine-node spec --color --verbose --autotest --watch .",
-     "coverage": "./node_modules/.bin/istanbul cover -x spec/* -x index.js -x restaurant.js -x schema/* node_modules/.bin/jasmine-node spec",
-     "cover-persistence": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine ./spec/persistence-spec.js ./modules/persistence.js",
-     "cover-zomato": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine ./spec/zomato-spec.js ./modules/zomato.js",
-     "cover-auth": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine ./spec/authentication-spec.js ./modules/authentication.js" 
+    "coverage": "./node_modules/.bin/istanbul cover -x spec/* -x index.js -x restaurant.js -x schema/* node_modules/.bin/jasmine-node spec",
+    "cover-persistence": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine ./spec/persistence-spec.js ./modules/persistence.js",
+    "cover-zomato": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine ./spec/zomato-spec.js ./modules/zomato.js",
+    "cover-auth": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine ./spec/authentication-spec.js ./modules/authentication.js" 
   },
   "author": "M Kaszoni",
   "license": "ISC",

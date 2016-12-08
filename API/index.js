@@ -23,7 +23,7 @@ const status = {
 
 const defaultPort = 8080
 
-server.get('/categories', function(req, res) {
+server.get('/categories', (req, res) => {
 	data.categories( (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('Allow', 'GET')
@@ -36,7 +36,7 @@ server.get('/categories', function(req, res) {
 	})
 })
 
-server.get('/cuisines?loc=', function(req, res) {
+server.get('/cuisines?loc=', (req, res) => {
 	data.cuisines(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET')
@@ -48,7 +48,7 @@ server.get('/cuisines?loc=', function(req, res) {
 	})
 })
 
-server.get('/restaurants?q=', function(req, res) {
+server.get('/restaurants', (req, res) => {
 	data.restaurants(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET')
@@ -61,18 +61,30 @@ server.get('/restaurants?q=', function(req, res) {
 	})
 })
 
-/*server.get('/users', function(req, res) {
-	data.users( (err, result) => {
+server.get('/restaurants/:id', (req, res) => {
+	data.restaurantById(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('Allow', 'GET')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+		res.end()
+	})
+})
+
+server.get('/users', (req, res) => {
+	data.getUsers( (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
-			console.log(result)
 			res.send(status.ok, result)
 		}
 	})
-})*/
+})
 
 server.post('/users', (req, res) => {
 	data.addUser(req, (err, result) => {
@@ -83,6 +95,19 @@ server.post('/users', (req, res) => {
 		} else {
 			res.send(status.created, result)
 		}
+	})
+})
+
+server.del('/users/:username', (req, res) => {
+	data.removeUser(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET, POST')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+		res.end()
 	})
 })
 
