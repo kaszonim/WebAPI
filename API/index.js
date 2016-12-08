@@ -107,7 +107,7 @@ server.del('/users/:username', (req, res) => {
 	})
 })
 
-server.get('/favourites', function(req, res) {
+server.get('/favourites', (req, res) => {
 	data.userFavourites(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
@@ -119,7 +119,7 @@ server.get('/favourites', function(req, res) {
 	})
 })
 
-server.post('/favourites', function(req, res) {
+server.post('/favourites', (req, res) => {
 	data.addUserFavourites(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
@@ -131,7 +131,7 @@ server.post('/favourites', function(req, res) {
 	})
 })
 
-server.del('/favourites', function(req, res) {
+server.del('/favourites', (req, res) => {
 	data.deleteAllUserFavourites(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
