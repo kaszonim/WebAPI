@@ -108,9 +108,9 @@ server.del('/users/:username', (req, res) => {
 })
 
 server.get('/favourites', function(req, res) {
-	data.favourites(req, (err, result) => {
+	data.userFavourites(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET', 'POST')
+		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
@@ -120,9 +120,9 @@ server.get('/favourites', function(req, res) {
 })
 
 server.post('/favourites', function(req, res) {
-	data.getUsers(req, (err, result) => {
+	data.addUserFavourites(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET', 'POST')
+		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
@@ -130,13 +130,36 @@ server.post('/favourites', function(req, res) {
 		}
 	})
 })
+
+server.del('/favourites', function(req, res) {
+	data.deleteAllUserFavourites(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+	})
+})
+
+server.del('/favourites/:id', (req, res) => {
+	data.deleteUserFavourite(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+	})
+})
+
 /*
-server.delete('/favourites/:id', function(req, res) {
-	//TO-DO! delete from favourites list based on ID
+server.put('/favourites/:id', function(req, res) {
+	//TO-DO! update favourite
 })*/
 
-
-//need more functions for PUT and DELETE
 
 const port = process.env.PORT || defaultPort
 
