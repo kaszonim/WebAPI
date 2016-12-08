@@ -28,13 +28,13 @@ exports.getUsers = () => new Promise( (resolve, reject) => {
 	})
 })
 
-/*exports.getUserAccount = credentials => new Promise( (resolve, reject) => {
-	schema.User.find({username: credentials.username}, (err, docs) => {
-		if (err) reject(new Error('database error'))
-		if (docs.length) resolve(docs)
-		reject(new Error(`invalid username`))
+exports.getUser = credentails => new Promise( (resolve, reject) => {
+	schema.User.find({username: credentails.username}, function(err, user) {
+		if (err) reject(err)
+		if (user.length === 0) reject(new Error('no user found'))
+		resolve(user)
 	})
-})*/
+})
 
 exports.deleteUser = provided => new Promise( (resolve, reject) => {
 	if(provided === undefined) reject(new Error('missing username'))

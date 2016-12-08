@@ -36,16 +36,8 @@ server.get('/categories', (req, res) => {
 	})
 })
 
-server.get('/cuisines?loc=', (req, res) => {
-	data.cuisines(req, (err, result) => {
-		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET')
-		if (err) {
-			res.send(status.badRequest, { error: err.message })
-		} else {
-			res.send(status.ok, result)
-		}
-	})
+server.get('/cuisines', (req, res) => {
+
 })
 
 server.get('/restaurants', (req, res) => {
@@ -72,6 +64,10 @@ server.get('/restaurants/:id', (req, res) => {
 		}
 		res.end()
 	})
+})
+
+server.get('/restaurants/loc=&cuisines=&categories=', (req, res) => {
+	
 })
 
 server.get('/users', (req, res) => {
@@ -109,26 +105,6 @@ server.del('/users/:username', (req, res) => {
 		}
 		res.end()
 	})
-})
-
-/*
- 
-server.del('/users/:username', function(req, res) {
-	//TO-DO! delete user from database
-	data.removeUser(req, (err, result) => {
-		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET, POST')
-		if (err) {
-			res.send(status.badRequest, { error: err.message })
-		} else {
-			res.send(status.ok, result)
-		}
-		res.end()
-	})
-})
-
-server.put('/users/:id', function(req, res) {
-	//TO-DO! update user details in database
 })
 
 server.get('/favourites', function(req, res) {

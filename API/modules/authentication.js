@@ -17,7 +17,6 @@ exports.getCredentials = request => new Promise( (resolve, reject) => {
 exports.hashPassword = credentials => new Promise( (resolve, reject) => {
   if (credentials === undefined) reject(new Error('missing credentials'))
 	if (credentials.password === undefined) reject(new Error('missing password'))
-
 	const salt = bcrypt.genSaltSync(10)
   credentials.password = bcrypt.hashSync(credentials.password, salt)
   resolve(credentials)

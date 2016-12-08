@@ -15,6 +15,7 @@ exports.categories = callback => {
 exports.restaurants = (request, callback) => {
     //const parameters = url.parse(request.url, true)
 
+    //By default it will show only restaurants in Coventry
     zomato.getLocationDetails('coventry').then( response => {
         zomato.getRestaurants(response.id, response.type).then( response => {
             if (!response) {
@@ -74,14 +75,14 @@ exports.removeUser = (request, callback) => {
             this.password = credentials.password
             return auth.hashPassword(credentials)
         }).then( credentials => {
-            return persistence.getUsers(credentials)
+            return persistence.getUser(credentials)
         }).then( account => {
-            user = account
+            user = account[0]
             const hash = account[0].password
             return auth.verifyPassword(this.password, hash)
         }).then( () => {
             return persistence.deleteUser(user.username)
         }).then( response => {
-            return callback(response)
-        }).catch( err => callback(null, err))
+            return callback(null, response)
+        }).catch( err => callback(err))
 }
