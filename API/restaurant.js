@@ -14,9 +14,8 @@ exports.categories = callback => {
 }
 
 exports.restaurants = (request, callback) => {
-    const parameters = url.parse(request.url, true)
-
-	zomato.getLocationDetails(parameters.query.q).then( response => {
+    //By default it will only return coventry restaurants
+	zomato.getLocationDetails('coventry').then( response => {
 		zomato.getRestaurants(response.id, response.type).then( response => {
 			if (!response) {
                 return callback('No restaurants found')

@@ -23,7 +23,7 @@ const status = {
 
 const defaultPort = 8080
 
-server.get('/categories', function(req, res) {
+server.get('/categories', (req, res) => {
 	data.categories( (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('Allow', 'GET')
@@ -36,7 +36,7 @@ server.get('/categories', function(req, res) {
 	})
 })
 
-server.get('/restaurants?q=', function(req, res) {
+server.get('/restaurants', (req, res) => {
 	data.restaurants(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('Allow', 'GET')
@@ -49,7 +49,7 @@ server.get('/restaurants?q=', function(req, res) {
 	})
 })
 
-server.get('/restaurants/:id', function(req, res) {
+server.get('/restaurants/:id', (req, res) => {
 	data.restaurantById(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('Allow', 'GET')
@@ -60,6 +60,10 @@ server.get('/restaurants/:id', function(req, res) {
 		}
 		res.end()
 	})
+})
+
+server.get('/restaurants/:query', (req, res) => {
+	
 })
 
 const port = process.env.PORT || defaultPort

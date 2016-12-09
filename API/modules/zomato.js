@@ -53,14 +53,17 @@ exports.getLocationDetails = location => new Promise( (resolve, reject) => {
 		if (error) reject(error)
 		const result = JSON.parse(body)
 
-		if(result.location_suggestions.length === 0) reject(new Error('No location details found'))
-		const locationDetails = {
-			'id': result.location_suggestions[0].entity_id,
-			'type': result.location_suggestions[0].entity_type,
-			'title': result.location_suggestions[0].title
-		}
+		if (result.location_suggestions.length === 0) {
+			reject(new Error('No location details found'))
+		} else {
+			const locationDetails = {
+				'id': result.location_suggestions[0].entity_id,
+				'type': result.location_suggestions[0].entity_type,
+				'title': result.location_suggestions[0].title
+			}
 
-		resolve(locationDetails)
+			resolve(locationDetails)
+		}
 	})
 })
 
@@ -73,42 +76,31 @@ exports.getLocationDetails = location => new Promise( (resolve, reject) => {
  */
 
 exports.getRestaurants = (id, type) => new Promise( (resolve, reject) => {
-	const options = {
-		url: `${url}/search?entity_id=${id}&entity_type=${type}`,
-		method: 'GET',
-		headers: {
-			'user-key': userKey
+	const itemPromises = ['0', '20', '40', '60', '80'].map( start => new Promise( (resolve, reject) => {
+		//const url = `${url}/search?entity_id=${id}&entity_type=${type}&stat=${start}`
+		const options = {
+			url: `${url}/search?entity_id=${id}&entity_type=${type}&start=${start}`,
+			method: 'GET',
+			headers: {
+				'user-key': userKey
+			}
 		}
-	}
 
-	request(options, function(error, response, body) {
-		if (error) reject(error)
-		const result = JSON.parse(body)
-
-		if (result.results_found === 0)	reject(new Error('No restaurants found'))
-		const restDetails = []
-
-		restDetails.push({
-			'items_found': result.results_found,
-			'items_shown': result.results_shown
+		request.get(options, (err, res, body) => {
+			if (err) reject(new Error(`could not get restaurants starting from ${start}`))
+			
+			const result = JSON.parse(body)
+			//console.log(body[0].results_found)
+			resolve(result)
 		})
-		for(const restaurant in result.restaurants){
-			restDetails.push({
-				'position': restaurant,
-				'id': result.restaurants[restaurant].restaurant.id,
-				'name': result.restaurants[restaurant].restaurant.name,
-				'location': result.restaurants[restaurant].restaurant.location,
-				'cuisines': result.restaurants[restaurant].restaurant.cuisines,
-				'delivery': result.restaurants[restaurant].restaurant.has_online_delivery === 0 ? false : true,
-				'rating': {
-					'value': result.restaurants[restaurant].restaurant.user_rating.aggregate_rating,
-					'rate': result.restaurants[restaurant].restaurant.user_rating.rating_text,
-					'votes': result.restaurants[restaurant].restaurant.user_rating.votes
-				}
-			})
-		}
-		resolve(restDetails)
-	})
+	}))
+
+	Promise.all(itemPromises)
+		.then( results => {
+			cleanData(results)
+				.then( response => resolve(response))
+				.catch( err => reject(err))
+		}).catch( err => reject(err))
 })
 
 exports.getRestaurantsById = id => new Promise( (resolve, reject) => {
@@ -124,9 +116,80 @@ exports.getRestaurantsById = id => new Promise( (resolve, reject) => {
 	request(options, function(error, response, body) {
 		if (error) reject(error)
 		const result = JSON.parse(body)
+		console.log(result)
 
-		if(result.R.res_id !== id) reject(new Error(`Restaurant with ID ${id} cannot be found`))
-		resolve(result)
+		if(result.id !== id) reject(new Error(`Restaurant with ID ${id} cannot be found`))
+		
+		const data = {
+			link: `/restaurants/${result.id}`,					
+			id: result.id,
+			name: result.name,
+			location: result.location,
+			cuisines: result.cuisines,
+			table_booking: result.has_table_booking === 0 ? false : true,
+			rating: {
+				value: result.user_rating.aggregate_rating,
+				text: result.user_rating.rating_text,
+				votes: result.user_rating.votes
+			}
+		}
+		resolve(data)
 	})
 })
 
+const cleanData = data  => new Promise((resolve) => {
+	const result = {
+			total: 0,
+			restaurants: []
+		}
+		
+	data.forEach(function(element) {
+		element.restaurants.forEach(rest => {
+			result.restaurants.push({
+				link: `/restaurants/${rest.restaurant.id}`,					
+				id: rest.restaurant.id,
+				name: rest.restaurant.name,
+				location: rest.restaurant.location,
+				cuisines: rest.restaurant.cuisines,
+				table_booking: rest.restaurant.has_table_booking === 0 ? false : true,
+				rating: {
+					value: rest.restaurant.user_rating.aggregate_rating,
+					text: rest.restaurant.user_rating.rating_text,
+					votes: rest.restaurant.user_rating.votes
+				}
+			})
+		})
+	})
+	result.total = result.restaurants.length
+
+	resolve(result)
+})
+
+/*
+exports.getAllRestaurants = (id, type) => new Promise( (resolve, reject) => {
+	const itemPromises = ['0', '20', '40', '60', '80'].map( start => new Promise( (resolve, reject) => {
+		//const url = `${url}/search?entity_id=${id}&entity_type=${type}&stat=${start}`
+		const options = {
+			url: `${url}/search?entity_id=${id}&entity_type=${type}&start=${start}`,
+			method: 'GET',
+			headers: {
+				'user-key': userKey
+			}
+		}
+
+		request.get(options, (err, res, body) => {
+			if (err) reject(new Error(`could not get restaurants starting from ${start}`))
+			
+			const result = JSON.parse(body)
+			//console.log(body[0].results_found)
+			resolve(result)
+		})
+	}))
+
+	Promise.all(itemPromises)
+		.then( results => {
+			cleanData(results)
+				.then( response => resolve(response))
+				.catch( err => reject(err))
+		}).catch( err => reject(err))
+})*/
