@@ -97,9 +97,13 @@ exports.getRestaurants = (id, type) => new Promise( (resolve, reject) => {
 
 	Promise.all(itemPromises)
 		.then( results => {
-			cleanData(results)
-				.then( response => resolve(response))
-				.catch( err => reject(err))
+			if (results[0].results_found === 0) reject(new Error('No restaurants found'))
+
+			cleanData(results).then( response => {
+				if (!response) reject(new Error('No restaurants found'))
+			
+				resolve(response)
+			}).catch( err => reject(err))
 		}).catch( err => reject(err))
 })
 
@@ -116,22 +120,23 @@ exports.getRestaurantsById = id => new Promise( (resolve, reject) => {
 	request(options, function(error, response, body) {
 		if (error) reject(error)
 		const result = JSON.parse(body)
-		console.log(result)
 
-		if(result.id !== id) reject(new Error(`Restaurant with ID ${id} cannot be found`))
-		
+		if(result.R.res_id === 0) reject(new Error(`Restaurant with ID ${id} cannot be found`))		
 		const data = {
-			link: `/restaurants/${result.id}`,					
-			id: result.id,
-			name: result.name,
-			location: result.location,
-			cuisines: result.cuisines,
-			table_booking: result.has_table_booking === 0 ? false : true,
-			rating: {
-				value: result.user_rating.aggregate_rating,
-				text: result.user_rating.rating_text,
-				votes: result.user_rating.votes
-			}
+			total: result.length,
+			restaurants: [{
+				link: `/restaurants/${result.id}`,					
+				id: result.id,
+				name: result.name,
+				location: result.location,
+				cuisines: result.cuisines,
+				table_booking: result.has_table_booking === 0 ? false : true,
+				rating: {
+					value: result.user_rating.aggregate_rating,
+					text: result.user_rating.rating_text,
+					votes: result.user_rating.votes
+				}
+			}]
 		}
 		resolve(data)
 	})

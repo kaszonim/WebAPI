@@ -3,7 +3,7 @@
 var zomato = require("../modules/zomato")
 
 describe('Restaurant API', () => {
-	xdescribe('getCategories', () => {
+	describe('getCategories', () => {
 		it('should return results', done => {
 			zomato.getCategories().then( (response) => {
 				expect(response.length).toBe(14)
@@ -25,7 +25,7 @@ describe('Restaurant API', () => {
 		})
 	})
 
-	xdescribe('getLocationDetails', () => {
+	describe('getLocationDetails', () => {
 		it('should find results', done => {
 			zomato.getLocationDetails('coventry').then( response => {
 				expect(response.id).toBe(94264)
@@ -46,13 +46,12 @@ describe('Restaurant API', () => {
 				done()
 			})
 		})
-
 	})
 
-	xdescribe('getRestaurants', () => {
+	describe('getRestaurants', () => {
 		it('should return restaurants', done => {
 			zomato.getRestaurants(94264, 'zone').then( result => {
-				expect(result[0].items_found).toBe(179)
+				expect(result.total).toBe(100)
 				done()
 			}).catch( err => {
 				if (err) expect(true).toBe(false)
@@ -79,34 +78,12 @@ describe('Restaurant API', () => {
 				done()
 			})
 		})
-		
-		it('should return full response body', done => {
-			zomato.getRestaurants(94264, 'zone').then( result => {
-				expect(result[0].items_shown).toBe(result[0].items_found)
-				done()
-			}).catch( err => {
-				if (err) expect(true).toBe(false)
-				done()
-			})
-		})
 	})
 
-	describe('getAllRestaurants', () => {
-		it('please work!', done => {
-			zomato.getAllRestaurants(94264, 'zone').then( result => {
-				done()
-			}).catch( err => {
-				console.log(err.message)
-				done()
-			})
-		})
-	})
-
-	xdescribe('getRestaurantsById', () => {
+	describe('getRestaurantsById', () => {
 		it('should return restaurant', done => {
-			zomato.getRestaurantsById(16681615).then( result => {
-				expect(result.name).toBe('Cosmos')
-				console.log(result)
+			zomato.getRestaurantsById('16681615').then( result => {
+				expect(result.restaurants[0].name).toBe('Cosmos')
 				done()
 			}).catch( err => {
 				if (err) expect(true).toBe(false)
