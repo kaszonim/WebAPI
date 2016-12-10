@@ -2,7 +2,6 @@
 'use strict'
 
 const data = require('./restaurant')
-const url = require('url')
 const restify = require('restify')
 const server = restify.createServer()
 

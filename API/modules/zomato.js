@@ -12,9 +12,10 @@ const url = 'https://developers.zomato.com/api/v2.1/'
 
 /**
  * Returns all categories found as an object.
- * @returns {Object} The object containing the categories.
+ * @returns {Object} The object containing the total and categories array.
  * @throws  {Error} No categories found.
  */
+
 exports.getCategories = () => new Promise( (resolve, reject) => {
 	const options = {
 		url: `${url}/categories`,
@@ -74,7 +75,7 @@ exports.getLocationDetails = location => new Promise( (resolve, reject) => {
  * Returns restaurants in for specified entity id and type.
  * @param   {string} id - The location id to retrieve.
  * @param	{string} type - The location type to retrieve.
- * @returns {Object} The object of restaurants found.
+ * @returns {Object} The object containing total and array of restaurants found.
  * @throws  {Error} No restaurants found.
  */
 
@@ -91,9 +92,8 @@ exports.getRestaurants = (id, type, catId, sort, order) => new Promise( (resolve
 
 		request.get(options, (err, res, body) => {
 			if (err) reject(new Error(`could not get restaurants starting from ${start}`))
-			
 			const result = JSON.parse(body)
-			//console.log(body[0].results_found)
+
 			resolve(result)
 		})
 	}))
@@ -104,11 +104,17 @@ exports.getRestaurants = (id, type, catId, sort, order) => new Promise( (resolve
 
 			cleanRestaurantData(results).then( response => {
 				if (!response) reject(new Error('No restaurants found'))
-			
 				resolve(response)
 			}).catch( err => reject(err))
 		}).catch( err => reject(err))
 })
+
+/**
+ * Returns restaurant for specified id.
+ * @param   {string} id - The restaurant id to retrieve.
+ * @returns {Object} Restaurant object.
+ * @throws  {Error} Restaurant with ID ${id} cannot be found.
+ */
 
 exports.getRestaurantsById = id => new Promise( (resolve, reject) => {
 	if(id === undefined) reject(new Error('Invalid restaurant ID'))
@@ -124,9 +130,9 @@ exports.getRestaurantsById = id => new Promise( (resolve, reject) => {
 		if (error) reject(error)
 		const result = JSON.parse(body)
 
-		if(result.R.res_id === 0) reject(new Error(`Restaurant with ID ${id} cannot be found`))		
+		if(result.R.res_id === 0) reject(new Error(`Restaurant with ID ${id} cannot be found`))
 		const data = {
-			link: `/restaurants/${result.id}`,					
+			link: `/restaurants/${result.id}`,
 			id: result.id,
 			name: result.name,
 			location: {
@@ -145,21 +151,22 @@ exports.getRestaurantsById = id => new Promise( (resolve, reject) => {
 				votes: result.user_rating.votes
 			}
 		}
+
 		resolve(data)
 	})
 })
 
-const cleanRestaurantData = data  => new Promise((resolve) => {
+const cleanRestaurantData = data => new Promise( (resolve, reject) => {
 	try {
 		const result = {
-				total: 0,
-				restaurants: []
-			}
-			
+			total: 0,
+			restaurants: []
+		}
+
 		data.forEach(function(element) {
 			element.restaurants.forEach(rest => {
 				result.restaurants.push({
-					link: `/restaurants/${rest.restaurant.id}`,					
+					link: `/restaurants/${rest.restaurant.id}`,
 					id: rest.restaurant.id,
 					name: rest.restaurant.name,
 					location: {
@@ -189,7 +196,7 @@ const cleanRestaurantData = data  => new Promise((resolve) => {
 })
 
 const cleanCategoryData = data => new Promise( (resolve, reject) => {
-	try {	
+	try {
 		const result = {
 			total: 0,
 			categories: []
@@ -197,7 +204,7 @@ const cleanCategoryData = data => new Promise( (resolve, reject) => {
 
 		data.forEach(function(element) {
 			result.categories.push({
-				link: `/categories/${element.categories.id}`,					
+				link: `/categories/${element.categories.id}`,
 				id: element.categories.id,
 				name: element.categories.name
 			})
