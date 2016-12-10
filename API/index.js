@@ -2,7 +2,6 @@
 'use strict'
 
 const data = require('./restaurant')
-const url = require('url')
 const restify = require('restify')
 const server = restify.createServer()
 
@@ -23,7 +22,7 @@ const status = {
 
 const defaultPort = 8080
 
-server.get('/categories', function(req, res) {
+server.get('/categories', (req, res) => {
 	data.categories( (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('Allow', 'GET')
@@ -36,19 +35,20 @@ server.get('/categories', function(req, res) {
 	})
 })
 
-server.get('/cuisines?loc=', function(req, res) {
-	data.cuisines(req, (err, result) => {
+server.get('/categories/:id', (req, res) => {
+	data.categoryById(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET')
+		res.setHeader('Allow', 'GET')
 		if (err) {
-			res.send(status.badRequest, { error: err.message })
+			res.send(status.badRequest, {error: err.message})
 		} else {
 			res.send(status.ok, result)
 		}
+		res.end()
 	})
 })
 
-server.get('/restaurants?q=', function(req, res) {
+server.get('/restaurants', (req, res) => {
 	data.restaurants(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET')
@@ -58,6 +58,19 @@ server.get('/restaurants?q=', function(req, res) {
 			res.send(status.ok, result)
 		}
 		res.end()
+	})
+})
+
+server.get('/restaurants/:id', (req, res) => {
+	data.restaurantById(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			console.log(result)
+			res.send(status.ok, result)
+		}
 	})
 })
 
