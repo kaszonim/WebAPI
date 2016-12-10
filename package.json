@@ -1,0 +1,32 @@
+{
+  "name": "restaurant",
+  "version": "1.0.0",
+  "description": "Simple API to manipulate restaurants",
+  "main": "index.js",
+  "scripts": {    
+    "start": "node API/index.js",
+    "test": "node_modules/.bin/jasmine-node spec --color --verbose --autotest --watch .",
+    "coverage": "./node_modules/.bin/istanbul cover -x spec/* -x index.js -x restaurant.js -x schema/* node_modules/.bin/jasmine-node spec",
+    "cover-persistence": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine ./spec/persistence-spec.js ./modules/persistence.js",
+    "cover-zomato": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine ./spec/zomato-spec.js ./modules/zomato.js",
+    "cover-auth": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine ./spec/authentication-spec.js ./modules/authentication.js" 
+  },
+  "author": "M Kaszoni",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "mongoose": "^4.6.7",
+    "node-persist": "0.0.8",
+    "request": "^2.67.0",
+    "restify": "^4.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.0",
+    "forever": "^0.15.2",
+    "frisby": "^0.8.5",
+    "istanbul": "^0.4.5",
+    "jasmine-node": "^1.14.5",
+    "jasmine": "^2.5.2",
+    "jsdoc": "^3.4.2"
+  }
+}
