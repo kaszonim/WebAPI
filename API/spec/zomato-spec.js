@@ -6,7 +6,7 @@ describe('Restaurant API', () => {
 	describe('getCategories', () => {
 		it('should return results', done => {
 			zomato.getCategories().then( (response) => {
-				expect(response.length).toBe(14)
+				expect(response.total).toBe(14)
 				done()
 			}).catch( err => {
 				if (err) expect(true).toBe(false)
@@ -83,7 +83,7 @@ describe('Restaurant API', () => {
 	describe('getRestaurantsById', () => {
 		it('should return restaurant', done => {
 			zomato.getRestaurantsById('16681615').then( result => {
-				expect(result.restaurants[0].name).toBe('Cosmos')
+				expect(result.name).toBe('Cosmos')
 				done()
 			}).catch( err => {
 				if (err) expect(true).toBe(false)

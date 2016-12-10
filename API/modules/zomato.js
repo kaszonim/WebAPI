@@ -29,7 +29,10 @@ exports.getCategories = () => new Promise( (resolve, reject) => {
 		const result = JSON.parse(body)
 
 		if(result.categories.length === 0) reject(new Error('No categories found'))
-		resolve(result.categories)
+		cleanCategoryData(result.categories).then( response => {
+			if (!response) reject(new Error('No categories found'))
+			resolve(response)
+		}).catch( err => reject(err))
 	})
 })
 
@@ -75,11 +78,11 @@ exports.getLocationDetails = location => new Promise( (resolve, reject) => {
  * @throws  {Error} No restaurants found.
  */
 
-exports.getRestaurants = (id, type) => new Promise( (resolve, reject) => {
+exports.getRestaurants = (id, type, catId, sort, order) => new Promise( (resolve, reject) => {
 	const itemPromises = ['0', '20', '40', '60', '80'].map( start => new Promise( (resolve, reject) => {
 		//const url = `${url}/search?entity_id=${id}&entity_type=${type}&stat=${start}`
 		const options = {
-			url: `${url}/search?entity_id=${id}&entity_type=${type}&start=${start}`,
+			url: `${url}/search?entity_id=${id}&entity_type=${type}&start=${start}&category=${catId}&sort=${sort}&order=${order}`,
 			method: 'GET',
 			headers: {
 				'user-key': userKey
@@ -99,7 +102,7 @@ exports.getRestaurants = (id, type) => new Promise( (resolve, reject) => {
 		.then( results => {
 			if (results[0].results_found === 0) reject(new Error('No restaurants found'))
 
-			cleanData(results).then( response => {
+			cleanRestaurantData(results).then( response => {
 				if (!response) reject(new Error('No restaurants found'))
 			
 				resolve(response)
@@ -123,78 +126,86 @@ exports.getRestaurantsById = id => new Promise( (resolve, reject) => {
 
 		if(result.R.res_id === 0) reject(new Error(`Restaurant with ID ${id} cannot be found`))		
 		const data = {
-			total: result.length,
-			restaurants: [{
-				link: `/restaurants/${result.id}`,					
-				id: result.id,
-				name: result.name,
-				location: result.location,
-				cuisines: result.cuisines,
-				table_booking: result.has_table_booking === 0 ? false : true,
-				rating: {
-					value: result.user_rating.aggregate_rating,
-					text: result.user_rating.rating_text,
-					votes: result.user_rating.votes
-				}
-			}]
+			link: `/restaurants/${result.id}`,					
+			id: result.id,
+			name: result.name,
+			location: {
+				address: result.location.address,
+				locality: result.location.locality,
+				city: result.location.city,
+				postcode: result.location.zipcode
+			},
+			cuisines: result.cuisines,
+			table_booking: result.has_table_booking === 0 ? 'No' : 'Yes',
+			average_cost: result.average_cost_for_two,
+			currency: result.currency,
+			rating: {
+				value: result.user_rating.aggregate_rating,
+				text: result.user_rating.rating_text,
+				votes: result.user_rating.votes
+			}
 		}
 		resolve(data)
 	})
 })
 
-const cleanData = data  => new Promise((resolve) => {
-	const result = {
-			total: 0,
-			restaurants: []
-		}
-		
-	data.forEach(function(element) {
-		element.restaurants.forEach(rest => {
-			result.restaurants.push({
-				link: `/restaurants/${rest.restaurant.id}`,					
-				id: rest.restaurant.id,
-				name: rest.restaurant.name,
-				location: rest.restaurant.location,
-				cuisines: rest.restaurant.cuisines,
-				table_booking: rest.restaurant.has_table_booking === 0 ? false : true,
-				rating: {
-					value: rest.restaurant.user_rating.aggregate_rating,
-					text: rest.restaurant.user_rating.rating_text,
-					votes: rest.restaurant.user_rating.votes
-				}
+const cleanRestaurantData = data  => new Promise((resolve) => {
+	try {
+		const result = {
+				total: 0,
+				restaurants: []
+			}
+			
+		data.forEach(function(element) {
+			element.restaurants.forEach(rest => {
+				result.restaurants.push({
+					link: `/restaurants/${rest.restaurant.id}`,					
+					id: rest.restaurant.id,
+					name: rest.restaurant.name,
+					location: {
+						address: rest.restaurant.location.address,
+						locality: rest.restaurant.location.locality,
+						city: rest.restaurant.location.city,
+						postcode: rest.restaurant.location.zipcode
+					},
+					cuisines: rest.restaurant.cuisines,
+					table_booking: rest.restaurant.has_table_booking === 0 ? 'No' : 'Yes',
+					average_cost: rest.restaurant.average_cost_for_two,
+					currency: rest.restaurant.currency,
+					rating: {
+						value: rest.restaurant.user_rating.aggregate_rating,
+						text: rest.restaurant.user_rating.rating_text,
+						votes: rest.restaurant.user_rating.votes
+					}
+				})
 			})
 		})
-	})
-	result.total = result.restaurants.length
+		result.total = result.restaurants.length
 
-	resolve(result)
+		resolve(result)
+	} catch (err) {
+		reject(err)
+	}
 })
 
-/*
-exports.getAllRestaurants = (id, type) => new Promise( (resolve, reject) => {
-	const itemPromises = ['0', '20', '40', '60', '80'].map( start => new Promise( (resolve, reject) => {
-		//const url = `${url}/search?entity_id=${id}&entity_type=${type}&stat=${start}`
-		const options = {
-			url: `${url}/search?entity_id=${id}&entity_type=${type}&start=${start}`,
-			method: 'GET',
-			headers: {
-				'user-key': userKey
-			}
+const cleanCategoryData = data => new Promise( (resolve, reject) => {
+	try {	
+		const result = {
+			total: 0,
+			categories: []
 		}
 
-		request.get(options, (err, res, body) => {
-			if (err) reject(new Error(`could not get restaurants starting from ${start}`))
-			
-			const result = JSON.parse(body)
-			//console.log(body[0].results_found)
-			resolve(result)
+		data.forEach(function(element) {
+			result.categories.push({
+				link: `/categories/${element.categories.id}`,					
+				id: element.categories.id,
+				name: element.categories.name
+			})
 		})
-	}))
+		result.total = result.categories.length
 
-	Promise.all(itemPromises)
-		.then( results => {
-			cleanData(results)
-				.then( response => resolve(response))
-				.catch( err => reject(err))
-		}).catch( err => reject(err))
-})*/
+		resolve(result)
+	} catch (err) {
+		reject(err)
+	}
+})

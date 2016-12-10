@@ -36,6 +36,19 @@ server.get('/categories', (req, res) => {
 	})
 })
 
+server.get('/categories/:id', (req, res) => {
+	data.categoryById(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('Allow', 'GET')
+		if (err) {
+			res.send(status.badRequest, {error: err.message})
+		} else {
+			res.send(status.ok, result)
+		}
+		res.end()
+	})
+})
+
 server.get('/restaurants', (req, res) => {
 	data.restaurants(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
@@ -62,9 +75,18 @@ server.get('/restaurants/:id', (req, res) => {
 	})
 })
 
-server.get('/restaurants/:query', (req, res) => {
-	
-})
+/*server.get('/restaurants?q=', (req, res) => {
+	data.searchRestaurants(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('Allow', 'GET')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+		res.end()
+	})
+})*/
 
 const port = process.env.PORT || defaultPort
 
