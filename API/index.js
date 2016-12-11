@@ -2,7 +2,6 @@
 'use strict'
 
 const data = require('./restaurant')
-const url = require('url')
 const restify = require('restify')
 const server = restify.createServer()
 
@@ -36,16 +35,25 @@ server.get('/categories', (req, res) => {
 	})
 })
 
-server.get('/cuisines', (req, res) => {
-
+server.get('/categories/:id', (req, res) => {
+	data.categoryById(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('Allow', 'GET')
+		if (err) {
+			res.send(status.badRequest, {error: err.message})
+		} else {
+			res.send(status.ok, result)
+		}
+		res.end()
+	})
 })
 
 server.get('/restaurants', (req, res) => {
 	data.restaurants(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET')
+		res.setHeader('Allow', 'GET')
 		if (err) {
-			res.send(status.badRequest, { error: err.message })
+			res.send(status.badRequest, {error: err.message})
 		} else {
 			res.send(status.ok, result)
 		}
@@ -66,17 +74,14 @@ server.get('/restaurants/:id', (req, res) => {
 	})
 })
 
-server.get('/restaurants/loc=&cuisines=&categories=', (req, res) => {
-	
-})
-
 server.get('/users', (req, res) => {
 	data.getUsers( (err, result) => {
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET', 'POST')
+		res.setHeader('accepts', 'GET')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
+			console.log(result)
 			res.send(status.ok, result)
 		}
 	})
@@ -105,6 +110,12 @@ server.del('/users/:username', (req, res) => {
 		}
 		res.end()
 	})
+})
+
+server.put('/users/:username', (req, res) => {
+	/*TO-DO! 
+		Update user name
+	*/
 })
 
 server.get('/favourites', (req, res) => {
@@ -159,7 +170,6 @@ server.del('/favourites/:id', (req, res) => {
 server.put('/favourites/:id', function(req, res) {
 	//TO-DO! update favourite
 })*/
-
 
 const port = process.env.PORT || defaultPort
 

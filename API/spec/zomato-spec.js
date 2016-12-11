@@ -1,41 +1,49 @@
 'use strict'
 
-/*istanbul ignore next*/
-/* global expect */
 
-var data = require("../modules/zomato")
+const zomato = require('../modules/zomato')
 
 describe('Restaurant API', () => {
 	describe('getCategories', () => {
 		it('should return results', done => {
-			data.getCategories().then( (response) => {
-				expect(response.length).toBeGreaterThan(0)
+			zomato.getCategories().then( (response) => {
+				expect(response.total).toBe(14)
+				expect(response.categories[0].name).toBe('Delivery')
+				done()
+			}).catch( err => {
+				if (err) expect(true).toBe(false)
 				done()
 			})
 		})
 
 		it('should error if no results found', done => {
-			data.getCategories().then( response => {
-				expect(true).toBe(false)
+			zomato.getCategories().then( response => {
+				if (response) expect(true).toBe(false)
 				done()
-			}).catch ( err => {
+			}).catch( err => {
 				expect(err.message).toBe('No categories found')
-				done() 
+				done()
 			})
 		})
 	})
 
 	describe('getLocationDetails', () => {
 		it('should find results', done => {
-			data.getLocationDetails('coventry').then( response => {
+			zomato.getLocationDetails('coventry').then( response => {
 				expect(response.id).toBe(94264)
 				expect(response.type).toBe('zone')
 				done()
+			}).catch( err => {
+				if (err) expect(true).toBe(false)
+				done()
 			})
 		})
-		
+
 		it('should not find any location details', done => {
-			data.getLocationDetails('query').catch( err => {
+			zomato.getLocationDetails('query').then( response => {
+				if (response) expect(true).toBe(false)
+				done()
+			}).catch( err => {
 				expect(err.message).toBe('No location details found')
 				done()
 			})
@@ -44,28 +52,31 @@ describe('Restaurant API', () => {
 
 	describe('getRestaurants', () => {
 		it('should return restaurants', done => {
-			data.getRestaurants(94264, 'zone').then( result => {
-				expect(result[0].items_found).toBe(179)
+			zomato.getRestaurants(94264, 'zone').then( response => {
+				expect(response.total).toBe(100)
+				done()
+			}).catch( err => {
+				if (err) expect(true).toBe(false)
 				done()
 			})
 		})
-		
+
 		it('should not find restaurants for wrong type', done => {
-			data.getRestaurants(94264, 'city').then( result => {
-				expect(true).toBe(false)
+			zomato.getRestaurants(94264, 'city').then( response => {
+				if (response) expect(true).toBe(false)
 				done()
-			}, (err) => {
-				expect(err).toBe('No restaurants found')
+			}).catch( err => {
+				expect(err.message).toBe('No restaurants found')
 				done()
 			})
 		})
-		
+
 		it('should not find restaurants for wrong id', done => {
-			data.getRestaurants(1251, 'zone').then( result => {
-				expect(result).toBe('')
+			zomato.getRestaurants(1251, 'zone').then( response => {
+				if (response) expect(true).toBe(false)
 				done()
-			}, (err) => {
-				expect(err).toBe('No restaurants found')
+			}).catch( err => {
+				expect(err.message).toBe('No restaurants found')
 				done()
 			})
 		})
@@ -73,22 +84,31 @@ describe('Restaurant API', () => {
 
 	describe('getRestaurantsById', () => {
 		it('should return restaurant', done => {
-			data.getRestaurantsById(16681615).then( result => {
-				expect(result.name).toBe('Cosmos')
+			zomato.getRestaurantsById('16681615').then( response => {
+				expect(response.name).toBe('Cosmos')
+				done()
+			}).catch( err => {
+				if (err) expect(true).toBe(false)
 				done()
 			})
 		})
 
 		it('should not return for invalid id', done => {
-			data.getRestaurantsById().catch( err => {
+			zomato.getRestaurantsById().then( response => {
+				if (response) expect(true).toBe(false)
+				done()
+			}).catch( err => {
 				expect(err.message).toBe('Invalid restaurant ID')
 				done()
 			})
 		})
 
 		it('should return no results', done => {
-			data.getRestaurantsById(10000000).catch( err => {
+			zomato.getRestaurantsById(10000000).catch( err => {
 				expect(err.message).toBe('Restaurant with ID 10000000 cannot be found')
+				done()
+			}).catch( err => {
+				if (err) expect(true).toBe(false)
 				done()
 			})
 		})
