@@ -146,9 +146,9 @@ describe('API data persistence', () => {
             })
         })
 
-        describe('checkExists', () => {
+        describe('checkUserExists', () => {
             it('should error on missing username', done => {
-                persist.checkExists().then( response => {
+                persist.checkUserExists().then( response => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
@@ -158,7 +158,7 @@ describe('API data persistence', () => {
             })
 
             it('should find existing username', done => {
-                persist.checkExists('jdoe').then( () => {
+                persist.checkUserExists('jdoe').then( () => {
                     expect(true).toBe(true)
                     done()
                 }).catch( err => {
@@ -168,7 +168,7 @@ describe('API data persistence', () => {
             })
 
             it('should fail to find the username', done => {
-                persist.checkExists('jdoe2').then( response => {
+                persist.checkUserExists('jdoe2').then( response => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
@@ -180,7 +180,6 @@ describe('API data persistence', () => {
     })
 
     describe('favourites persistence', () => {
-        let restaurantId
         beforeEach( done => {
             schema.User.remove({}, err => {
                 if (err) expect(true).toBe(false)
@@ -203,19 +202,18 @@ describe('API data persistence', () => {
                 if (err) expect(true).toBe(false)
                 const restaurant = {
                     username: 'jdoe',
+                    id: '16681615',
                     name: 'Cosmos',
                     location:  {
                         address: '36-42 Corporation St, Coventry, UK CV1 1',
                         locality: 'Coventry',
                         city: 'West Midlands',
-                        city_id: 330,
-                        latitude: '52.4094114000',
-                        longitude: '-1.5140075000',
-                        zipcode: 'CV1 1',
-                        country_id: 215
+                        postcode: 'CV1 1'
                     },
                     cuisines: 'Chinese, Italian',
-                    delivery: false,
+                    table_booking: 'No',
+                    average_cost: 12,
+                    currency: '£',
                     rating: {
                         value: '3.9',
                         rate: 'Good',
@@ -225,8 +223,6 @@ describe('API data persistence', () => {
 
                 new schema.Restaurant(restaurant).save( (err, restaurant) => {
                     if (err) expect(true).toBe(false)
-                    restaurantId = restaurant._id
-
                     schema.Restaurant.count({}, (err, count) => {
                         if (err) expect(true).toBe(false)
                         expect(count).toBe(1)
@@ -236,21 +232,63 @@ describe('API data persistence', () => {
             })
         })
 
+        describe('checkFavouriteExists', () => {
+            it('should error on missing username', done => {
+                persist.checkFavouriteExists('16681615').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/restaurantId must be provided')
+                    done()
+                })
+            })
+
+            it('should error on missing restaurantId', done => {
+                persist.checkFavouriteExists('jdoe').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/restaurantId must be provided')
+                    done()
+                })
+            })
+
+            it('should error on existing restaurant', done => {
+                persist.checkFavouriteExists('jdoe', '16681615').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('restaurant already exists in the favourites list')
+                    done()
+                })
+            })
+
+            it('should not find restaurant', done => {
+                persist.checkFavouriteExists('jdoe', '16681617').then( () => {
+                    expect(true).toBe(true)
+                    done()
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
+                    done()
+                })
+            })
+        })
+
         describe('addToFavourites', () => {
             it('should error if no user provided', done => {
                 const restaurant = {
+                    id: '16680585',
                     name: 'Akbars',
                     location: {
                         address: '7 Butts, West Midlands, UK CV1 3',
                         locality: 'Coventry',
                         city: 'West Midlands',
-                        city_id: 330,
-                        latitude: '52.4046430000',
-                        longitude: '-1.5214160000',
-                        zipcode: 'CV1 3',
-                        country_id: 215
+                        postcode: 'CV1 3'
                     },
                     cuisines: 'Indian',
+                    table_booking: 'No',
+                    average_cost: 12,
+                    currency: '£',
                     rating: {
                         value: '3.5',
                         rate: 'Good',
@@ -279,18 +317,18 @@ describe('API data persistence', () => {
 
             it('should add to favourites', done => {
                  const restaurant = {
+                    id: '16680585',
                     name: 'Akbars',
                     location: {
                         address: '7 Butts, West Midlands, UK CV1 3',
                         locality: 'Coventry',
                         city: 'West Midlands',
-                        city_id: 330,
-                        latitude: '52.4046430000',
-                        longitude: '-1.5214160000',
-                        zipcode: 'CV1 3',
-                        country_id: 215
+                        postcode: 'CV1 3'
                     },
                     cuisines: 'Indian',
+                    table_booking: 'No',
+                    average_cost: 12,
+                    currency: '£',
                     rating: {
                         value: '3.5',
                         rate: 'Good',
@@ -325,7 +363,7 @@ describe('API data persistence', () => {
             })
 
             it('should fail if no user provided', done => {
-                persist.deleteFavourite(restaurantId).then( response => {
+                persist.deleteFavourite(16680585).then( response => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
@@ -345,8 +383,7 @@ describe('API data persistence', () => {
             })
 
             it('should delete from favourites', done => {
-                persist.deleteFavourite('jdoe', restaurantId).then( response => {
-                    //expect(response).toBe(`${restaurantId} has been deleted successfully`)
+                persist.deleteFavourite('jdoe', '16681615').then( response => {
                     schema.Restaurant.count({}, (err, count) => {
                         if (err) expect(true).toBe(false)
                         expect(count).toBe(0)
@@ -359,11 +396,11 @@ describe('API data persistence', () => {
             })
 
             it('should not find any to delete for user', done => {
-                persist.deleteFavourite('mkasz', restaurantId).then( response => {
+                persist.deleteFavourite('mkasz', '16680585').then( response => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(err.message).toBe(`${restaurantId} cannot be found in users favourites`)
+                    expect(err.message).toBe('16680585 cannot be found in users favourites')
                     done()
                 })
             })
@@ -373,19 +410,18 @@ describe('API data persistence', () => {
             beforeEach( done => {
                 const restaurant = {
                     username: 'jdoe',
+                    id: '16682100',
                     name: 'Nandos',
                     location:  {
                         address: '36-42 Corporation St, Coventry, UK CV1 1',
                         locality: 'Coventry',
                         city: 'West Midlands',
-                        city_id: 330,
-                        latitude: '52.4094114000',
-                        longitude: '-1.5140075000',
-                        zipcode: 'CV1 1',
-                        country_id: 215
+                        postcode: 'CV1 1',
                     },
-                    cuisines: 'Chinese, Italian',
-                    delivery: false,
+                    cuisines: 'Chiken, Grill',
+                    table_booking: 'No',
+                    average_cost: 12,
+                    currency: '£',
                     rating: {
                         value: '3.9',
                         rate: 'Good',
@@ -395,8 +431,6 @@ describe('API data persistence', () => {
 
                 new schema.Restaurant(restaurant).save( (err, restaurant) => {
                     if (err) expect(true).toBe(false)
-                    restaurantId = restaurant._id
-
                     schema.Restaurant.count({}, (err, count) => {
                         if (err) expect(true).toBe(false)
                         expect(count).toBe(2)
@@ -491,9 +525,8 @@ describe('API data persistence', () => {
 
             it('should return successfully user favourites', done => {
                 persist.getFavourites('jdoe').then( response => {
-                    expect(response.length).toBe(1)
-                    expect(response[0].name).toBe('Cosmos')
-                    expect(response[0].username).toBe('jdoe')
+                    expect(response.total).toBe(1)
+                    expect(response.restaurants[0].name).toBe('Cosmos')
                     done()
                 }).catch( err => {
                     if (err) expect(true).toBe(false)

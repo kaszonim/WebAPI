@@ -10,12 +10,11 @@ exports.createUser = details => new Promise( (resolve, reject) => {
 			if (err) {
 				reject(new Error('error creating account'))
 			}
-			const credentails = {
+			resolve({
 				id: user._id,
 				name: user.name,
 				username: user.username
-			}
-			resolve(credentails)
+			})
 		})
 	}
 })
@@ -45,7 +44,7 @@ exports.deleteUser = provided => new Promise( (resolve, reject) => {
 	})
 })
 
-exports.checkExists = account => new Promise( (resolve, reject) => {
+exports.checkUserExists = account => new Promise( (resolve, reject) => {
 	if(account === undefined) reject(new Error('missing username'))
 	schema.User.find({username: account.username}, (err, docs) => {
 		if (docs.length) reject(new Error(`username already exists`))
@@ -58,13 +57,17 @@ exports.addToFavourites = (username, restaurant) => new Promise( (resolve, rejec
 	restaurant.username = username
 	new schema.Restaurant(restaurant).save( (err, restaurant) => {
 		if (err) reject(err)
+		restaurant.__v = undefined
+		restaurant._id = undefined
+		restaurant.username = undefined
+
 		resolve(restaurant)
 	})
 })
 
 exports.deleteFavourite = (username, restaurantId) => new Promise( (resolve, reject) => {
 	if (username === undefined || restaurantId === undefined) reject(new Error('username/restaurantId must be provided'))
-	schema.Restaurant.remove({_id: restaurantId, username: username}, (err, removed) => {
+	schema.Restaurant.remove({id: restaurantId, username: username}, (err, removed) => {
 		if (err) reject(err)
 		if (removed.result.n === 0) reject(new Error(`${restaurantId} cannot be found in users favourites`))
 		resolve(`${restaurantId} has been deleted successfully`)
@@ -80,6 +83,14 @@ exports.deleteFavourites = username => new Promise( (resolve, reject) => {
 	})
 })
 
+exports.checkFavouriteExists = (username, restaurantId) => new Promise( (resolve, reject) => {
+	if(username === undefined || restaurantId === undefined) reject(new Error('username/restaurantId must be provided'))
+	schema.Restaurant.find({id: restaurantId, username: username}, (err, docs) => {
+		if (docs.length) reject(new Error('restaurant already exists in the favourites list'))
+		resolve()
+	})
+})
+
 exports.updateFavourite = (username, updateDetails) => new Promise( (resolve, reject) => {
 	//What would you actually update?
 	//Should I add a new field something like favourites order - which can be update?
@@ -87,9 +98,23 @@ exports.updateFavourite = (username, updateDetails) => new Promise( (resolve, re
 
 exports.getFavourites = username => new Promise( (resolve, reject) => {
 	if (username === undefined) reject(new Error('username must be provided'))
+	const favourites = {
+		total: 0,
+		restaurants: []
+	}
+
 	schema.Restaurant.find({username: username}, (err, found) => {
 		if (err) reject(err)
 		if (found.length === 0) resolve({ message: `no favourites found for user ${username}` })
-		resolve(found)
+		
+		found.forEach(element => {
+			element.__v = undefined
+			element._id = undefined
+			element.username = undefined
+		}, this);
+		favourites.total = found.length
+		favourites.restaurants = found
+		
+		resolve(favourites)
 	})
 })

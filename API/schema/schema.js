@@ -25,11 +25,15 @@ exports.User = mongoose.model('User', userSchema)
 //  create a schema
 const restaurantSchema = new Schema({
 	username: String,
+	id: String,
 	name: String,
 	location: Object,
 	cusisines: String,
-	delivery: Boolean,
-	rating: Object
+	table_booking: String,
+	average_cost: Number,
+	currency: String,
+	rating: Object,
+	comments: String
 })
 
 // create a model using the schema

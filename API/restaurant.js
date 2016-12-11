@@ -69,7 +69,7 @@ exports.addUser = (request, callback) => {
     auth.getCredentials(request).then( credentials => auth.hashPassword(credentials))
     .then( credentials => {
         data = credentials
-        return persistence.checkExists(credentials)
+        return persistence.checkUserExists(credentials)
     }).then( () => {
         data.name = request.body['name']
         return persistence.createUser(data)
@@ -149,8 +149,16 @@ exports.addUserFavourites = (request, callback) => {
             return auth.verifyPassword(this.password, hash)
         }).then( () => {
             if(!request.body) return callback('invalid request body')
-            restaurant = request.body
-            return persistence.addToFavourites(user.username, restaurant)
+            const restaurantId = request.body.id
+
+            return zomato.getRestaurantsById(restaurantId)
+        }).then( response => {
+            restaurant = response
+
+            return persistence.checkFavouriteExists(user.username, response.id)
+        }).then( () => {
+            console.log('restaurant:', restaurant)
+            return persistence.addToFavourites(user.username, restaurant)            
         }).then( response => {
             return callback(null, response)
         }).catch( err => callback(err))
