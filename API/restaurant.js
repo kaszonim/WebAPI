@@ -77,18 +77,6 @@ exports.addUser = (request, callback) => {
     .catch( err => callback(err) )
 }
 
-exports.getUser = (request, callback) => {
-
-    auth.getCredentials(request).then( credentials => {
-        return persistence.getUser(credentials.username)
-    }).then( response => {
-        if (!response) return callback('User cannot be found')
-
-        response.password = undefined
-        return callback(null, response)
-    }).catch( err => callback(err) )
-}
-
 exports.removeUser = (request, callback) => {
     let user
 
@@ -227,3 +215,15 @@ exports.updateUserFavourite = (request, callback) => {
             return callback(null, restaurant)
         }).catch( err => callback(err))
 }
+
+
+const cleanMongoData = data => new Promise( (resolve, reject) => {
+    try {
+        data.__v = undefined
+        data._id = undefined
+        
+        resolve(data)
+    } catch (e) {
+        reject(e)
+    }
+})

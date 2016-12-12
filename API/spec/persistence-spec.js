@@ -79,54 +79,7 @@ describe('API data persistence', () => {
             })
         })
 
-        xdescribe('getUser', () => {
-            //Needs to be uncommented to be able to test the fail bit
-            /*  beforeEach( done => {
-                schema.User.remove({}, err => {
-                    if (err) expect(true).toBe(false)
-                    done()
-                })
-            })*/
-
-            xit('should fail if no username provided', done => {
-                persist.getUser().then( response => {
-                    if (response) expect(true).toBe(false)
-                    done()
-                }, err => {
-                    console.log(err)
-                    done()
-                }).catch( err => {
-                    expect(err.message).toBe('username must be provided')
-                    done()
-                })
-            })
-
-            xit('should return user', done => {
-                persist.getUser('jdoe').then( response => {
-                    expect(response.username).toBe('jdoe')
-                    expect(response.name).toBe('John Doe')
-                    done()
-                }).catch( err => {
-                    if (err) expect(true).toBe(false)
-                    done()
-                })
-            })
-                
-            xit('should fail if no user found', done => {
-                persist.getUser('mkasz').then( response => {
-                    if (response) expect(true).toBe(false)
-                    done()
-                }, err => {
-                    console.log(err)
-                    done()
-                }).catch( err => {
-                    expect(err.message).toBe('no user found')
-                    done()
-                })
-            })
-        })
-
-        xdescribe('deleteUser', () => {
+        describe('deleteUser', () => {
             it('should fail on missing username', done => {
                 persist.deleteUser().then( response => {
                 if (response) expect(true).toBe(false)
@@ -163,7 +116,7 @@ describe('API data persistence', () => {
             })
         })
 
-        xdescribe('checkUserExists', () => {
+        describe('checkUserExists', () => {
             it('should error on missing username', done => {
                 persist.checkUserExists().then( response => {
                     if (response) expect(true).toBe(false)
@@ -179,24 +132,24 @@ describe('API data persistence', () => {
                     expect(true).toBe(true)
                     done()
                 }).catch( err => {
-                    if (err) expect(err.message).toBe('username already exists')
+                    if (err) expect(true).toBe(false)
                     done()
                 })
             })
 
             it('should fail to find the username', done => {
-                persist.checkUserExists('jdoe2').then( () => {
+                persist.checkUserExists('jdoe2').then( response => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(true).toBe(false)
+                    expect(err.message).toBe('username already exists')
                     done()
                 })
             })
         })
     })
 
-    xdescribe('favourites persistence', () => {
+    describe('favourites persistence', () => {
         beforeEach( done => {
             schema.User.remove({}, err => {
                 if (err) expect(true).toBe(false)
@@ -541,7 +494,7 @@ describe('API data persistence', () => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(err.message).toBe('16681615 could not be found for user mkasz')
+                    expect(err.message).toBe('16681615 could not be found for user mkasz or the comment already exists')
                     done()
                 })
             })
@@ -550,7 +503,6 @@ describe('API data persistence', () => {
                 persist.updateFavourite('jdoe', '16681615', 'I want to go back here').then( () => {
                     schema.Restaurant.find({username: 'jdoe', id: '16681615'}, (err, restaurant) => {
                         if (err) expect(true).toBe(false)   
-                        expect(restaurant[0].username).toBe('jdoe')
                         expect(restaurant[0].id).toBe('16681615')
                         expect(restaurant[0].comments).toBe('I want to go back here')
                         done()
@@ -596,6 +548,4 @@ describe('API data persistence', () => {
 
         })
     })
-    
 })
-

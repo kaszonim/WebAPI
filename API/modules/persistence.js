@@ -11,25 +11,11 @@ exports.createUser = details => new Promise( (resolve, reject) => {
 				reject(new Error('error creating account'))
 			}
 			resolve({
-				id: user._id,
 				name: user.name,
 				username: user.username
 			})
 		})
 	}
-})
-
-exports.getUser = provided => new Promise( (resolve, reject) => {
-	if (provided === undefined) reject(new Error('username must be provided'))
-	schema.User.find({username: provided}, (err, user) => {
-		if (err) reject(err)
-		if (user.length === 0) reject(new Error('no user found'))
-		
-		user[0].__v = undefined
-		user[0]._id = undefined
-		
-		resolve(user[0])
-	})
 })
 
 exports.deleteUser = provided => new Promise( (resolve, reject) => {
@@ -54,7 +40,7 @@ exports.addToFavourites = (username, restaurant) => new Promise( (resolve, rejec
 	restaurant.username = username
 	new schema.Restaurant(restaurant).save( (err, restaurant) => {
 		if (err) reject(err)
-		cleanMongoData(restaurant).then( result => resolve(result))
+		resolve(restaurant)
 	})
 })
 
@@ -91,7 +77,7 @@ exports.updateFavourite = (username, restaurantId, comments) => new Promise( (re
 		if (doc.nModified === 0) reject(new Error(`${restaurantId} could not be found for user ${username} or the comment already exists`))
 		schema.Restaurant.find({username: username, id: restaurantId}, (err, restaurant) => {
 			if (err) reject(err)
-			cleanMongoData(restaurant[0]).then( result => resolve(result))
+			resolve(restaurant[0])
 		})
 	})
 })
@@ -117,12 +103,4 @@ exports.getFavourites = username => new Promise( (resolve, reject) => {
 		
 		resolve(favourites)
 	})
-})
-
-const cleanMongoData = data => new Promise( resolve => {
-	data.__v = undefined
-	data._id = undefined
-	data.username = undefined
-
-	resolve(data)
 })

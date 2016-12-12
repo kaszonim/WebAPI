@@ -5,7 +5,7 @@ const zomato = require('../modules/zomato')
 
 describe('Restaurant API', () => {
 	describe('getCategories', () => {
-		it('should return results', done => {
+		xit('should return results', done => {
 			zomato.getCategories().then( (response) => {
 				expect(response.total).toBe(14)
 				expect(response.categories[0].name).toBe('Delivery')
@@ -16,7 +16,7 @@ describe('Restaurant API', () => {
 			})
 		})
 
-		it('should error if no results found', done => {
+		xit('should error if no results found', done => {
 			zomato.getCategories().then( response => {
 				if (response) expect(true).toBe(false)
 				done()
@@ -28,7 +28,7 @@ describe('Restaurant API', () => {
 	})
 
 	describe('getLocationDetails', () => {
-		it('should find results', done => {
+		xit('should find results', done => {
 			zomato.getLocationDetails('coventry').then( response => {
 				expect(response.id).toBe(94264)
 				expect(response.type).toBe('zone')
@@ -39,7 +39,7 @@ describe('Restaurant API', () => {
 			})
 		})
 
-		it('should not find any location details', done => {
+		xit('should not find any location details', done => {
 			zomato.getLocationDetails('query').then( response => {
 				if (response) expect(true).toBe(false)
 				done()
@@ -51,7 +51,7 @@ describe('Restaurant API', () => {
 	})
 
 	describe('getRestaurants', () => {
-		it('should return restaurants', done => {
+		xit('should return restaurants', done => {
 			zomato.getRestaurants(94264, 'zone').then( response => {
 				expect(response.total).toBe(100)
 				done()
@@ -61,7 +61,7 @@ describe('Restaurant API', () => {
 			})
 		})
 
-		it('should not find restaurants for wrong type', done => {
+		xit('should not find restaurants for wrong type', done => {
 			zomato.getRestaurants(94264, 'city').then( response => {
 				if (response) expect(true).toBe(false)
 				done()
@@ -71,7 +71,7 @@ describe('Restaurant API', () => {
 			})
 		})
 
-		it('should not find restaurants for wrong id', done => {
+		xit('should not find restaurants for wrong id', done => {
 			zomato.getRestaurants(1251, 'zone').then( response => {
 				if (response) expect(true).toBe(false)
 				done()
@@ -83,7 +83,7 @@ describe('Restaurant API', () => {
 	})
 
 	describe('getRestaurantsById', () => {
-		it('should return restaurant', done => {
+		xit('should return restaurant', done => {
 			zomato.getRestaurantsById('16681615').then( response => {
 				expect(response.name).toBe('Cosmos')
 				done()
@@ -93,7 +93,7 @@ describe('Restaurant API', () => {
 			})
 		})
 
-		it('should not return for invalid id', done => {
+		xit('should not return for invalid id', done => {
 			zomato.getRestaurantsById().then( response => {
 				if (response) expect(true).toBe(false)
 				done()
@@ -103,7 +103,7 @@ describe('Restaurant API', () => {
 			})
 		})
 
-		it('should return no results', done => {
+		xit('should return no results', done => {
 			zomato.getRestaurantsById(10000000).catch( err => {
 				expect(err.message).toBe('Restaurant with ID 10000000 cannot be found')
 				done()

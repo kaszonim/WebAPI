@@ -74,23 +74,10 @@ server.get('/restaurants/:id', (req, res) => {
 	})
 })
 
-server.get('/user', (req, res) => {
-	data.getUser(req, (err, result) => {
-		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET')
-		if (err) {
-			res.send(status.badRequest, { error: err.message })
-		} else {
-			console.log(result)
-			res.send(status.ok, result)
-		}
-	})
-})
-
 server.post('/users', (req, res) => {
 	data.addUser(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET', 'POST')
+		res.setHeader('accepts', 'POST')
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
