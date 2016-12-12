@@ -79,7 +79,7 @@ describe('API data persistence', () => {
             })
         })
 
-        describe('getUsers', () => {
+        xdescribe('getUser', () => {
             //Needs to be uncommented to be able to test the fail bit
             /*  beforeEach( done => {
                 schema.User.remove({}, err => {
@@ -88,9 +88,23 @@ describe('API data persistence', () => {
                 })
             })*/
 
-            it('should return users', done => {
-                persist.getUsers().then( response => {
-                    expect(response.length).toBe(1)
+            xit('should fail if no username provided', done => {
+                persist.getUser().then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }, err => {
+                    console.log(err)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username must be provided')
+                    done()
+                })
+            })
+
+            xit('should return user', done => {
+                persist.getUser('jdoe').then( response => {
+                    expect(response.username).toBe('jdoe')
+                    expect(response.name).toBe('John Doe')
                     done()
                 }).catch( err => {
                     if (err) expect(true).toBe(false)
@@ -98,24 +112,27 @@ describe('API data persistence', () => {
                 })
             })
                 
-            it('should fail', done => {
-                persist.getUsers().then( response => {
+            xit('should fail if no user found', done => {
+                persist.getUser('mkasz').then( response => {
                     if (response) expect(true).toBe(false)
                     done()
+                }, err => {
+                    console.log(err)
+                    done()
                 }).catch( err => {
-                    expect(err.message).toBe('no users found')
+                    expect(err.message).toBe('no user found')
                     done()
                 })
             })
         })
 
-        describe('deleteUser', () => {
+        xdescribe('deleteUser', () => {
             it('should fail on missing username', done => {
                 persist.deleteUser().then( response => {
                 if (response) expect(true).toBe(false)
                 done()
                 }).catch( err => {
-                    expect(err.message).toBe('missing username')
+                    expect(err.message).toBe('username must be provided')
                     done()
                 })
             })
@@ -146,7 +163,7 @@ describe('API data persistence', () => {
             })
         })
 
-        describe('checkUserExists', () => {
+        xdescribe('checkUserExists', () => {
             it('should error on missing username', done => {
                 persist.checkUserExists().then( response => {
                     if (response) expect(true).toBe(false)
@@ -162,24 +179,24 @@ describe('API data persistence', () => {
                     expect(true).toBe(true)
                     done()
                 }).catch( err => {
-                    if (err) expect(true).toBe(false)
+                    if (err) expect(err.message).toBe('username already exists')
                     done()
                 })
             })
 
             it('should fail to find the username', done => {
-                persist.checkUserExists('jdoe2').then( response => {
+                persist.checkUserExists('jdoe2').then( () => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(err.message).toBe('username already exists')
+                    expect(true).toBe(false)
                     done()
                 })
             })
         })
     })
 
-    describe('favourites persistence', () => {
+    xdescribe('favourites persistence', () => {
         beforeEach( done => {
             schema.User.remove({}, err => {
                 if (err) expect(true).toBe(false)
@@ -218,7 +235,8 @@ describe('API data persistence', () => {
                         value: '3.9',
                         rate: 'Good',
                         votes: '290'
-                    }
+                    },
+                    comments: 'Very nice place'
                 }
 
                 new schema.Restaurant(restaurant).save( (err, restaurant) => {
@@ -293,7 +311,8 @@ describe('API data persistence', () => {
                         value: '3.5',
                         rate: 'Good',
                         votes: '97'
-                    }
+                    },
+                    comments: 'This looks nice, we should go there sometimes.'
                 }
 
                 persist.addToFavourites(restaurant).then( response => {
@@ -333,7 +352,8 @@ describe('API data persistence', () => {
                         value: '3.5',
                         rate: 'Good',
                         votes: '97'
-                    }
+                    },
+                    comments: ''
                 }
 
                 persist.addToFavourites('jdoe', restaurant).then( response => {
@@ -426,7 +446,8 @@ describe('API data persistence', () => {
                         value: '3.9',
                         rate: 'Good',
                         votes: '290'
-                    }
+                    },
+                    comments: ''
                 }
 
                 new schema.Restaurant(restaurant).save( (err, restaurant) => {
@@ -474,32 +495,71 @@ describe('API data persistence', () => {
             })
         })
 
-        xdescribe('updateFavourite', () => {
+        describe('updateFavourite', () => {
             it('should error if no user provided', done => {
-                persist.updateFavourite().then( response => {
+                persist.updateFavourite('16681615', 'comments').then( response => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(err.message).toBe('username/update details must be provided')
+                    expect(err.message).toBe('username,comments and restaurant ID must be provided')
                     done()
                 }) 
             })
 
-            it('should error if no update details provided', done => {
-                persist.updateFavourite().then( response => {
+            it('should error if no comments provided', done => {
+                persist.updateFavourite('jdoe', '16681615').then( response => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(err.message).toBe('username/restaurantId must be provided')
+                    expect(err.message).toBe('username,comments and restaurant ID must be provided')
                     done()
                 }) 
             })
 
-            it('should error if no params provided', done => {})
+            it('should error if no restaurantId provided', done => {
+                persist.updateFavourite('jdoe', 'some comments').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username,comments and restaurant ID must be provided')
+                    done()
+                }) 
+            })
 
-            it('should error if restaurant not found for user', done => {})
+            it('should error if no params provided', done => {
+                 persist.updateFavourite().then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username,comments and restaurant ID must be provided')
+                    done()
+                }) 
+            })
 
-            it('should successfully update restaurant for user', done => {})
+            it('should error if restaurant not found for user', done => {
+                persist.updateFavourite('mkasz', '16681615', 'I want to go back here').then( () => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('16681615 could not be found for user mkasz')
+                    done()
+                })
+            })
+
+            it('should successfully update restaurant for user', done => {
+                persist.updateFavourite('jdoe', '16681615', 'I want to go back here').then( () => {
+                    schema.Restaurant.find({username: 'jdoe', id: '16681615'}, (err, restaurant) => {
+                        if (err) expect(true).toBe(false)   
+                        expect(restaurant[0].username).toBe('jdoe')
+                        expect(restaurant[0].id).toBe('16681615')
+                        expect(restaurant[0].comments).toBe('I want to go back here')
+                        done()
+                    })
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
+                    done()
+                })
+            })
         })
 
         describe('getFavourites', () => {

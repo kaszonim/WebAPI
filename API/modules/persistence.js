@@ -19,25 +19,22 @@ exports.createUser = details => new Promise( (resolve, reject) => {
 	}
 })
 
-exports.getUsers = () => new Promise( (resolve, reject) => {
-	schema.User.find({}, function(err, users) {
-		if (err) reject(err)
-		if (users.length === 0) reject(new Error('no users found'))
-		resolve(users)
-	})
-})
-
-exports.getUser = credentails => new Promise( (resolve, reject) => {
-	schema.User.find({username: credentails.username}, function(err, user) {
+exports.getUser = provided => new Promise( (resolve, reject) => {
+	if (provided === undefined) reject(new Error('username must be provided'))
+	schema.User.find({username: provided}, (err, user) => {
 		if (err) reject(err)
 		if (user.length === 0) reject(new Error('no user found'))
-		resolve(user)
+		
+		user[0].__v = undefined
+		user[0]._id = undefined
+		
+		resolve(user[0])
 	})
 })
 
 exports.deleteUser = provided => new Promise( (resolve, reject) => {
-	if(provided === undefined) reject(new Error('missing username'))
-	schema.User.remove({ username: provided}, function(err, removed) {
+	if (provided === undefined) reject(new Error('username must be provided'))
+	schema.User.remove({ username: provided}, (err, removed) => {
 		if (err) reject(err)
 		if (removed.result.n === 0) reject(new Error(`${provided} cannot be deleted`))
 		resolve(`${provided} deleted successfully`)
@@ -45,7 +42,7 @@ exports.deleteUser = provided => new Promise( (resolve, reject) => {
 })
 
 exports.checkUserExists = account => new Promise( (resolve, reject) => {
-	if(account === undefined) reject(new Error('missing username'))
+	if (account === undefined) reject(new Error('missing username'))
 	schema.User.find({username: account.username}, (err, docs) => {
 		if (docs.length) reject(new Error(`username already exists`))
 		resolve()
@@ -57,11 +54,7 @@ exports.addToFavourites = (username, restaurant) => new Promise( (resolve, rejec
 	restaurant.username = username
 	new schema.Restaurant(restaurant).save( (err, restaurant) => {
 		if (err) reject(err)
-		restaurant.__v = undefined
-		restaurant._id = undefined
-		restaurant.username = undefined
-
-		resolve(restaurant)
+		cleanMongoData(restaurant).then( result => resolve(result))
 	})
 })
 
@@ -91,9 +84,16 @@ exports.checkFavouriteExists = (username, restaurantId) => new Promise( (resolve
 	})
 })
 
-exports.updateFavourite = (username, updateDetails) => new Promise( (resolve, reject) => {
-	//What would you actually update?
-	//Should I add a new field something like favourites order - which can be update?
+exports.updateFavourite = (username, restaurantId, comments) => new Promise( (resolve, reject) => {
+	if(username === undefined || restaurantId === undefined || comments === undefined) reject(new Error('username,comments and restaurant ID must be provided'))
+	schema.Restaurant.update({ username: username, id: restaurantId }, {comments: comments}, (err, doc) => {
+		if (err) reject(err)
+		if (doc.nModified === 0) reject(new Error(`${restaurantId} could not be found for user ${username} or the comment already exists`))
+		schema.Restaurant.find({username: username, id: restaurantId}, (err, restaurant) => {
+			if (err) reject(err)
+			cleanMongoData(restaurant[0]).then( result => resolve(result))
+		})
+	})
 })
 
 exports.getFavourites = username => new Promise( (resolve, reject) => {
@@ -111,10 +111,18 @@ exports.getFavourites = username => new Promise( (resolve, reject) => {
 			element.__v = undefined
 			element._id = undefined
 			element.username = undefined
-		}, this);
+		});
 		favourites.total = found.length
 		favourites.restaurants = found
 		
 		resolve(favourites)
 	})
+})
+
+const cleanMongoData = data => new Promise( resolve => {
+	data.__v = undefined
+	data._id = undefined
+	data.username = undefined
+
+	resolve(data)
 })

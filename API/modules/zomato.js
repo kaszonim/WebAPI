@@ -149,7 +149,8 @@ exports.getRestaurantsById = id => new Promise( (resolve, reject) => {
 				value: result.user_rating.aggregate_rating,
 				text: result.user_rating.rating_text,
 				votes: result.user_rating.votes
-			}
+			},
+			comments: ''
 		}
 
 		resolve(data)
@@ -183,7 +184,8 @@ const cleanRestaurantData = data => new Promise( (resolve, reject) => {
 						value: rest.restaurant.user_rating.aggregate_rating,
 						text: rest.restaurant.user_rating.rating_text,
 						votes: rest.restaurant.user_rating.votes
-					}
+					},
+					comments: ''
 				})
 			})
 		})

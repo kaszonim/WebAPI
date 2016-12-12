@@ -77,19 +77,15 @@ exports.addUser = (request, callback) => {
     .catch( err => callback(err) )
 }
 
-exports.getUsers = callback => {
-    persistence.getUsers().then( (response) => {
-        if(!response){
-            return callback('No users found')
-        } else {
-            const cleanData = response.map( element => {
-                return {
-                    username: element.username,
-                    name: element.name
-                }
-            })
-            return callback(null, cleanData)
-        }
+exports.getUser = (request, callback) => {
+
+    auth.getCredentials(request).then( credentials => {
+        return persistence.getUser(credentials.username)
+    }).then( response => {
+        if (!response) return callback('User cannot be found')
+
+        response.password = undefined
+        return callback(null, response)
     }).catch( err => callback(err) )
 }
 
@@ -101,10 +97,10 @@ exports.removeUser = (request, callback) => {
             this.password = credentials.password
             return auth.hashPassword(credentials)
         }).then( credentials => {
-            return persistence.getUser(credentials)
+            return persistence.getUser(credentials.username)
         }).then( account => {
-            user = account[0]
-            const hash = account[0].password
+            user = account
+            const hash = account.password
             return auth.verifyPassword(this.password, hash)
         }).then( () => {
             return persistence.deleteUser(user.username)
@@ -121,10 +117,10 @@ exports.userFavourites = (request, callback) => {
             this.password = credentials.password
             return auth.hashPassword(credentials)
         }).then( credentials => {
-            return persistence.getUser(credentials)
+            return persistence.getUser(credentials.username)
         }).then( account => {
-            user = account[0]
-            const hash = account[0].password
+            user = account
+            const hash = account.password
             return auth.verifyPassword(this.password, hash)
         }).then( () => {
             return persistence.getFavourites(user.username)
@@ -142,10 +138,10 @@ exports.addUserFavourites = (request, callback) => {
             this.password = credentials.password
             return auth.hashPassword(credentials)
         }).then( credentials => {
-            return persistence.getUser(credentials)
+            return persistence.getUser(credentials.username)
         }).then( account => {
-            user = account[0]
-            const hash = account[0].password
+            user = account
+            const hash = account.password
             return auth.verifyPassword(this.password, hash)
         }).then( () => {
             if(!request.body) return callback('invalid request body')
@@ -157,7 +153,9 @@ exports.addUserFavourites = (request, callback) => {
 
             return persistence.checkFavouriteExists(user.username, response.id)
         }).then( () => {
-            console.log('restaurant:', restaurant)
+            const comments = request.body.comments === undefined ? '' : request.body.comments
+            
+            restaurant.comments = comments
             return persistence.addToFavourites(user.username, restaurant)            
         }).then( response => {
             return callback(null, response)
@@ -173,10 +171,10 @@ exports.deleteAllUserFavourites = (request, callback) => {
             this.password = credentials.password
             return auth.hashPassword(credentials)
         }).then( credentials => {
-            return persistence.getUser(credentials)
+            return persistence.getUser(credentials.username)
         }).then( account => {
-            user = account[0]
-            const hash = account[0].password
+            user = account
+            const hash = account.password
             return auth.verifyPassword(this.password, hash)
         }).then( () => {
             return persistence.deleteFavourites(user.username)
@@ -194,14 +192,38 @@ exports.deleteUserFavourite = (request, callback) => {
             this.password = credentials.password
             return auth.hashPassword(credentials)
         }).then( credentials => {
-            return persistence.getUser(credentials)
+            return persistence.getUser(credentials.username)
         }).then( account => {
-            user = account[0]
-            const hash = account[0].password
+            user = account
+            const hash = account.password
             return auth.verifyPassword(this.password, hash)
         }).then( () => {
             return persistence.deleteFavourite(user.username, restaurantId)
         }).then( response => {
             return callback(null, response)
+        }).catch( err => callback(err))
+}
+
+exports.updateUserFavourite = (request, callback) => {
+    let user
+
+    auth.getCredentials(request).then( credentials => {
+            this.username = credentials.username
+            this.password = credentials.password
+            return auth.hashPassword(credentials)
+        }).then( credentials => {
+            return persistence.getUser(credentials.username)
+        }).then( account => {
+            user = account
+            const hash = account.password
+            return auth.verifyPassword(this.password, hash)
+        }).then( () => {
+            if(!request.body) return callback('invalid request body')
+            const restaurantId = request.params.id
+            const comments = request.body.comments
+
+            return persistence.updateFavourite(user.username, restaurantId, comments)
+        }).then( restaurant => {
+            return callback(null, restaurant)
         }).catch( err => callback(err))
 }

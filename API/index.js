@@ -74,8 +74,8 @@ server.get('/restaurants/:id', (req, res) => {
 	})
 })
 
-server.get('/users', (req, res) => {
-	data.getUsers( (err, result) => {
+server.get('/user', (req, res) => {
+	data.getUser(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET')
 		if (err) {
@@ -166,10 +166,18 @@ server.del('/favourites/:id', (req, res) => {
 	})
 })
 
-/*
+
 server.put('/favourites/:id', function(req, res) {
-	//TO-DO! update favourite
-})*/
+	data.updateUserFavourite(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+	})
+})
 
 const port = process.env.PORT || defaultPort
 
