@@ -141,6 +141,18 @@ server.del('/favourites', (req, res) => {
 	})
 })
 
+server.get('/favourites/:id', (req, res) => {
+	data.getFavouriteById(res, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+	})
+})
+
 server.del('/favourites/:id', (req, res) => {
 	data.deleteUserFavourite(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')

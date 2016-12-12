@@ -117,6 +117,30 @@ exports.userFavourites = (request, callback) => {
         }).catch( err => callback(err))
 }
 
+exports.userFavouritesById = (request, callback) => {
+    let user
+
+    auth.getCredentials(request).then( credentials => {
+            this.username = credentials.username
+            this.password = credentials.password
+            return auth.hashPassword(credentials)
+        }).then( credentials => {
+            return persistence.getUser(credentials.username)
+        }).then( account => {
+            user = account
+            const hash = account.password
+            return auth.verifyPassword(this.password, hash)
+        }).then( () => {
+            const restaurantId = request.params.id
+
+            return persistence.getFavouriteById(user.username, restaurantId)
+        }).then( response => {
+            return cleanMongoData(response)
+        }).then( data => {
+            return callback(null, data)
+        }).catch( err => callback(err))
+}
+
 exports.addUserFavourites = (request, callback) => {
     let user
     let restaurant = {}

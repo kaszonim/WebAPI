@@ -35,6 +35,14 @@ exports.checkUserExists = account => new Promise( (resolve, reject) => {
 	})
 })
 
+exports.getFavouriteById = (username, id) => new Promise( (resolve, reject) => {
+	if(username === undefined || id === undefined) reject(new Error('username/id must be provided'))
+	schema.Restaurant.find({id: id, username: username}, (err, docs) => {
+		if (docs.length === 0) reject(new Error('restaurant cannot be found in the favourites list'))
+		resolve(docs[0])
+	})
+})
+
 exports.addToFavourites = (username, restaurant) => new Promise( (resolve, reject) => {
 	if (username === undefined || restaurant === undefined) reject(new Error('username/restaurant must be provided'))
 	restaurant.username = username

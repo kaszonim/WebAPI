@@ -514,6 +514,59 @@ describe('API data persistence', () => {
             })
         })
 
+        describe('getFavouriteById', () => {
+            it('should error if no user provided', done => {
+                persist.getFavouriteById('16681615').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/id must be provided')
+                    done()
+                }) 
+            })
+
+            it('should error if no id provided', done => {
+                persist.getFavouriteById('jdoe').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/id must be provided')
+                    done()
+                }) 
+            })
+
+            it('should error if no params provided', done => {
+                persist.getFavouriteById().then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username/id must be provided')
+                    done()
+                }) 
+            })
+
+            it('should return message if favourites not found for user', done => {
+                persist.getFavouriteById('mkasz', '16681615').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('restaurant cannot be found in the favourites list')
+                    done()
+                }) 
+            })
+
+            it('should return successfully user favourite', done => {
+                persist.getFavouriteById('jdoe', '16681615').then( response => {
+                    expect(response.username).toBe('jdoe')
+                    expect(response.name).toBe('Cosmos')
+                    done()
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
+                    done()
+                }) 
+            })
+        })
+
         describe('getFavourites', () => {
             it('should error if no user provided', done => {
                 persist.getFavourites().then( response => {
@@ -545,7 +598,6 @@ describe('API data persistence', () => {
                     done()
                 }) 
             })
-
         })
     })
 })
