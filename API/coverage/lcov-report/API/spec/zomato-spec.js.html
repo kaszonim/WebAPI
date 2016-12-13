@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for API/spec/zomato-spec.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">API/spec/</a> zomato-spec.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65.31% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>32/49</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65.31% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>32/49</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
+&nbsp;
+/*istanbul ignore next*/
+/* global expect */
+&nbsp;
+var data = require("../modules/zomato")
+&nbsp;
+describe('Restaurant API', function () {
+	it('getCategories - results returned', (done) =&gt; {
+		data.getCategories().then( (response) =&gt; {
+			expect(response.length).toBeGreaterThan(0)
+			done()
+		})
+	})
+&nbsp;
+	it('getCategories - results not found', (done) =&gt; {
+		data.getCategories().then( (response) =&gt; {
+			expect(response).toBe('')
+			done()
+		}, (err) =&gt; {
+<span class="cstat-no" title="statement not covered" >			expect(err.message).toBe('No categories found')</span>
+<span class="cstat-no" title="statement not covered" >			done()</span>
+		})
+	})
+&nbsp;
+	it('getLocationDetails - results', (done) =&gt; {
+		data.getLocationDetails('coventry').then( (response) =&gt; {
+			expect(response.id).toBe(94264)
+			expect(response.type).toBe('zone')
+			done()
+		}, (err) =&gt; {
+<span class="cstat-no" title="statement not covered" >			expect(err).toBe('No location details found')</span>
+<span class="cstat-no" title="statement not covered" >			done()</span>
+		})
+	})
+	
+	it('getLocationDetails - no location details found', (done) =&gt; {
+		data.getLocationDetails('query').then( (result) =&gt; {
+<span class="cstat-no" title="statement not covered" >			expect(result).toBe('')</span>
+<span class="cstat-no" title="statement not covered" >			done()</span>
+		}, (err) =&gt; {
+			expect(err).toBe('No location details found')
+			done()
+		})
+	})
+	
+	it('getRestaurants - return message', (done) =&gt; {
+		data.getRestaurants(94264, 'zone').then( (result) =&gt; {
+			expect(result.message).toBe('179 restaurants found')
+			done()
+		})
+	})
+	
+	it('getRestaurants - no restaurants found for wrong type', (done) =&gt; {
+		data.getRestaurants(94264, 'city').then( (result) =&gt; {
+<span class="cstat-no" title="statement not covered" >			expect(result).toBe('')</span>
+<span class="cstat-no" title="statement not covered" >			done()</span>
+		}, (err) =&gt; {
+			expect(err).toBe('No restaurants found')
+			done()
+		})
+	})
+	
+	it('getRestaurants - no restaurants found for wrong id', (done) =&gt; {
+		data.getRestaurants(1251, 'zone').then( (result) =&gt; {
+<span class="cstat-no" title="statement not covered" >			expect(result).toBe('')</span>
+<span class="cstat-no" title="statement not covered" >			done()</span>
+		}, (err) =&gt; {
+			expect(err).toBe('No restaurants found')
+			done()
+		})
+	})
+	
+	xit('getRestaurants - response body', (done) =&gt; {
+<span class="cstat-no" title="statement not covered" >		data.getRestaurants(94264, 'zone').then(	(result) =&gt; {</span>
+			//console.log(result)
+			//expect(true).toBe(true)
+<span class="cstat-no" title="statement not covered" >			expect(result.body.length).toBe(result.body[0].items_shown)</span>
+<span class="cstat-no" title="statement not covered" >			done()</span>
+		}, (err) =&gt; {
+<span class="cstat-no" title="statement not covered" >			console.log(err)</span>
+<span class="cstat-no" title="statement not covered" >			done()</span>
+		}).catch( err =&gt; {
+<span class="cstat-no" title="statement not covered" >			console.log(err)</span>
+<span class="cstat-no" title="statement not covered" >			done()</span>
+		})
+	})
+})</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 29 2016 15:04:16 GMT+0000 (GMT)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

@@ -1,29 +1,55 @@
 'use strict'
+/**
+ * Restaurant model file.
+ * @module Restaurant
+ */
 
 const zomato = require('./modules/zomato')
 const persistence = require('./modules/persistence')
 const auth = require('./modules/authentication.js')
 const url = require('url')
 
-exports.categories = callback => {
-    zomato.getCategories().then( response => {
-        if (response.length === 0) return callback(new Error('No categories found'))
-        return callback(null, response)
-    }).catch( err => callback(err))
+/**
+ * Gets all categories from zomato API
+ * @param   {Function} callback - Callback function
+ * @returns {Object} Result object containing total number and categories array
+ * @throws  {Error} Error from Zomato request
+ */
+
+exports.getCategories = callback => {
+	zomato.getCategories()
+	.then( response => callback(null, response))
+	.catch( err => callback(err))
 }
 
-exports.categoryById = (request, callback) => {
+/**
+ * Gets category by ID from zomato API
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {Object} Result object containing category for specified ID
+ * @throws  {Error} Error from Zomato request
+ */
+
+exports.getCategoryById = (request, callback) => {
 	const requestId = request.params.id
 
 	zomato.getCategories().then( response => {
-		if (response.length === 0) return callback(new Error('Category not found'))
 		const category = response.categories.find( category => parseInt(category.id) === parseInt(requestId))
 
 		return callback(null, category)
 	}).catch(err => callback(err))
 }
 
-exports.restaurants = (request, callback) => {
+/**
+ * Gets restaurants defaulted to Coventry from zomato API.
+ * It can also search for specific location, category, sort the results and order them
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {Object} Result object containing total and restaurants array
+ * @throws  {Error} Error from Zomato request
+ */
+
+exports.getRestaurants = (request, callback) => {
 	const parameters = url.parse(request.url, true)
 	const location = parameters.query.location === undefined ? 'coventry' : parameters.query.location
 	const requestCategory = parameters.query.category === undefined ? null : parameters.query.category
@@ -39,215 +65,261 @@ exports.restaurants = (request, callback) => {
 			zomato.getCategories().then( response => {
 				const foundCategory = response.categories.find( category => category.name.toLowerCase() === requestCategory.toLowerCase())
 
-				if (!foundCategory) return callback(new Error('Category could not be found'))
 				return zomato.getRestaurants(locationId, locationType, foundCategory.id, sort, order)
-			}).then( result => {
-				if (!response) return callback(new Error('No restaurants found'))
-				return callback(null, result)
-			}).catch( err => callback(err))
+			}).then( result => callback(null, result))
+            .catch( err => callback(err))
 		} else {
-			zomato.getRestaurants(locationId, locationType).then( response => {
-				if (!response) return callback(new Error('No restaurants found'))
-				return callback(null, response)
-			})
+			zomato.getRestaurants(locationId, locationType)
+            .then( response => callback(null, response))
+            .catch( err => callback(err))
 		}
 	}).catch( err => callback(err))
 }
 
-exports.restaurantById = (request, callback) => {
+/**
+ * Gets restaurants by ID from zomato API
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {Object} Restaurant object
+ * @throws  {Error} Error from Zomato request
+ */
+
+exports.getRestaurantById = (request, callback) => {
 	const id = request.params.id
 
-	zomato.getRestaurantsById(id).then( response => {
-		if (!response) return callback(new Error('No restaurant found'))
+	zomato.getRestaurantsById(id)
+    .then( response => callback(null, response))
+    .catch( err => callback(err))
+}
+
+/**
+ * Gets current user details from database
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {Object} User object
+ * @throws  {Error} Error from database request
+ * @throws  {Error} can only get logged in user
+ */
+
+exports.getUser = (request, callback) => {
+	const username = request.params.username
+	let loggedUser
+
+	auth.getCredentials(request).then( credentials => {
+		this.username = credentials.username
+		this.password = credentials.password
+		return persistence.getUser(credentials.username)
+	}).then( credentials => {
+		loggedUser = credentials
+		auth.verifyPassword(this.password, credentials.password)
+	}).then( () => {
+		if (username !== this.username) return callback(new Error('can only get logged in user'))
+		return cleanMongoData(loggedUser)
+	}).then( response => {
+		response.password = undefined
 		return callback(null, response)
 	}).catch( err => callback(err))
 }
 
-exports.addUser = (request, callback) => {
-    let data
+/**
+ * Adds user to database
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {Object} User object
+ * @throws  {Error} Error from database request
+ */
 
-    auth.getCredentials(request).then( credentials => auth.hashPassword(credentials))
-    .then( credentials => {
-        data = credentials
-        return persistence.checkUserExists(credentials)
-    }).then( () => {
-        data.name = request.body['name']
-        return persistence.createUser(data)
-    }).then( account => callback(null, account) )
-    .catch( err => callback(err) )
+exports.addUser = (request, callback) => {
+	auth.getCredentials(request).then( credentials => {
+		this.username = credentials.username
+		this.password = credentials.password
+		return persistence.checkUserExists(credentials)
+	}).then( () => auth.hashPassword(this.password))
+	.then( password => {
+		const data = {
+		    name: request.body['name'],
+		    username: this.username,
+		    password: password
+		}
+
+		return persistence.createUser(data)
+	}).then( account => callback(null, account) )
+	.catch( err => callback(err) )
 }
+
+/**
+ * Removes user from database
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {String} Message for successfull deletion
+ * @throws  {Error} Error from database request
+ * @throws  {Error} can only deleted logged in user
+ */
 
 exports.removeUser = (request, callback) => {
-    let user
+	const username = request.params.username
 
-    auth.getCredentials(request).then( credentials => {
-            this.username = credentials.username
-            this.password = credentials.password
-            return auth.hashPassword(credentials)
-        }).then( credentials => {
-            return persistence.getUser(credentials.username)
-        }).then( account => {
-            user = account
-            const hash = account.password
-            return auth.verifyPassword(this.password, hash)
-        }).then( () => {
-            return persistence.deleteUser(user.username)
-        }).then( response => {
-            return callback(null, response)
-        }).catch( err => callback(err))
+	auth.getCredentials(request).then( credentials => {
+    	this.username = credentials.username
+		this.password = credentials.password
+		return persistence.getUser(credentials.username)
+	}).then( credentials => auth.verifyPassword(this.password, credentials.password)
+	).then( () => {
+		if (username !== this.username) return callback(new Error('can only delete logged in user'))
+		return persistence.deleteUser(username)
+	}).then( response => callback(null, response)
+	).catch( err => callback(err))
 }
 
-exports.userFavourites = (request, callback) => {
-    let user
+/**
+ * Gets all users favourites entries from database
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {Object} Result object containing total and restaurants array
+ * @throws  {Error} Error from database request
+ */
 
-    auth.getCredentials(request).then( credentials => {
-            this.username = credentials.username
-            this.password = credentials.password
-            return auth.hashPassword(credentials)
-        }).then( credentials => {
-            return persistence.getUser(credentials.username)
-        }).then( account => {
-            user = account
-            const hash = account.password
-            return auth.verifyPassword(this.password, hash)
-        }).then( () => {
-            return persistence.getFavourites(user.username)
-        }).then( response => {
-            return callback(null, response)
-        }).catch( err => callback(err))
+exports.getUserFavourites = (request, callback) => {
+	auth.getCredentials(request).then( credentials => {
+		this.username = credentials.username
+		this.password = credentials.password
+
+		return persistence.getUser(credentials.username)
+	}).then( credentials => auth.verifyPassword(this.password, credentials.password))
+	.then( () => persistence.getFavourites(this.username))
+	.then( response => callback(null, response))
+	.catch( err => callback(err))
 }
 
-exports.userFavouritesById = (request, callback) => {
-    let user
+/**
+ * Gets specific user favourite entry based on ID from database
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {Object} Restaurant object
+ * @throws  {Error} Error from database request
+ */
 
-    auth.getCredentials(request).then( credentials => {
-            this.username = credentials.username
-            this.password = credentials.password
-            return auth.hashPassword(credentials)
-        }).then( credentials => {
-            return persistence.getUser(credentials.username)
-        }).then( account => {
-            user = account
-            const hash = account.password
-            return auth.verifyPassword(this.password, hash)
-        }).then( () => {
-            const restaurantId = request.params.id
+exports.getUserFavouriteById = (request, callback) => {
+	const restaurantId = request.params.id
 
-            return persistence.getFavouriteById(user.username, restaurantId)
-        }).then( response => {
-            return cleanMongoData(response)
-        }).then( data => {
-            return callback(null, data)
-        }).catch( err => callback(err))
+	auth.getCredentials(request).then( credentials => {
+		this.username = credentials.username
+		this.password = credentials.password
+		return persistence.getUser(credentials.username)
+	}).then( credentials => auth.verifyPassword(this.password, credentials.password))
+	.then( () => persistence.getFavouriteById(this.username, restaurantId))
+	.then( response => cleanMongoData(response))
+	.then( data => {
+		data.username = undefined
+		return callback(null, data)
+	}).catch( err => callback(err))
 }
 
-exports.addUserFavourites = (request, callback) => {
-    let user
-    let restaurant = {}
+/**
+ * Adds user favourite entry based on ID to database
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {Object} Restaurant object
+ * @throws  {Error} Error from database request
+ * @throws  {Error} invalid request body
+ */
 
-    auth.getCredentials(request).then( credentials => {
-            this.username = credentials.username
-            this.password = credentials.password
-            return auth.hashPassword(credentials)
-        }).then( credentials => {
-            return persistence.getUser(credentials.username)
-        }).then( account => {
-            user = account
-            const hash = account.password
-            return auth.verifyPassword(this.password, hash)
-        }).then( () => {
-            if(!request.body) return callback('invalid request body')
-            const restaurantId = request.body.id
+exports.addUserFavourite = (request, callback) => {
+	if(request.body === undefined || request.body.id === undefined) return callback(new Error('invalid request body'))
+	const comments = request.body.comments === undefined ? '' : request.body.comments
+	const restaurantId = request.body.id
 
-            return zomato.getRestaurantsById(restaurantId)
-        }).then( response => {
-            restaurant = response
-
-            return persistence.checkFavouriteExists(user.username, response.id)
-        }).then( () => {
-            const comments = request.body.comments === undefined ? '' : request.body.comments
-            
-            restaurant.comments = comments
-            return persistence.addToFavourites(user.username, restaurant)            
-        }).then( response => {
-            return callback(null, response)
-        }).catch( err => callback(err))
+	auth.getCredentials(request).then( credentials => {
+		this.username = credentials.username
+		this.password = credentials.password
+		return persistence.getUser(credentials.username)
+	}).then( credentials => auth.verifyPassword(this.password, credentials.password))
+	.then( () => persistence.checkFavouriteExists(this.username, restaurantId))
+	.then( () => zomato.getRestaurantsById(restaurantId))
+	.then( response => {
+		response.comments = comments
+		return persistence.addToFavourites(this.username, response)
+	}).then( response => cleanMongoData(response))
+	.then( data => {
+		data.username = undefined
+		return callback(null, data)
+	}).catch( err => callback(err))
 }
 
-exports.deleteAllUserFavourites = (request, callback) => {
-    let user
-    let restaurant = {}
-
-    auth.getCredentials(request).then( credentials => {
-            this.username = credentials.username
-            this.password = credentials.password
-            return auth.hashPassword(credentials)
-        }).then( credentials => {
-            return persistence.getUser(credentials.username)
-        }).then( account => {
-            user = account
-            const hash = account.password
-            return auth.verifyPassword(this.password, hash)
-        }).then( () => {
-            return persistence.deleteFavourites(user.username)
-        }).then( response => {
-            return callback(null, response)
-        }).catch( err => callback(err))
-}
-
-exports.deleteUserFavourite = (request, callback) => {
-    let user
-    const restaurantId = request.params.id
-
-    auth.getCredentials(request).then( credentials => {
-            this.username = credentials.username
-            this.password = credentials.password
-            return auth.hashPassword(credentials)
-        }).then( credentials => {
-            return persistence.getUser(credentials.username)
-        }).then( account => {
-            user = account
-            const hash = account.password
-            return auth.verifyPassword(this.password, hash)
-        }).then( () => {
-            return persistence.deleteFavourite(user.username, restaurantId)
-        }).then( response => {
-            return callback(null, response)
-        }).catch( err => callback(err))
-}
+/**
+ * Updates user favourite entry based on ID to database
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {Object} Restaurant object
+ * @throws  {Error} Error from database request
+ * @throws  {Error} invalid request body
+ */
 
 exports.updateUserFavourite = (request, callback) => {
-    let user
+	if(request.body === undefined || request.body.comments === undefined) return callback(new Error('invalid request body'))
+	const restaurantId = request.params.id
+	const comments = request.body.comments
 
-    auth.getCredentials(request).then( credentials => {
-            this.username = credentials.username
-            this.password = credentials.password
-            return auth.hashPassword(credentials)
-        }).then( credentials => {
-            return persistence.getUser(credentials.username)
-        }).then( account => {
-            user = account
-            const hash = account.password
-            return auth.verifyPassword(this.password, hash)
-        }).then( () => {
-            if(!request.body) return callback('invalid request body')
-            const restaurantId = request.params.id
-            const comments = request.body.comments
-
-            return persistence.updateFavourite(user.username, restaurantId, comments)
-        }).then( restaurant => {
-            return callback(null, restaurant)
-        }).catch( err => callback(err))
+	auth.getCredentials(request).then( credentials => {
+		this.username = credentials.username
+		this.password = credentials.password
+		return persistence.getUser(credentials.username)
+	}).then( credentials => auth.verifyPassword(this.password, credentials.password))
+	.then( () => persistence.updateFavourite(this.username, restaurantId, comments))
+	.then( response => cleanMongoData(response))
+	.then( data => {
+		data.username = undefined
+		return callback(null, data)
+	}).catch( err => callback(err))
 }
 
+/**
+ * Deletes user favourite entry based on ID from database
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {String} Message for successfull deletion
+ * @throws  {Error} Error from database request
+ */
+
+exports.deleteUserFavourite = (request, callback) => {
+	const restaurantId = request.params.id
+
+	auth.getCredentials(request).then( credentials => {
+		this.username = credentials.username
+		this.password = credentials.password
+		return persistence.getUser(credentials.username)
+	}).then( credentials => auth.verifyPassword(this.password, credentials.password))
+	.then( () => persistence.deleteFavourite(this.username, restaurantId))
+	.then( response => callback(null, response))
+	.catch( err => callback(err))
+}
+
+/**
+ * Deletes all user favourites entries from database
+ * @param   {Object} request - Request object
+ * @param   {Function} callback - Callback function
+ * @returns {String} Message for successfull deletion
+ * @throws  {Error} Error from database request
+ */
+
+exports.deleteAllUserFavourites = (request, callback) => {
+	auth.getCredentials(request).then( credentials => {
+		this.username = credentials.username
+		this.password = credentials.password
+		return persistence.getUser(credentials.username)
+	}).then( credentials => auth.verifyPassword(this.password, credentials.password))
+	.then( () => persistence.deleteFavourites(this.username))
+	.then( response => callback(null, response))
+	.catch( err => callback(err))
+}
 
 const cleanMongoData = data => new Promise( (resolve, reject) => {
-    try {
-        data.__v = undefined
-        data._id = undefined
-        
-        resolve(data)
-    } catch (e) {
-        reject(e)
-    }
+	try {
+		data.__v = undefined
+		data._id = undefined
+
+		resolve(data)
+	} catch (e) {
+		reject(e)
+	}
 })

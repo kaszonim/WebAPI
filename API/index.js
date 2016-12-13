@@ -23,7 +23,7 @@ const status = {
 const defaultPort = 8080
 
 server.get('/categories', (req, res) => {
-	data.categories( (err, result) => {
+	data.getCategories( (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('Allow', 'GET')
 		if (err) {
@@ -36,7 +36,7 @@ server.get('/categories', (req, res) => {
 })
 
 server.get('/categories/:id', (req, res) => {
-	data.categoryById(req, (err, result) => {
+	data.getCategoryById(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('Allow', 'GET')
 		if (err) {
@@ -49,7 +49,7 @@ server.get('/categories/:id', (req, res) => {
 })
 
 server.get('/restaurants', (req, res) => {
-	data.restaurants(req, (err, result) => {
+	data.getRestaurants(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('Allow', 'GET')
 		if (err) {
@@ -62,7 +62,7 @@ server.get('/restaurants', (req, res) => {
 })
 
 server.get('/restaurants/:id', (req, res) => {
-	data.restaurantById(req, (err, result) => {
+	data.getRestaurantById(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('Allow', 'GET')
 		if (err) {
@@ -86,6 +86,18 @@ server.post('/users', (req, res) => {
 	})
 })
 
+server.get('/users/:username', (req, res) => {
+	data.getUser(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET', 'DELETE')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.created, result)
+		}
+	})
+})
+
 server.del('/users/:username', (req, res) => {
 	data.removeUser(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
@@ -99,14 +111,8 @@ server.del('/users/:username', (req, res) => {
 	})
 })
 
-server.put('/users/:username', (req, res) => {
-	/*TO-DO! 
-		Update user name
-	*/
-})
-
 server.get('/favourites', (req, res) => {
-	data.userFavourites(req, (err, result) => {
+	data.getUserFavourites(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
 		if (err) {
@@ -118,7 +124,7 @@ server.get('/favourites', (req, res) => {
 })
 
 server.post('/favourites', (req, res) => {
-	data.addUserFavourites(req, (err, result) => {
+	data.addUserFavourite(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
 		if (err) {
@@ -142,7 +148,19 @@ server.del('/favourites', (req, res) => {
 })
 
 server.get('/favourites/:id', (req, res) => {
-	data.getFavouriteById(res, (err, result) => {
+	data.getUserFavouriteById(req, (err, result) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
+		if (err) {
+			res.send(status.badRequest, { error: err.message })
+		} else {
+			res.send(status.ok, result)
+		}
+	})
+})
+
+server.put('/favourites/:id', function(req, res) {
+	data.updateUserFavourite(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
 		if (err) {
@@ -155,19 +173,6 @@ server.get('/favourites/:id', (req, res) => {
 
 server.del('/favourites/:id', (req, res) => {
 	data.deleteUserFavourite(req, (err, result) => {
-		res.setHeader('content-type', 'application/json')
-		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
-		if (err) {
-			res.send(status.badRequest, { error: err.message })
-		} else {
-			res.send(status.ok, result)
-		}
-	})
-})
-
-
-server.put('/favourites/:id', function(req, res) {
-	data.updateUserFavourite(req, (err, result) => {
 		res.setHeader('content-type', 'application/json')
 		res.setHeader('accepts', 'GET', 'POST', 'DELETE')
 		if (err) {

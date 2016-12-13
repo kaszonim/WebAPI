@@ -79,6 +79,45 @@ describe('API data persistence', () => {
             })
         })
 
+        xdescribe('getUser', () => {
+            xit('should fail if no username provided', done => {
+                persist.getUser().then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }, err => {
+                    console.log(err)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('username must be provided')
+                    done()
+                })
+            })
+
+            xit('should return user', done => {
+                persist.getUser('jdoe').then( response => {
+                    expect(response.username).toBe('jdoe')
+                    expect(response.name).toBe('John Doe')
+                    done()
+                }).catch( err => {
+                    if (err) expect(true).toBe(false)
+                    done()
+                })
+            })
+                
+            xit('should fail if no user found', done => {
+                persist.getUser('mkasz').then( response => {
+                    if (response) expect(true).toBe(false)
+                    done()
+                }, err => {
+                    console.log(err)
+                    done()
+                }).catch( err => {
+                    expect(err.message).toBe('no user found')
+                    done()
+                })
+            })
+        })
+
         describe('deleteUser', () => {
             it('should fail on missing username', done => {
                 persist.deleteUser().then( response => {
@@ -122,27 +161,38 @@ describe('API data persistence', () => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
-                    expect(err.message).toBe('missing username')
+                    expect(err.message).toBe('invalid user object')
                     done()
                 })
             })
 
             it('should find existing username', done => {
-                persist.checkUserExists('jdoe').then( () => {
-                    expect(true).toBe(true)
-                    done()
-                }).catch( err => {
-                    if (err) expect(true).toBe(false)
-                    done()
-                })
-            })
+                const credentials = {
+                    username: 'jdoe',
+                    name: 'John Doe'
+                }
 
-            it('should fail to find the username', done => {
-                persist.checkUserExists('jdoe2').then( response => {
+                persist.checkUserExists(credentials).then( () => {
                     if (response) expect(true).toBe(false)
                     done()
                 }).catch( err => {
                     expect(err.message).toBe('username already exists')
+                    done()
+                })
+            }) 
+
+            it('should fail to find the username', done => {
+                const credentials = {
+                    username: 'jdoe2',
+                    name: 'John Doe 2'
+                }
+
+                persist.checkUserExists(credentials).then( response => {
+                    expect(true).toBe(true)
+                    done()
+                }).catch( err => {
+                    console.log(err)
+                    if (err) expect(true).toBe(false)
                     done()
                 })
             })

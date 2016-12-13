@@ -1,7 +1,7 @@
 'use strict'
 /**
- * Zomato Module.
- * @module zomato
+ * Third party data module.
+ * @module Zomato
  */
 
 const request = require('request')

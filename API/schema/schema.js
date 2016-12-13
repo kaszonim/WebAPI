@@ -14,9 +14,9 @@ const Schema = mongoose.Schema
 
 // create a schema
 const userSchema = new Schema({
-name: String,
-username: String,
-password: String
+	name: String,
+	username: String,
+	password: String
 })
 
 //  create a model using the schema

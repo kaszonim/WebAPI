@@ -1,6 +1,18 @@
 'use strict'
+/**
+ * Data persistence module.
+ * @module Persistence
+ */
 
 const schema = require('../schema/test-schema')
+
+/**
+ * Creates a new entry in database for new user
+ * @param   {Object} details - The object containing user details: name, username, password
+ * @returns {Object} The object containing the user information: name, username
+ * @throws  {Error} error creating account
+ * @throws  {Error} invalid user object
+ */
 
 exports.createUser = details => new Promise( (resolve, reject) => {
 	if(!details.username || !details.password || !details.name){
@@ -18,39 +30,102 @@ exports.createUser = details => new Promise( (resolve, reject) => {
 	}
 })
 
-exports.deleteUser = provided => new Promise( (resolve, reject) => {
-	if (provided === undefined) reject(new Error('username must be provided'))
-	schema.User.remove({ username: provided}, (err, removed) => {
+/**
+ * Gets user information from database
+ * @param   {string} username - The username used for filtering the data
+ * @returns {Object} The object containing the user information: name, username, password
+ * @throws  {Error} no user found
+ * @throws  {Error} username must be provided
+ */
+
+exports.getUser = username => new Promise( (resolve, reject) => {
+	if (username === undefined) reject(new Error('username must be provided'))
+	schema.User.find({username: username}, (err, user) => {
 		if (err) reject(err)
-		if (removed.result.n === 0) reject(new Error(`${provided} cannot be deleted`))
-		resolve(`${provided} deleted successfully`)
+		if (user.length === 0) reject(new Error('no user found'))
+		resolve(user[0])
 	})
 })
 
-exports.checkUserExists = account => new Promise( (resolve, reject) => {
-	if (account === undefined) reject(new Error('missing username'))
-	schema.User.find({username: account.username}, (err, docs) => {
-		if (docs.length) reject(new Error(`username already exists`))
+/**
+ * Deletes the user entry from database
+ * @param   {string} username - The username used for filtering the data
+ * @returns {string} A message to show that the deletion was successfull
+ * @throws  {Error} ${username} cannot be deleted
+ * @throws  {Error} username must be provided
+ */
+
+exports.deleteUser = username => new Promise( (resolve, reject) => {
+	if (username === undefined) reject(new Error('username must be provided'))
+	schema.User.remove({ username: username}, (err, removed) => {
+		if (err) reject(err)
+		if (removed.result.n === 0) reject(new Error(`${username} cannot be deleted`))
+		resolve(`${username} deleted successfully`)
+	})
+})
+
+/**
+ * Checks if the user exists in database
+ * @param   {Object} user - The user account used for filtering the data. Must contain a username property
+ * @returns {} nothing if the username doesn't exists
+ * @throws  {Error} username must be provided
+ * @throws  {Error} username must be provided
+ */
+
+exports.checkUserExists = user => new Promise( (resolve, reject) => {
+	if (user === undefined || user.username === undefined) reject(new Error('invalid user object'))
+	schema.User.find({username: user.username}, (err, docs) => {
+		if (err) reject(err)
+		if (docs.length) reject(new Error('username already exists'))
 		resolve()
 	})
 })
 
+/**
+ * Returns favourite restaurant for the provided ID
+ * @param   {string} username - The username for which to search favourite list
+ * @param   {string} id - Restaurant id to be retrieved from database
+ * @returns {Object} Restaurant object
+ * @throws  {Error} username/id must be provided
+ * @throws  {Error} restaurant cannot be found in the favourites list
+ */
+
 exports.getFavouriteById = (username, id) => new Promise( (resolve, reject) => {
 	if(username === undefined || id === undefined) reject(new Error('username/id must be provided'))
 	schema.Restaurant.find({id: id, username: username}, (err, docs) => {
+		if (err) reject(err)
 		if (docs.length === 0) reject(new Error('restaurant cannot be found in the favourites list'))
 		resolve(docs[0])
 	})
 })
 
+/**
+ * Adds specified restaurant to the database for user favourites list
+ * @param   {string} username - The username for which to search favourite list
+ * @param   {Object} restaurant - The restaurant object to be saved
+ * @returns {Object} Restaurant object
+ * @throws  {Error} username/restaurant must be provided
+ */
+
 exports.addToFavourites = (username, restaurant) => new Promise( (resolve, reject) => {
 	if (username === undefined || restaurant === undefined) reject(new Error('username/restaurant must be provided'))
 	restaurant.username = username
+	restaurant.link = `/favourites/${restaurant.id}`
 	new schema.Restaurant(restaurant).save( (err, restaurant) => {
 		if (err) reject(err)
+
 		resolve(restaurant)
 	})
 })
+
+/**
+ * Deletes specified restaurant from the database from user favourites list
+ * @param   {string} username - The username for which to search favourite list
+ * @param   {string} restaurantId - The restaurant ID to be deleted
+ * @returns {Object} A message to show that the deletion was successfull
+ * @throws  {Error} username/restaurantId must be provided
+ * @throws  {Error} ${restaurantId} cannot be found in users favourites
+ */
 
 exports.deleteFavourite = (username, restaurantId) => new Promise( (resolve, reject) => {
 	if (username === undefined || restaurantId === undefined) reject(new Error('username/restaurantId must be provided'))
@@ -61,6 +136,14 @@ exports.deleteFavourite = (username, restaurantId) => new Promise( (resolve, rej
 	})
 })
 
+/**
+ * Deletes all users favourites entries
+ * @param   {string} username - The username for which to delete the favourites list
+ * @returns {Object} Restaurant object
+ * @throws  {Error} username/restaurant must be provided
+ * @throws  {Error} ${username} does not have any favourites
+ */
+
 exports.deleteFavourites = username => new Promise( (resolve, reject) => {
 	if (username === undefined) reject(new Error('username must be provided'))
 	schema.Restaurant.remove({username: username}, (err, removed) => {
@@ -70,13 +153,33 @@ exports.deleteFavourites = username => new Promise( (resolve, reject) => {
 	})
 })
 
+/**
+ * Checks if the user favourite restaurant exists in database
+ * @param   {string} username - The username used for filtering the data
+ * @param   {string} restaurantId - The Restaurant ID which needs to be checked
+ * @returns {} nothing if the restaurant doesn't exists
+ * @throws  {Error} username/restaurantId must be provided
+ * @throws  {Error} restaurant already exists in the favourites list
+ */
+
 exports.checkFavouriteExists = (username, restaurantId) => new Promise( (resolve, reject) => {
 	if(username === undefined || restaurantId === undefined) reject(new Error('username/restaurantId must be provided'))
 	schema.Restaurant.find({id: restaurantId, username: username}, (err, docs) => {
+		if (err) reject(err)
 		if (docs.length) reject(new Error('restaurant already exists in the favourites list'))
 		resolve()
 	})
 })
+
+/**
+ * Updates the comments for the user favourite restaurant provided
+ * @param   {string} username - The username used for filtering the data
+ * @param   {string} restaurantId - The Restaurant ID which needs to be updated
+ * @param   {string} comments - The Rcomments which needs updated on the restaurant
+ * @returns {Object} Restaurant object
+ * @throws  {Error} username,comments and restaurantId must be provided
+ * @throws  {Error} ${restaurantId} could not be found for user ${username} or the comment already exists
+ */
 
 exports.updateFavourite = (username, restaurantId, comments) => new Promise( (resolve, reject) => {
 	if(username === undefined || restaurantId === undefined || comments === undefined) reject(new Error('username,comments and restaurant ID must be provided'))
@@ -90,6 +193,14 @@ exports.updateFavourite = (username, restaurantId, comments) => new Promise( (re
 	})
 })
 
+/**
+ * Gets all users favourites restaurants from database
+ * @param   {string} username - The username used for filtering the data
+ * @returns {Object} Result object containing total results and restaurants array
+ * @throws  {Error} username must be provided
+ * @throws  {Error} no favourites found for user ${username}
+ */
+
 exports.getFavourites = username => new Promise( (resolve, reject) => {
 	if (username === undefined) reject(new Error('username must be provided'))
 	const favourites = {
@@ -100,15 +211,16 @@ exports.getFavourites = username => new Promise( (resolve, reject) => {
 	schema.Restaurant.find({username: username}, (err, found) => {
 		if (err) reject(err)
 		if (found.length === 0) resolve({ message: `no favourites found for user ${username}` })
-		
+
 		found.forEach(element => {
 			element.__v = undefined
 			element._id = undefined
 			element.username = undefined
-		});
+			element.link = `/favourites/${element.id}`
+		})
 		favourites.total = found.length
 		favourites.restaurants = found
-		
+
 		resolve(favourites)
 	})
 })

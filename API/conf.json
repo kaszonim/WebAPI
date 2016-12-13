@@ -1,0 +1,7 @@
+{
+    "source": {
+        "include": [ "modules/authentication.js", "modules/persistence.js", "modules/zomato.js", "./restaurant.js"],
+        "exclude": [ "spec/", "coverage/", "node_modules/", "out/", "schema/"],
+        "includePattern": ".+\\.js?$"
+    }
+}

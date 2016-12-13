@@ -44,7 +44,7 @@ describe('Authentication', () => {
                 expect(true).toBe(false)
                 done()
             }).catch( err => {
-                expect(err.message).toBe('missing username / password')
+                expect(err.message).toBe('username/password must be provided')
                 done()
             })
         })
@@ -62,7 +62,7 @@ describe('Authentication', () => {
                 expect(true).toBe(false)
                 done()
             }).catch( err => {
-                expect(err.message).toBe('missing username / password')
+                expect(err.message).toBe('username/password must be provided')
                 done()
             })
         })
@@ -89,38 +89,18 @@ describe('Authentication', () => {
     })
 
     describe('hashPassword', () => {
-        it('should error on missing credentials', done => {
+        it('should error on missing password', done => {
             auth.hashPassword().then( response => {
                 expect(true).toBe(false)
                 done()
             }).catch( err => {
-                expect(err.message).toBe('missing credentials')
-                done()
-            })
-        })
-
-        it('should error on missing password', done => {
-            const credentials = {
-                username: 'jdoe'
-            }
-
-            auth.hashPassword(credentials).then( response => {
-                expect(true).toBe(false)
-                done()
-            }).catch( err => {
-                expect(err.message).toBe('missing password')
+                expect(err.message).toBe('password must be provided')
                 done()
             })
         })
 
         it('should hash the password', done => {
-            const credentials = {
-                username: 'jdoe',
-                password: 't3stpass'
-            }
-
-            auth.hashPassword(credentials).then( response => {
-                expect(response.username).toBe('jdoe')
+            auth.hashPassword('t3stpass').then( response => {
                 expect(response.password).not.toBe('t3stpass')
                 done()
             }).catch( err => {
@@ -132,14 +112,14 @@ describe('Authentication', () => {
 
     describe('verifyPassword', () => {
         it('should error on no password provided', done => {
-            const provided = {}
-            const stored = {}
+            const provided = ''
+            const stored = ''
 
             auth.verifyPassword(stored).then( response => {
                 expect(true).toBe(false)
                 done()
             }).catch( err => {
-                expect(err.message).toBe('missing provided/stored password')
+                expect(err.message).toBe('password provided/stored missing')
                 done()
             })
         })
@@ -151,7 +131,7 @@ describe('Authentication', () => {
                 expect(true).toBe(false)
                 done()
             }).catch( err => {
-                expect(err.message).toBe('missing provided/stored password')
+                expect(err.message).toBe('password provided/stored missing')
                 done()
             })
         })
