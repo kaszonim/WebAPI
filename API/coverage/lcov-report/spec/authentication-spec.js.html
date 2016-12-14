@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.19% </span>
+        <span class="strong">73.81% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>69/93</span>
+        <span class='fraction'>62/84</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.19% </span>
+        <span class="strong">73.81% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>69/93</span>
+        <span class='fraction'>62/84</span>
       </div>
     </div>
   </div>
@@ -207,27 +207,7 @@
 162
 163
 164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+165</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -325,26 +305,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -457,7 +417,7 @@ describe('Authentication', () =&gt; {
 <span class="cstat-no" title="statement not covered" >                expect(true).toBe(false)</span>
 <span class="cstat-no" title="statement not covered" >                done()</span>
             }).catch( err =&gt; {
-                expect(err.message).toBe('missing username / password')
+                expect(err.message).toBe('username/password must be provided')
                 done()
             })
         })
@@ -475,7 +435,7 @@ describe('Authentication', () =&gt; {
 <span class="cstat-no" title="statement not covered" >                expect(true).toBe(false)</span>
 <span class="cstat-no" title="statement not covered" >                done()</span>
             }).catch( err =&gt; {
-                expect(err.message).toBe('missing username / password')
+                expect(err.message).toBe('username/password must be provided')
                 done()
             })
         })
@@ -502,38 +462,18 @@ describe('Authentication', () =&gt; {
     })
 &nbsp;
     describe('hashPassword', () =&gt; {
-        it('should error on missing credentials', done =&gt; {
+        it('should error on missing password', done =&gt; {
             auth.hashPassword().then( response =&gt; {
 <span class="cstat-no" title="statement not covered" >                expect(true).toBe(false)</span>
 <span class="cstat-no" title="statement not covered" >                done()</span>
             }).catch( err =&gt; {
-                expect(err.message).toBe('missing credentials')
-                done()
-            })
-        })
-&nbsp;
-        it('should error on missing password', done =&gt; {
-            const credentials = {
-                username: 'jdoe'
-            }
-&nbsp;
-            auth.hashPassword(credentials).then( response =&gt; {
-<span class="cstat-no" title="statement not covered" >                expect(true).toBe(false)</span>
-<span class="cstat-no" title="statement not covered" >                done()</span>
-            }).catch( err =&gt; {
-                expect(err.message).toBe('missing password')
+                expect(err.message).toBe('password must be provided')
                 done()
             })
         })
 &nbsp;
         it('should hash the password', done =&gt; {
-            const credentials = {
-                username: 'jdoe',
-                password: 't3stpass'
-            }
-&nbsp;
-            auth.hashPassword(credentials).then( response =&gt; {
-                expect(response.username).toBe('jdoe')
+            auth.hashPassword('t3stpass').then( response =&gt; {
                 expect(response.password).not.toBe('t3stpass')
                 done()
             }).catch( err =&gt; {
@@ -543,16 +483,16 @@ describe('Authentication', () =&gt; {
         })
     })
 &nbsp;
-    describe('checkPassword', () =&gt; {
+    describe('verifyPassword', () =&gt; {
         it('should error on no password provided', done =&gt; {
-            const provided = {}
-            const stored = {}
+            const provided = ''
+            const stored = ''
 &nbsp;
-            auth.checkPassword(stored).then( response =&gt; {
+            auth.verifyPassword(stored).then( response =&gt; {
 <span class="cstat-no" title="statement not covered" >                expect(true).toBe(false)</span>
 <span class="cstat-no" title="statement not covered" >                done()</span>
             }).catch( err =&gt; {
-                expect(err.message).toBe('missing provided/stored password')
+                expect(err.message).toBe('password provided/stored missing')
                 done()
             })
         })
@@ -560,11 +500,11 @@ describe('Authentication', () =&gt; {
         it('should error on no password stored', done =&gt; {
             const provided = 't3stpass'
 &nbsp;
-            auth.checkPassword(provided).then( response =&gt; {
+            auth.verifyPassword(provided).then( response =&gt; {
 <span class="cstat-no" title="statement not covered" >                expect(true).toBe(false)</span>
 <span class="cstat-no" title="statement not covered" >                done()</span>
             }).catch( err =&gt; {
-                expect(err.message).toBe('missing provided/stored password')
+                expect(err.message).toBe('password provided/stored missing')
                 done()
             })
         })
@@ -573,7 +513,7 @@ describe('Authentication', () =&gt; {
             const provided = 't3stpass'
             const stored = '$2a$10$71vGxYSrNI0QLRYQMYnkXO36mYOH98Deb1oA69ToK5kv1ww7USwoS'
 &nbsp;
-            auth.checkPassword(provided, stored).then( response =&gt; {
+            auth.verifyPassword(provided, stored).then( response =&gt; {
                 expect(true).toBe(true)
                 done()
             }).catch( err =&gt; {
@@ -586,7 +526,7 @@ describe('Authentication', () =&gt; {
             const provided = 't3stpass'
             const stored = 'ddsginfowmdsbngfgd'
 &nbsp;
-            auth.checkPassword(provided, stored).then( response =&gt; {
+            auth.verifyPassword(provided, stored).then( response =&gt; {
 <span class="cstat-no" title="statement not covered" >                expect(true).toBe(false)</span>
 <span class="cstat-no" title="statement not covered" >                done()</span>
             }).catch( err =&gt; {
@@ -601,7 +541,7 @@ describe('Authentication', () =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 05 2016 13:33:57 GMT+0000 (GMT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Dec 13 2016 17:50:23 GMT+0000 (GMT)
 </div>
 </div>
 <script src="../prettify.js"></script>

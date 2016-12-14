@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>22/22</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>18/18</span>
+        <span class='fraction'>16/16</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>19/19</span>
+        <span class='fraction'>14/14</span>
       </div>
     </div>
   </div>
@@ -74,75 +74,141 @@
 29
 30
 31
-32</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4×</span>
-<span class="cline-any cline-yes">4×</span>
-<span class="cline-any cline-yes">4×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
+/**
+ * Authentication module.
+ * @module Authentication
+ */
 &nbsp;
 const bcrypt = require('bcryptjs')
 &nbsp;
+/**
+ * Gets user credentials from request
+ * @param   {Object} request - The http request object
+ * @returns {Object} Result object containing username and password
+ * @throws  {Error} authorization header missing
+ * @throws  {Error} username/password must be provided
+ */
+&nbsp;
 exports.getCredentials = request =&gt; new Promise( (resolve, reject) =&gt; {
-	if (request.authorization === undefined || request.authorization.basic === undefined) {
-		reject(new Error('authorization header missing'))
-	}
+	if (request.authorization === undefined || request.authorization.basic === undefined) reject(new Error('authorization header missing'))
 	const auth = request.authorization.basic
 &nbsp;
-	if (auth.username === undefined || auth.password === undefined) {
-		reject(new Error('missing username / password'))
-	}
+	if (auth.username === undefined || auth.password === undefined) reject(new Error('username/password must be provided'))
 	resolve({username: auth.username, password: auth.password})
 })
 &nbsp;
-exports.hashPassword = credentials =&gt; new Promise( (resolve, reject) =&gt; {
-  if (credentials === undefined) reject(new Error('missing credentials'))
-	if (credentials.password === undefined) reject(new Error('missing password'))
+/**
+ * Encrypts user password
+ * @param   {Object} credentials - The user credentials object. Must contain password property
+ * @returns {Object} Result object containing username and password
+ * @throws  {Error} credentials must be provided
+ * @throws  {Error} password must be provided
+ */
 &nbsp;
-	const salt = bcrypt.genSaltSync(10)
-  credentials.password = bcrypt.hashSync(credentials.password, salt)
-  resolve(credentials)
+exports.hashPassword = password =&gt; new Promise( (resolve, reject) =&gt; {
+	if (password === undefined) reject(new Error('password must be provided'))
+	password = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+&nbsp;
+	resolve(password)
 })
 &nbsp;
-exports.checkPassword = (provided, stored) =&gt; new Promise( (resolve, reject) =&gt; {
-  if (provided === undefined || stored === undefined) reject(new Error('missing provided/stored password'))
-	if (!bcrypt.compareSync(provided, stored)) {
-		reject(new Error('invalid password'))
-	}
-  resolve()
-})</pre></td></tr>
+/**
+ * Checks user password
+ * @param   {string} provided - The user password to be checked
+ * @param   {string} stored - The user password stored in database
+ * @returns {} Nothing if passwords match
+ * @throws  {Error} password provided/stored missing
+ * @throws  {Error} invalid password
+ */
+&nbsp;
+exports.verifyPassword = (provided, stored) =&gt; new Promise( (resolve, reject) =&gt; {
+	if (provided === undefined || stored === undefined) reject(new Error('password provided/stored missing'))
+	if (!bcrypt.compareSync(provided, stored)) reject(new Error('invalid password'))
+	resolve()
+})
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 05 2016 13:33:57 GMT+0000 (GMT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Dec 13 2016 17:57:30 GMT+0000 (GMT)
 </div>
 </div>
 <script src="../prettify.js"></script>

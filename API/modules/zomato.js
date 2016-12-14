@@ -80,7 +80,6 @@ exports.getLocationDetails = location => new Promise( (resolve, reject) => {
 
 exports.getRestaurants = (id, type, catId, sort, order) => new Promise( (resolve, reject) => {
 	const itemPromises = ['0', '20', '40', '60', '80'].map( start => new Promise( (resolve, reject) => {
-		//const url = `${url}/search?entity_id=${id}&entity_type=${type}&stat=${start}`
 		const options = {
 			url: `${url}/search?entity_id=${id}&entity_type=${type}&start=${start}&category=${catId}&sort=${sort}&order=${order}`,
 			method: 'GET',
@@ -90,7 +89,7 @@ exports.getRestaurants = (id, type, catId, sort, order) => new Promise( (resolve
 		}
 
 		request.get(options, (err, res, body) => {
-			if (err) reject(new Error(`could not get restaurants starting from ${start}`))
+			if (err) reject(err)
 			const result = JSON.parse(body)
 
 			resolve(result)
@@ -101,10 +100,9 @@ exports.getRestaurants = (id, type, catId, sort, order) => new Promise( (resolve
 		.then( results => {
 			if (results[0].results_found === 0) reject(new Error('No restaurants found'))
 
-			cleanRestaurantData(results).then( response => {
-				if (!response) reject(new Error('No restaurants found'))
-				resolve(response)
-			}).catch( err => reject(err))
+			cleanRestaurantData(results)
+			.then( response => resolve(response))
+			.catch( err => reject(err))
 		}).catch( err => reject(err))
 })
 

@@ -4,7 +4,7 @@
  * @module Persistence
  */
 
-const schema = require('../schema/test-schema')
+const schema = require('../schema/schema')
 
 /**
  * Creates a new entry in database for new user

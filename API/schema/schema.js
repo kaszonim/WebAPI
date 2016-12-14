@@ -11,20 +11,16 @@ const db = {
 mongoose.connect('mongodb://'+db.user+':'+db.pass+'@ds155747.mlab.com:55747/restaurants')
 mongoose.Promise = global.Promise
 const Schema = mongoose.Schema
-
-// create a schema
 const userSchema = new Schema({
 	name: String,
 	username: String,
 	password: String
 })
 
-//  create a model using the schema
 exports.User = mongoose.model('User', userSchema)
-
-//  create a schema
 const restaurantSchema = new Schema({
 	username: String,
+	link: String,
 	id: String,
 	name: String,
 	location: Object,
@@ -33,8 +29,7 @@ const restaurantSchema = new Schema({
 	average_cost: Number,
 	currency: String,
 	rating: Object,
-	comments: String
+	comments: String,
 })
 
-// create a model using the schema
 exports.Restaurant = mongoose.model('Restaurant', restaurantSchema)

@@ -79,13 +79,10 @@ describe('API data persistence', () => {
             })
         })
 
-        xdescribe('getUser', () => {
-            xit('should fail if no username provided', done => {
+        describe('getUser', () => {
+            it('should fail if no username provided', done => {
                 persist.getUser().then( response => {
                     if (response) expect(true).toBe(false)
-                    done()
-                }, err => {
-                    console.log(err)
                     done()
                 }).catch( err => {
                     expect(err.message).toBe('username must be provided')
@@ -93,7 +90,7 @@ describe('API data persistence', () => {
                 })
             })
 
-            xit('should return user', done => {
+            it('should return user', done => {
                 persist.getUser('jdoe').then( response => {
                     expect(response.username).toBe('jdoe')
                     expect(response.name).toBe('John Doe')
@@ -104,12 +101,9 @@ describe('API data persistence', () => {
                 })
             })
                 
-            xit('should fail if no user found', done => {
+            it('should fail if no user found', done => {
                 persist.getUser('mkasz').then( response => {
                     if (response) expect(true).toBe(false)
-                    done()
-                }, err => {
-                    console.log(err)
                     done()
                 }).catch( err => {
                     expect(err.message).toBe('no user found')

@@ -22,6 +22,10 @@ const status = {
 
 const defaultPort = 8080
 
+server.get('/', (req, res, next) => {
+	res.redirect('/restaurants', next)
+})
+
 server.get('/categories', (req, res) => {
 	data.getCategories( (err, result) => {
 		res.setHeader('content-type', 'application/json')
@@ -93,7 +97,7 @@ server.get('/users/:username', (req, res) => {
 		if (err) {
 			res.send(status.badRequest, { error: err.message })
 		} else {
-			res.send(status.created, result)
+			res.send(status.ok, result)
 		}
 	})
 })

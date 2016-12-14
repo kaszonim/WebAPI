@@ -8,21 +8,17 @@ const db = {
 	pass: 'dbt3stus3r'
 }
 
-mongoose.connect('mongodb://dbTestUser:dbt3stus3r@ds119548.mlab.com:19548/restaurantstest')
+mongoose.connect(`mongodb://${db.user}:${db.pass}@ds119548.mlab.com:19548/restaurantstest`)
 mongoose.Promise = global.Promise
-const Schema = mongoose.Schema
 
-// create a schema
+const Schema = mongoose.Schema
 const userSchema = new Schema({
 	name: String,
 	username: String,
 	password: String
 })
 
-//  create a model using the schema
 exports.User = mongoose.model('User', userSchema)
-
-//  create a schema
 const restaurantSchema = new Schema({
 	username: String,
 	link: String,
@@ -37,5 +33,4 @@ const restaurantSchema = new Schema({
 	comments: String,
 })
 
-// create a model using the schema
 exports.Restaurant = mongoose.model('Restaurant', restaurantSchema)
